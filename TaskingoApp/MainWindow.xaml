@@ -1,4 +1,4 @@
-﻿<Window x:Class="TaskingoApp.MainWindow"
+﻿<Window x:Class="TaskingoApp.LoginScreen"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -12,37 +12,7 @@
         WindowStartupLocation="CenterScreen"
         Title="Taskingo" Height="768" Width="1366">
     <Window.Resources>
-        <Style x:Key="ButtonWindow"  TargetType="{x:Type Button}">
-            <Setter Property="Background" Value="Transparent" />
-            <Setter Property="BorderThickness" Value="0" />
-            <Setter Property="BorderThickness" Value="0" />
-            <Setter Property="OverridesDefaultStyle" Value="True" />
-            <Setter Property="Cursor" Value="Hand" />
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="Button">
-                        <Border Name="border" BorderThickness="0" BorderBrush="Black" Background="{TemplateBinding Background}">
-                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
-                        </Border>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Opacity" Value="0.7" />
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-
-
-        </Style>
-
-        <Style x:Key="LabelWindow"  TargetType="{x:Type Label}">
-            <Setter Property="Foreground" Value="White" />
-            <Setter Property="HorizontalContentAlignment" Value="Center" />
-            <Setter Property="VerticalContentAlignment" Value="Center" />
-            <Setter Property="FontSize" Value="17" />
-        </Style>
-
+        
     </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>

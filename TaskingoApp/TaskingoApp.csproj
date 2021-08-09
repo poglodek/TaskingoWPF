@@ -11,6 +11,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="ApiCall\" />
+    <Folder Include="Converter\" />
     <Folder Include="Resources\" />
   </ItemGroup>
 

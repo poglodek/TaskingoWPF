@@ -1,9 +1,6 @@
-﻿using System;
-using System.Windows;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
+﻿using System.Windows;
 
-namespace TaskingoApp.ViewModel
+namespace TaskingoApp.View
 {
     /// <summary>
     /// Interaction logic for LoginScreen.xaml

@@ -18,16 +18,12 @@ namespace TaskingoApp
     /// <summary>
     /// Interaction logic for LoginScreen.xaml
     /// </summary>
-    public partial class LoginScreen : Window
+    public partial class Dashboard : Window
     {
-        public LoginScreen()
+        public Dashboard()
         {
             InitializeComponent();
         }
 
-        private void ButtonExit_Click(object sender, RoutedEventArgs e)
-        {
-            Environment.Exit(0);
-        }
     }
 }

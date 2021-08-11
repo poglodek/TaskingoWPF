@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using TaskingoApp.Exceptions;
 using TaskingoApp.Services;
+using TaskingoApp.ViewModel;
 using TaskingoWPF.Core.ViewModel;
 
 namespace TaskingoApp.Commands
@@ -21,12 +24,24 @@ namespace TaskingoApp.Commands
 
         protected override async Task ExecuteAsync(object? parameter)
         {
-            var gac = await _loginServices.Login(_loginViewModel.Email, _loginViewModel.Password);
-            if (gac)
+            try
             {
-                new Dashboard().Show();
+                var loginSuccessful = await _loginServices.Login(_loginViewModel.Email, _loginViewModel.Password);
+                if (loginSuccessful)
+                {
+                    new Dashboard().Show();
+                }
             }
+            catch (ApiBaseException ex)
+            {
+                MessageBox.Show(ex.Message, "Response", MessageBoxButton.OK);
+            }
+            catch (Exception ex)
+            {
+                //log to file
+            }
+            
         }
     }
-    }
+    
 }

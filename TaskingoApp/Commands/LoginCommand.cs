@@ -4,8 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using TaskingoApp.Builder;
 using TaskingoApp.Exceptions;
 using TaskingoApp.Services;
+using TaskingoApp.View;
 using TaskingoApp.ViewModel;
 using TaskingoWPF.Core.ViewModel;
 
@@ -34,7 +36,7 @@ namespace TaskingoApp.Commands
             }
             catch (ApiBaseException ex)
             {
-                MessageBox.Show(ex.Message, "Response", MessageBoxButton.OK);
+                ErrorBuilder.ShowError(ex.Message);
             }
             catch (Exception ex)
             {

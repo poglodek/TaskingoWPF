@@ -4,6 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:fa5="http://schemas.fontawesome.com/icons/"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
         x:Class="TaskingoApp.Dashboard"
         mc:Ignorable="d"
         ResizeMode="NoResize"
@@ -50,7 +52,14 @@
             </Button>
             <Button x:Name="ButtonExit" Width="75" Style="{StaticResource ButtonWindow}">
                 <fa5:ImageAwesome Icon="Solid_Times" Foreground="White"/>
-
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Click">
+                        <ei:CallMethodAction MethodName="Close"
+                                             TargetObject="{Binding RelativeSource={RelativeSource
+                                                  Mode=FindAncestor,
+                                                  AncestorType=Window}}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
             </Button>
         </DockPanel>
         <StackPanel Grid.Row="1" Background="#1c064f">

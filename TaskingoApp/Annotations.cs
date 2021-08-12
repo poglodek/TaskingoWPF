@@ -904,9 +904,9 @@ namespace TaskingoApp.Annotations
   /// </summary>
   /// <example><code>
   /// [ActionName("Foo")]
-  /// public ActionResult Login(string returnUrl) {
+  /// public ActionResult LoginModel(string returnUrl) {
   ///   ViewBag.ReturnUrl = Url.Action("Foo"); // OK
-  ///   return RedirectToAction("Bar"); // Error: Cannot resolve action
+  ///   return RedirectToAction("Bar"); // ErrorView: Cannot resolve action
   /// }
   /// </code></example>
   [AttributeUsage(AttributeTargets.Parameter | AttributeTargets.Property)]

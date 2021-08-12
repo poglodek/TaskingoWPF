@@ -16,7 +16,7 @@ namespace TaskingoWPF.Core.ViewModel
 {
     public class LoginViewModel : ViewModelBase
     {
-        private Login login = new Login();
+        private LoginModel _loginModel = new LoginModel();
 
         
         public LoginViewModel()
@@ -25,20 +25,20 @@ namespace TaskingoWPF.Core.ViewModel
         }
         public string Email
         {
-            get => login.Email;
+            get => _loginModel.Email;
             set
             {
-                login.Email = value;
+                _loginModel.Email = value;
                 OnPropertyChanged(nameof(Email));
             }
         } 
 
         public string Password
         {
-            get => login.Password;
+            get => _loginModel.Password;
             set
             {
-                login.Password = value;
+                _loginModel.Password = value;
                 OnPropertyChanged(nameof(Password));
             }
         }

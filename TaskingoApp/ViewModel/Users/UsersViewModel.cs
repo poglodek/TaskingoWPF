@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WpfTestApp.ViewModel.Base;
 
-namespace TaskingoApp.Model
+namespace TaskingoApp.ViewModel
 {
-    public class Dashboard
+    public class UsersViewModel : ViewModelBase
     {
-        public string  Name { get; set; }
+        
     }
 }

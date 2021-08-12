@@ -27,7 +27,7 @@ namespace TaskingoApp.APICall
             var request = new HttpRequestMessage();
             request.Method = HttpMethod.Put;
             request.RequestUri = new Uri(Url + endpoint);
-            request.Content = new StringContent(JsonSerializer.Serialize(body));
+            if (body != null) request.Content = new StringContent(JsonSerializer.Serialize(body));
             if(!string.IsNullOrEmpty(Token)) httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Token);
             var respone = await httpClient.SendAsync(request);
             return respone;
@@ -44,8 +44,8 @@ namespace TaskingoApp.APICall
             if (respone.StatusCode == System.Net.HttpStatusCode.Forbidden ||
                 respone.StatusCode == System.Net.HttpStatusCode.Unauthorized) throw new Unauthorized("Unauthorized.");
             if (respone.StatusCode == System.Net.HttpStatusCode.BadRequest ||
-                ((int)respone.StatusCode) >= 500) throw new ApiServerError("Server Error. Please contact with admin.");
-            if (respone.StatusCode == System.Net.HttpStatusCode.Conflict) throw new Conflict("Conflict with data. . Please contact with admin.");
+                ((int)respone.StatusCode) >= 500) throw new ApiServerError("Server ErrorView. Please contact with admin.");
+            if (respone.StatusCode == System.Net.HttpStatusCode.Conflict) throw new Conflict("Conflict with data. Please contact with admin.");
             throw new OtherRespone(respone.ReasonPhrase);
         }
     }

@@ -14,14 +14,13 @@ namespace TaskingoApp.Services
     {
         public async Task<bool> Login(string email, string password)
         {
-            var login = new Login
+            var login = new LoginModel
             {
                 Email = email,
                 Password = password
             };
             var token = await BaseCall.MakeCall("login", HttpMethod.Post, login);
             if (string.IsNullOrEmpty(token)) return false;
-            MessageBox.Show(token);
             BaseCall.Token = token;
             return true;
         }

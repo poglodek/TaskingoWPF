@@ -10,18 +10,20 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace TaskingoApp.View
+namespace TaskingoApp
 {
     /// <summary>
-    /// Interaction logic for Error.xaml
+    /// Interaction logic for LoginScreenView.xaml
     /// </summary>
-    public partial class Error : Window
+    public partial class DashboardView : Window
     {
-        public Error()
+        public DashboardView()
         {
             InitializeComponent();
         }
+
     }
 }

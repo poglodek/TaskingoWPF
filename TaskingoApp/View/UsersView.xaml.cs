@@ -13,17 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace TaskingoApp
+namespace TaskingoApp.View
 {
     /// <summary>
-    /// Interaction logic for LoginScreen.xaml
+    /// Interaction logic for UsersView.xaml
     /// </summary>
-    public partial class Dashboard : Window
+    public partial class UsersView : UserControl
     {
-        public Dashboard()
+        public UsersView()
         {
             InitializeComponent();
         }
-
     }
 }

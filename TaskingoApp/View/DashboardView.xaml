@@ -6,7 +6,7 @@
         xmlns:fa5="http://schemas.fontawesome.com/icons/"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
-        x:Class="TaskingoApp.Dashboard"
+        x:Class="TaskingoApp.DashboardView"
         mc:Ignorable="d"
         ResizeMode="NoResize"
         WindowStyle="None"

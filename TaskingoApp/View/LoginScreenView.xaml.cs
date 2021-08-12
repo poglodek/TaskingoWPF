@@ -3,11 +3,11 @@
 namespace TaskingoApp.View
 {
     /// <summary>
-    /// Interaction logic for LoginScreen.xaml
+    /// Interaction logic for LoginScreenView.xaml
     /// </summary>
-    public partial class LoginScreen : Window
+    public partial class LoginScreenView : Window
     {
-        public LoginScreen()
+        public LoginScreenView()
         {
             InitializeComponent();
         }

@@ -11,7 +11,7 @@ namespace TaskingoApp.Builder
     {
         public static void BuildError(string errorMessage)
         {
-            var error = new Error {ErrorMessage = {Text = errorMessage}};
+            var error = new ErrorView {ErrorMessage = {Text = errorMessage}};
             error.Show();
         }
     }

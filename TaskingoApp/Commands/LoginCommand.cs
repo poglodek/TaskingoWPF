@@ -31,18 +31,15 @@ namespace TaskingoApp.Commands
             {
                 var loginSuccessful = await _loginServices.Login(_loginViewModel.Email, _loginViewModel.Password);
                 if (loginSuccessful)
-                {
-                    new Dashboard().Show();
+                    new DashboardView().Show();
                 }
-            }
             catch (ApiBaseException ex)
             {
                 ErrorBuilder.BuildError(ex.Message);
-                _logger.Log("Error",ex.Message);
             }
             catch (Exception ex)
             {
-                //log to file
+                _logger.Log("ErrorView", ex.Message);
             }
             
         }

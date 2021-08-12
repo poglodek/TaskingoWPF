@@ -17,6 +17,7 @@ namespace TaskingoApp.Commands
     {
         private readonly LoginViewModel _loginViewModel;
         private readonly ILoginServices _loginServices;
+        private readonly ILogger _logger = new Logger();
 
         public LoginCommand(LoginViewModel loginViewModel, ILoginServices loginServices)
         {
@@ -36,7 +37,8 @@ namespace TaskingoApp.Commands
             }
             catch (ApiBaseException ex)
             {
-                ErrorBuilder.ShowError(ex.Message);
+                ErrorBuilder.BuildError(ex.Message);
+                _logger.Log("Error",ex.Message);
             }
             catch (Exception ex)
             {

@@ -9,7 +9,7 @@ namespace TaskingoApp.Builder
 {
     public class ErrorBuilder
     {
-        public static void ShowError(string errorMessage)
+        public static void BuildError(string errorMessage)
         {
             var error = new Error {ErrorMessage = {Text = errorMessage}};
             error.Show();

@@ -111,10 +111,10 @@ namespace TaskingoApp.Annotations
   /// </summary>
   /// <example><code>
   /// [StringFormatMethod("message")]
-  /// void ShowError(string message, params object[] args) { /* do something */ }
+  /// void BuildError(string message, params object[] args) { /* do something */ }
   /// 
   /// void Foo() {
-  ///   ShowError("Failed: {0}"); // Warning: Non-existing argument in format string
+  ///   BuildError("Failed: {0}"); // Warning: Non-existing argument in format string
   /// }
   /// </code></example>
   [AttributeUsage(

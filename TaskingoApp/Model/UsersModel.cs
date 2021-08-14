@@ -12,12 +12,14 @@ namespace TaskingoApp.Model
         public async Task GetUsersModelsList()
        // public async Task<List<UserModel>> GetUsersModelsList()
         {
+
             /*
            var jsonUsers =  await BaseCall.MakeCall("/getUsers",System.Net.Http.HttpMethod.Get, null);
            var users = JsonSerializer.Deserialize<List<UserModel>>(jsonUsers);
            userModels.Clear();
            userModels.AddRange(users);
             */
+            userModels.Clear();
             await Task.Delay(3500);
             userModels.Add(new UserModel
             {
@@ -27,6 +29,15 @@ namespace TaskingoApp.Model
                 LastName = "Cucumber",
                 Phone = 321321123,
                 Id = 1
+            });
+            userModels.Add(new UserModel
+            {
+                Address = "Curie 18, WWa",
+                Email = "adam@admin.com",
+                FirstName = "Adam",
+                LastName = "Majster",
+                Phone = 123123123,
+                Id = 2
             });
         }
         public UserModel this[int index]

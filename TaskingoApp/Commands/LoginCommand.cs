@@ -19,7 +19,7 @@ namespace TaskingoApp.Commands
             _loginViewModel = loginViewModel;
         }
 
-        protected override async Task ExecuteAsync(object? parameter)
+        protected override async Task ExecuteAsync(object parameter)
         {
             try
             {

@@ -42,7 +42,7 @@ namespace TaskingoApp.ViewModel.Users
             if(string.IsNullOrEmpty(searchingUser))
                  DownloadUsers();
             var searchingUsersFromApi = usersFromApi.Where(
-                x => x.FirstName.Contains(searchingUser) || x.LastName.Contains(searchingUser)).ToList();
+                x => x.FirstName.ToUpper().Contains(searchingUser.ToUpper()) || x.LastName.ToUpper().Contains(searchingUser.ToUpper())).ToList();
             usersViewModels.Clear();
             usersViewModels.AddRange(searchingUsersFromApi);
         }

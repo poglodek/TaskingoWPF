@@ -2,7 +2,7 @@
 {
     public class NotFound : ApiBaseException
     {
-        public NotFound(string message) : base(message)
+        public NotFound(string message) : base("message")
         {
 
         }

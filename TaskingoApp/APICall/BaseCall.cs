@@ -11,9 +11,14 @@ namespace TaskingoApp.APICall
     {
         private const string Url = "https://localhost:5001/";
         public static string Token = string.Empty;
+        private static int MaxCallsInThisSameTime = 3;
+        private static int ActiveCalls = 0;
 
         public static async Task<string> MakeCall(string endpoint, HttpMethod httpMethod, object body)
         {
+            if (ActiveCalls > MaxCallsInThisSameTime)
+                throw new ToManyCallsException($"To many Calls. Active Calls -> {ActiveCalls}");
+            ActiveCalls++;
             var respone = await CallApi(endpoint, httpMethod, body);
             return await CheckResponse(respone);
         }
@@ -27,6 +32,7 @@ namespace TaskingoApp.APICall
             if (body != null) request.Content = new StringContent(JsonSerializer.Serialize(body));
             if (!string.IsNullOrEmpty(Token)) httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Token);
             var respone = await httpClient.SendAsync(request);
+            --ActiveCalls;
             return respone;
         }
 
@@ -37,9 +43,9 @@ namespace TaskingoApp.APICall
                 var odp = await respone.Content.ReadAsStringAsync();
                 return odp;
             }
-            if (respone.StatusCode == System.Net.HttpStatusCode.NoContent) throw new NotFound("Not found.");
+            if (respone.StatusCode == System.Net.HttpStatusCode.NoContent) throw new NotFound("We don't found this. Please try again.");
             if (respone.StatusCode == System.Net.HttpStatusCode.Forbidden ||
-                respone.StatusCode == System.Net.HttpStatusCode.Unauthorized) throw new Unauthorized("Unauthorized.");
+                respone.StatusCode == System.Net.HttpStatusCode.Unauthorized) throw new Unauthorized("Unauthorized. If you should have access, please contact with admin ");
             if (respone.StatusCode == System.Net.HttpStatusCode.BadRequest ||
                 ((int)respone.StatusCode) >= 500) throw new ApiServerError("Server ErrorView. Please contact with admin.");
             if (respone.StatusCode == System.Net.HttpStatusCode.Conflict) throw new Conflict("Conflict with data. Please contact with admin.");

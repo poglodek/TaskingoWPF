@@ -30,10 +30,11 @@ namespace TaskingoApp.Commands
             catch (ApiBaseException ex)
             {
                 ErrorBuilder.BuildError(ex.Message);
+                _logger.Log("ErrorView|API", ex.Message);
             }
             catch (Exception ex)
             {
-                _logger.Log("ErrorView", ex.Message);
+                _logger.Log("ErrorView|EX", ex.Message);
             }
 
         }

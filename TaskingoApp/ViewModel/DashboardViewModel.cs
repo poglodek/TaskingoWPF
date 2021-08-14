@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using TaskingoApp.View;
 using WpfTestApp.ViewModel.Base;
 
 namespace TaskingoApp.ViewModel
@@ -11,7 +7,19 @@ namespace TaskingoApp.ViewModel
     {
         public DashboardViewModel()
         {
+            actualView = new UsersView();
+        }
 
+        private object actualView;
+
+        public object ActualView
+        {
+            get => actualView;
+            set
+            {
+                actualView = value;
+                OnPropertyChanged(nameof(actualView));
+            }
         }
     }
 }

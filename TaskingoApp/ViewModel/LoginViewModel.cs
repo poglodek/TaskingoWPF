@@ -1,12 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Mail;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Net.Mail;
 using System.Windows.Input;
-using TaskingoApp;
 using TaskingoApp.Commands;
 using TaskingoApp.Model;
 using TaskingoApp.Services;
@@ -18,7 +11,7 @@ namespace TaskingoWPF.Core.ViewModel
     {
         private LoginModel _loginModel = new LoginModel();
 
-        
+
         public LoginViewModel()
         {
             LoginCommand = new LoginCommand(this, new LoginServices());
@@ -31,7 +24,7 @@ namespace TaskingoWPF.Core.ViewModel
                 _loginModel.Email = value;
                 OnPropertyChanged(nameof(Email));
             }
-        } 
+        }
 
         public string Password
         {
@@ -44,7 +37,7 @@ namespace TaskingoWPF.Core.ViewModel
         }
         public ICommand LoginCommand { get; }
 
-        
+
 
         private bool IsEmailValid(string email)
         {

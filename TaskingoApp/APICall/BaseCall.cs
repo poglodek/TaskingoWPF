@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using TaskingoApp.Exceptions;
@@ -28,7 +25,7 @@ namespace TaskingoApp.APICall
             request.Method = HttpMethod.Put;
             request.RequestUri = new Uri(Url + endpoint);
             if (body != null) request.Content = new StringContent(JsonSerializer.Serialize(body));
-            if(!string.IsNullOrEmpty(Token)) httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Token);
+            if (!string.IsNullOrEmpty(Token)) httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Token);
             var respone = await httpClient.SendAsync(request);
             return respone;
         }

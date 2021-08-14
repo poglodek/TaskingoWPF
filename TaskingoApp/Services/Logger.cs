@@ -22,7 +22,7 @@ namespace TaskingoApp.Services
         {
             var today = DateTime.Now.ToString("dd-MM-yyyy");
             var logFile = $"{Path}log-{today}.log";
-            if (!File.Exists(logFile)) 
+            if (!File.Exists(logFile))
                 CreateFile(today, logFile);
             else
                 try
@@ -47,7 +47,7 @@ namespace TaskingoApp.Services
             {
                 ErrorBuilder.BuildError("Cannot create a log file. Please contact with Admin");
             }
-            
+
         }
     }
 }

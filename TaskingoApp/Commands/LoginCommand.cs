@@ -1,14 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using System.Windows;
 using TaskingoApp.Builder;
 using TaskingoApp.Exceptions;
 using TaskingoApp.Services;
-using TaskingoApp.View;
-using TaskingoApp.ViewModel;
 using TaskingoWPF.Core.ViewModel;
 
 namespace TaskingoApp.Commands
@@ -32,7 +26,7 @@ namespace TaskingoApp.Commands
                 var loginSuccessful = await _loginServices.Login(_loginViewModel.Email, _loginViewModel.Password);
                 if (loginSuccessful)
                     new DashboardView().Show();
-                }
+            }
             catch (ApiBaseException ex)
             {
                 ErrorBuilder.BuildError(ex.Message);
@@ -41,8 +35,8 @@ namespace TaskingoApp.Commands
             {
                 _logger.Log("ErrorView", ex.Message);
             }
-            
+
         }
     }
-    
+
 }

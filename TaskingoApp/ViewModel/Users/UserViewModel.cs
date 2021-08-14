@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TaskingoApp.Model;
+﻿using TaskingoApp.Model;
 using WpfTestApp.ViewModel.Base;
 
 namespace TaskingoApp.ViewModel.Users
@@ -46,6 +41,11 @@ namespace TaskingoApp.ViewModel.Users
         public int Phone
         {
             get => userModel.Phone;
+        }
+
+        public override string ToString()
+        {
+            return userModel.ToString();
         }
         #endregion
 

@@ -4,11 +4,19 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:TaskingoApp.View"
+             xmlns:vm="clr-namespace:TaskingoApp.ViewModel.Users"
              mc:Ignorable="d" 
              d:DesignHeight="710" d:DesignWidth="1366">
+    <UserControl.DataContext>
+        <vm:UsersViewModel />
+    </UserControl.DataContext>
     <Grid>
-        <ItemsControl>
-            
-        </ItemsControl>
+        <ListBox Background="#1c064f" ItemsSource="{Binding Path=usersViewModels}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Style="{StaticResource ListBoxTextBlockStyle}" Text="{Binding Mode=OneWay}"/>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
     </Grid>
 </UserControl>

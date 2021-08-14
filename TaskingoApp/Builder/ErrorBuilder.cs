@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TaskingoApp.View;
+﻿using TaskingoApp.View;
 
 namespace TaskingoApp.Builder
 {
@@ -11,7 +6,7 @@ namespace TaskingoApp.Builder
     {
         public static void BuildError(string errorMessage)
         {
-            var error = new ErrorView {ErrorMessage = {Text = errorMessage}};
+            var error = new ErrorView { ErrorMessage = { Text = errorMessage } };
             error.Show();
         }
     }

@@ -7,16 +7,30 @@
              xmlns:vm="clr-namespace:TaskingoApp.ViewModel.Users" 
              xmlns:fa5="http://schemas.fontawesome.com/icons/"
              mc:Ignorable="d" 
-             d:DesignHeight="710" d:DesignWidth="1366">
+             d:DesignHeight="640" d:DesignWidth="1366">
     <UserControl.DataContext>
         <vm:UsersViewModel />
     </UserControl.DataContext>
-    <Grid Background="#1c064f">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="2*"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-        <ListBox Style="{StaticResource BackgroundGradient}" ItemsSource="{Binding Path=usersViewModels}" BorderThickness="0">
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="#1c064f" Offset="0"/>
+                <GradientStop Color="#0041b3" Offset="1.0"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <DockPanel  Height="100">
+            <Label DockPanel.Dock="Top" Content="Search User" Style="{StaticResource LabelWindow}"/>
+            <TextBox Height="70" Width="1280" FontSize="30" Style="{StaticResource TextBoxLogin}"  Text="{Binding Path=SearchingUser}" />
+
+            <Button  BorderThickness="0" Background="Transparent" DockPanel.Dock="Right" Width="60" Padding="0" >
+                <fa5:ImageAwesome Icon="Solid_Search" Foreground="White" />
+            </Button>
+        </DockPanel>
+        <ListBox Grid.Row="1"  Background="Transparent" ItemsSource="{Binding Path=usersViewModels}" BorderThickness="0">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock  Style="{StaticResource ListBoxTextBlockStyle}" Text="{Binding Mode=OneWay}"/>
@@ -24,41 +38,6 @@
             </ListBox.ItemTemplate>
         </ListBox>
 
-        <StackPanel  Margin="0" Grid.Column="1" Style="{StaticResource BackgroundGradientInverseStackPanel}">
-            <DockPanel  Height="100">
-                <Label DockPanel.Dock="Top" Content="Search User" Style="{StaticResource LabelWindow}"/>
-                <TextBox Height="70" Width="350" FontSize="30" Style="{StaticResource TextBoxLogin}" Text="{Binding Path=SearchingUser}" />
-
-                <Button  BorderThickness="0" Background="Transparent" DockPanel.Dock="Right" Width="60" Padding="0" >
-                    <fa5:ImageAwesome Icon="Solid_Search" Foreground="White" />
-                </Button>
-            </DockPanel>
-            <Button Margin="0, 10" Width="auto" Height="40" Style="{StaticResource ButtonLogin}">
-                <Button.Content>
-                    Add new User
-                </Button.Content>
-            </Button>
-            <Button Margin="0, 10" Width="auto" Height="40" Style="{StaticResource ButtonLogin}">
-                <Button.Content>
-                    Delete User
-                </Button.Content>
-            </Button>
-            <Button Margin="0, 10" Width="auto" Height="40" Style="{StaticResource ButtonLogin}">
-                <Button.Content>
-                    Edit User
-                </Button.Content>
-            </Button>
-            <Button Margin="0, 10" Width="auto" Height="40" Style="{StaticResource ButtonLogin}">
-                <Button.Content>
-                    Show User Information
-                </Button.Content>
-            </Button>
-            <Button Margin="0, 10" Width="auto" Height="40" Style="{StaticResource ButtonLogin}">
-                <Button.Content>
-                    Show User Task
-                </Button.Content>
-            </Button>
-
-        </StackPanel>
+        
     </Grid>
 </UserControl>

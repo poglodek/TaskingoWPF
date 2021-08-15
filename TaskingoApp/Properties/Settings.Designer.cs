@@ -46,5 +46,17 @@ namespace TaskingoApp.Properties {
                 this["UserId"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Home")]
+        public string ActualView {
+            get {
+                return ((string)(this["ActualView"]));
+            }
+            set {
+                this["ActualView"] = value;
+            }
+        }
     }
 }

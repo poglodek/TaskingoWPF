@@ -9,55 +9,15 @@ namespace TaskingoApp.ViewModel
     {
         public DashboardViewModel()
         {
-            ActualView = new HomeView();
+            View = new ContentView();
         }
 
 
-        private object actualView;
 
-        public object ActualView
-        {
-            get => actualView;
-            set
-            {
-                actualView = value;
-                OnPropertyChanged(nameof(actualView));
-            }
-        }
         #region ICommand
-
-        private ICommand setView;
-
-        public ICommand SetView
-        {
-            get
-            {
-                if (setView == null)
-                    setView = new RelayCommand(x =>
-                    {
-                        ChangeView(x as string);
-                    });
-                return setView;
-            }
-        }
-
-        public void ChangeView(string viewName)
-        {
-            if (string.IsNullOrEmpty(viewName)) return;
-            switch (viewName)
-            {
-                case "Users":
-                    ActualView = new UsersView();
-                    break;
-                default:
-                    ActualView = new HomeView();
-                    break;
-
-            }
-
-        }
-
-
+        
+       
+        
 
         #endregion
     }

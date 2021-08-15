@@ -1,4 +1,7 @@
-﻿using TaskingoApp.Model;
+﻿using System.Windows;
+using System.Windows.Input;
+using TaskingoApp.Commands;
+using TaskingoApp.Model;
 using WpfTestApp.ViewModel.Base;
 
 namespace TaskingoApp.ViewModel.Users
@@ -51,7 +54,22 @@ namespace TaskingoApp.ViewModel.Users
 
         #region Commands
 
+        private ICommand setView;
 
+        public ICommand SetView
+        {
+            get
+            {
+                if (setView == null)
+                    setView = new RelayCommand(x =>
+                    {
+                        
+                       
+                        //ChangeView(x as string);
+                    });
+                return setView;
+            }
+        }
 
         #endregion
     }

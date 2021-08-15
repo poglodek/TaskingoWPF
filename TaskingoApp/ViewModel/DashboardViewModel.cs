@@ -12,6 +12,7 @@ namespace TaskingoApp.ViewModel
             ActualView = new HomeView();
         }
 
+
         private object actualView;
 
         public object ActualView
@@ -40,21 +41,23 @@ namespace TaskingoApp.ViewModel
             }
         }
 
-        private void ChangeView(string viewName)
+        public void ChangeView(string viewName)
         {
-            if(string.IsNullOrEmpty(viewName)) return;
+            if (string.IsNullOrEmpty(viewName)) return;
             switch (viewName)
             {
-                case "Users": 
-                    ActualView =  new UsersView();
+                case "Users":
+                    ActualView = new UsersView();
                     break;
                 default:
                     ActualView = new HomeView();
                     break;
-                   
+
             }
 
         }
+
+
 
         #endregion
     }

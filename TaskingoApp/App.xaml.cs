@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using System.Windows;
 using TaskingoApp.Services;
+using TaskingoApp.ViewModel;
 
 namespace TaskingoApp
 {
@@ -15,8 +16,11 @@ namespace TaskingoApp
 
             serviceCollection.AddSingleton<ILoginServices, LoginServices>();
             serviceCollection.AddSingleton<ILogger, Logger>();
+            serviceCollection.AddSingleton<DashboardViewModel>();
 
             var serviceProvider = serviceCollection.BuildServiceProvider();
+
+
         }
     }
 }

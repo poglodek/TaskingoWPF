@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using System.Windows;
 using TaskingoApp.Components;
 using TaskingoApp.Model;
+using TaskingoApp.Services;
+using TaskingoApp.View;
 using WpfTestApp.ViewModel.Base;
 
 namespace TaskingoApp.ViewModel.Users
@@ -47,12 +49,13 @@ namespace TaskingoApp.ViewModel.Users
             usersViewModels.AddRange(searchingUsersFromApi);
         }
 
+
         public UsersViewModel()
         {
             usersModel = new UsersModel();
             DownloadUsers();
-        }
 
+        }
         private void DownloadUsers()
         {
             Task.Run(() =>

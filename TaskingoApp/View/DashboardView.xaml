@@ -31,11 +31,11 @@
         </Grid.RowDefinitions>
         <DockPanel Grid.Row="0" Background="#170541">
 
-            <Button Width="100" Style="{StaticResource ButtonWindow}">
+            <Button Width="100" Style="{StaticResource ButtonWindow}"  Command="{Binding Path=SetView}" CommandParameter="Home">
                 <fa5:ImageAwesome Icon="Solid_Home" Foreground="White"/>
 
             </Button>
-            <Button Width="100" Style="{StaticResource ButtonWindow}">
+            <Button Width="100" Style="{StaticResource ButtonWindow}" Command="{Binding Path=SetView}" CommandParameter="Users">
                 <fa5:ImageAwesome Icon="Solid_Users" Foreground="White"/>
             </Button>
             <Button Width="100" Style="{StaticResource ButtonWindow}">
@@ -66,7 +66,7 @@
                 </i:Interaction.Triggers>
             </Button>
         </DockPanel>
-        <ContentControl Grid.Row="1" Content="{Binding Path=ActualView}" />
+        <ContentControl  Grid.Row="1" Content="{Binding Path=ActualView}" />
 
     </Grid>
 </Window>

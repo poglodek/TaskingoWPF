@@ -16,7 +16,7 @@
             <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <ListBox Background="#1c064f" ItemsSource="{Binding Path=usersViewModels}">
+        <ListBox Style="{StaticResource BackgroundGradient}" ItemsSource="{Binding Path=usersViewModels}" BorderThickness="0">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock  Style="{StaticResource ListBoxTextBlockStyle}" Text="{Binding Mode=OneWay}"/>
@@ -24,7 +24,7 @@
             </ListBox.ItemTemplate>
         </ListBox>
 
-        <StackPanel Margin="15" Grid.Column="1">
+        <StackPanel  Margin="0" Grid.Column="1" Style="{StaticResource BackgroundGradientInverseStackPanel}">
             <DockPanel  Height="100">
                 <Label DockPanel.Dock="Top" Content="Search User" Style="{StaticResource LabelWindow}"/>
                 <TextBox Height="70" Width="350" FontSize="30" Style="{StaticResource TextBoxLogin}" Text="{Binding Path=SearchingUser}" />

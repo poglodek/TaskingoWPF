@@ -12,24 +12,36 @@
     </UserControl.DataContext>
     <Grid>
 
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition />
-            <ColumnDefinition />
-        </Grid.ColumnDefinitions>
-        <StackPanel>
-            <TextBlock Margin="10,30,0,0"  Style="{StaticResource ListBoxTextBlockStyle}" Text="{Binding Path=Id}"></TextBlock>
-            <TextBlock Margin="10,30,0,0"  Style="{StaticResource ListBoxTextBlockStyle}" Text="{Binding Path=FirstName}"></TextBlock>
-            <TextBlock Margin="10,30,0,0" Style="{StaticResource ListBoxTextBlockStyle}"  Text="{Binding Path=LastName}"></TextBlock>
-            <TextBlock Margin="10,30,0,0" Style="{StaticResource ListBoxTextBlockStyle}"  Text="{Binding Path=Phone}"></TextBlock>
-            <TextBlock Margin="10,30,0,0" Style="{StaticResource ListBoxTextBlockStyle}"  Text="{Binding Path=Email}"></TextBlock>
-            <TextBlock Margin="10,30,0,0" Style="{StaticResource ListBoxTextBlockStyle}"  Text="{Binding Path=Address}"></TextBlock>
+        <StackPanel Width="auto" Style="{StaticResource BackgroundGradientStackPanel}">
+            <StackPanel  VerticalAlignment="Center" HorizontalAlignment="Center" Width="1200">
+                <DockPanel Margin="10,140,10,10">
+                    <Label Content="Id:" Style="{StaticResource LabelWindow}" FontSize="32" />
+                    <TextBlock DockPanel.Dock="Left" Margin="10,0,0,0"  Style="{StaticResource ListBoxTextBlockStyle}" Text="{Binding Path=Id}"></TextBlock>
+                </DockPanel>
+                <DockPanel Margin="10">
+                    <Label Content="First Name:" Style="{StaticResource LabelWindow}" FontSize="32" />
+                    <TextBlock DockPanel.Dock="Left" Margin="10,0,0,0"  Style="{StaticResource ListBoxTextBlockStyle}" Text="{Binding Path=FirstName}"></TextBlock>
+                </DockPanel>
+                <DockPanel Margin="10">
+                    <Label Content="Last Name:" Style="{StaticResource LabelWindow}" FontSize="32" />
+                    <TextBlock DockPanel.Dock="Left" Margin="10,0,0,0"  Style="{StaticResource ListBoxTextBlockStyle}" Text="{Binding Path=LastName}"></TextBlock>
+                </DockPanel>
+                <DockPanel Margin="10">
+                    <Label Content="Email:" Style="{StaticResource LabelWindow}" FontSize="32" />
+                    <TextBlock DockPanel.Dock="Left" Margin="10,0,0,0"  Style="{StaticResource ListBoxTextBlockStyle}" Text="{Binding Path=Email}"></TextBlock>
+                </DockPanel>
+                <DockPanel Margin="10">
+                    <Label Content="Phone:" Style="{StaticResource LabelWindow}" FontSize="32" />
+                    <TextBlock DockPanel.Dock="Left" Margin="10,0,0,0"  Style="{StaticResource ListBoxTextBlockStyle}" Text="{Binding Path=Phone}"></TextBlock>
+                </DockPanel>
+                <DockPanel Margin="10">
+                    <Label Content="Address:" Style="{StaticResource LabelWindow}" FontSize="32" />
+                    <TextBlock DockPanel.Dock="Left" Margin="10,0,0,0"  Style="{StaticResource ListBoxTextBlockStyle}" Text="{Binding Path=Address}"></TextBlock>
+                </DockPanel>
+
+            </StackPanel>
         </StackPanel>
-        <StackPanel Grid.Column="1">
-            <Button Margin="10,30,0,0" Style="{StaticResource ButtonLogin}" Width="200" FontSize="20"  Content="Edit User"></Button>
-            <Button Margin="10,30,0,0" Style="{StaticResource ButtonLogin}" Width="200" FontSize="20"  Content="Delete User"></Button>
-            <Button Margin="10,30,0,0" Style="{StaticResource ButtonLogin}" Width="200" FontSize="20"  Content="Show Tasks of User"></Button>
-            <Button Margin="10,30,0,0" Style="{StaticResource ButtonLogin}" Width="200" FontSize="20"  Content="Show Work Time"></Button>
-        </StackPanel>
+
     </Grid>
     
 </UserControl>

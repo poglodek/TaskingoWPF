@@ -18,6 +18,11 @@ namespace TaskingoApp.ViewModel
 
         }
 
+
+        public bool Users { get; set; } 
+        public bool Tasks { get; set; } 
+
+    
         private void StartUpView()
         {
             var viewName = Properties.Settings.Default.ActualView;
@@ -25,6 +30,7 @@ namespace TaskingoApp.ViewModel
             {
                 case "Users":
                     View = new UsersView();
+                    Users = true;
                     OnPropertyChanged(nameof(View));
                     break;
                 default:
@@ -33,6 +39,11 @@ namespace TaskingoApp.ViewModel
                     break;
 
             }
+        }
+
+        private void HideTools()
+        {
+            Users = false;
         }
         private ICommand setActualView;
 

@@ -6,6 +6,7 @@
              xmlns:local="clr-namespace:TaskingoApp.View"
              xmlns:vm="clr-namespace:TaskingoApp.ViewModel.Users" 
              xmlns:fa5="http://schemas.fontawesome.com/icons/"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              mc:Ignorable="d" 
              d:DesignHeight="640" d:DesignWidth="1366">
     <UserControl.DataContext>
@@ -30,12 +31,17 @@
                 <fa5:ImageAwesome Icon="Solid_Search" Foreground="White" />
             </Button>
         </DockPanel>
-        <ListBox Grid.Row="1"  Background="Transparent" ItemsSource="{Binding Path=usersViewModels}" BorderThickness="0">
+        <ListBox x:Name="ListBoxUsers" Grid.Row="1"  Background="Transparent" ItemsSource="{Binding Path=usersViewModels}" BorderThickness="0">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock  Style="{StaticResource ListBoxTextBlockStyle}" Text="{Binding Mode=OneWay}"/>
                 </DataTemplate>
             </ListBox.ItemTemplate>
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="MouseLeftButtonUp">
+                    <i:InvokeCommandAction Command="{Binding Path=SelectItem}" CommandParameter="{Binding ElementName=ListBoxUsers, Path=SelectedIndex}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
         </ListBox>
 
         

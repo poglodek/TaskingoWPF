@@ -37,7 +37,7 @@
                     Edit User
                 </Button.Content>
             </Button>
-            <Button  Margin="10" Width="257" Height="40" Style="{StaticResource Button}">
+            <Button  Margin="10" Width="257" Height="40" Style="{StaticResource Button}" Command="{Binding Path=SetActualView}" CommandParameter="User">
                 <Button.Content>
                     Show User Information
                 </Button.Content>

@@ -1,6 +1,4 @@
-﻿using System.Windows.Input;
-using TaskingoApp.Commands;
-using TaskingoApp.View;
+﻿using TaskingoApp.View;
 using WpfTestApp.ViewModel.Base;
 
 namespace TaskingoApp.ViewModel
@@ -15,9 +13,9 @@ namespace TaskingoApp.ViewModel
 
 
         #region ICommand
-        
-       
-        
+
+
+
 
         #endregion
     }

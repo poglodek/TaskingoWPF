@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
-using System.Windows;
+using System.Windows.Input;
+using TaskingoApp.Commands;
 using TaskingoApp.Components;
 using TaskingoApp.Model;
-using TaskingoApp.Services;
-using TaskingoApp.View;
 using WpfTestApp.ViewModel.Base;
 
 namespace TaskingoApp.ViewModel.Users
@@ -41,8 +38,8 @@ namespace TaskingoApp.ViewModel.Users
 
         private void ShowUsers()
         {
-            if(string.IsNullOrEmpty(searchingUser))
-                 DownloadUsers();
+            if (string.IsNullOrEmpty(searchingUser))
+                DownloadUsers();
             var searchingUsersFromApi = usersFromApi.Where(
                 x => x.FirstName.ToUpper().Contains(searchingUser.ToUpper()) || x.LastName.ToUpper().Contains(searchingUser.ToUpper())).ToList();
             usersViewModels.Clear();
@@ -63,6 +60,21 @@ namespace TaskingoApp.ViewModel.Users
                 usersModel.GetUsersModelsList().Wait();
                 CopyFromModel();
             });
+        }
+        private ICommand selectItem;
+
+        public ICommand SelectItem
+        {
+            get
+            {
+                if (selectItem == null) selectItem = new RelayCommand(x =>
+                {
+                    if (x == null) return;
+                    var selectedUserId = usersViewModels[(int)x].Id;
+                    Properties.Settings.Default.UserId = selectedUserId;
+                });
+                return selectItem;
+            }
         }
     }
 }

@@ -1,6 +1,4 @@
-﻿using System.Windows;
-using System.Windows.Input;
-using TaskingoApp.Commands;
+﻿using System.Threading.Tasks;
 using TaskingoApp.Model;
 using WpfTestApp.ViewModel.Base;
 
@@ -13,8 +11,20 @@ namespace TaskingoApp.ViewModel.Users
         public UserViewModel()
         {
             userModel = new UserModel();
+            if (Properties.Settings.Default.ActualView == "User")
+                ApiCall();
+
         }
 
+        private void ApiCall()
+        {
+            Task.Run(() =>
+            {
+                userModel.GetFromApi().Wait();
+                OnPropertyChanged(nameof(FirstName), nameof(LastName), nameof(Id), nameof(Phone), nameof(Email), nameof(Address));
+            });
+
+        }
         public UserViewModel(UserModel user)
         {
             userModel = user;
@@ -25,6 +35,7 @@ namespace TaskingoApp.ViewModel.Users
         {
             get => userModel.Id;
         }
+
         public string FirstName
         {
             get => userModel.FirstName;
@@ -54,22 +65,7 @@ namespace TaskingoApp.ViewModel.Users
 
         #region Commands
 
-        private ICommand setView;
 
-        public ICommand SetView
-        {
-            get
-            {
-                if (setView == null)
-                    setView = new RelayCommand(x =>
-                    {
-                        
-                       
-                        //ChangeView(x as string);
-                    });
-                return setView;
-            }
-        }
 
         #endregion
     }

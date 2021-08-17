@@ -70,7 +70,7 @@ namespace TaskingoApp.ViewModel.Users
                 return _selectItem ?? (_selectItem = new RelayCommand(x =>
                 {
                     if (x == null) return;
-                    var selectedUserId = UsersViewModels[(int) x].Id;
+                    var selectedUserId = UsersViewModels[(int)x].Id;
                     Properties.Settings.Default.UserId = selectedUserId;
                 }));
             }

@@ -16,8 +16,8 @@ namespace TaskingoApp.Model
 
         public async Task<UserModel> GetUserFromApiById()
         {
-           var user =  await _usersServices.GetUserById(Properties.Settings.Default.UserId);
-           return user;
+            var user = await _usersServices.GetUserById(Properties.Settings.Default.UserId);
+            return user;
 
         }
         public override string ToString()
@@ -25,7 +25,7 @@ namespace TaskingoApp.Model
             return $"ID:{Id}    {FirstName} {LastName}";
         }
 
-       
+
     }
 
 }

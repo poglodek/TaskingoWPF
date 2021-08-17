@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.Xaml.Behaviors;
 using System.Windows;
-using Microsoft.Xaml.Behaviors;
 
 namespace TaskingoApp.Behaviors
 {
@@ -43,7 +38,7 @@ namespace TaskingoApp.Behaviors
 
         private void Window_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-           
+
             if (!IsWindowMoving && e.LeftButton == System.Windows.Input.MouseButtonState.Pressed)
             {
                 var window = (Window)sender;

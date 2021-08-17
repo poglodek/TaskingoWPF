@@ -13,7 +13,7 @@ namespace TaskingoApp.ViewModel.Users
             _userModel = new UserModel();
             if (Properties.Settings.Default.ActualView == "User")
                 GetUserByApi();
-            
+
 
         }
 

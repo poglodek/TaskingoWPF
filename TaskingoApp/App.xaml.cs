@@ -1,8 +1,4 @@
-﻿using System;
-using Microsoft.Extensions.DependencyInjection;
-using System.Windows;
-using TaskingoApp.Services;
-using TaskingoApp.ViewModel;
+﻿using System.Windows;
 
 namespace TaskingoApp
 {
@@ -17,5 +13,5 @@ namespace TaskingoApp
         }
     }
 
-  
+
 }

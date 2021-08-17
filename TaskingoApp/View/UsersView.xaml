@@ -8,7 +8,7 @@
              xmlns:fa5="http://schemas.fontawesome.com/icons/"
              xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              mc:Ignorable="d" 
-             d:DesignHeight="640" d:DesignWidth="1366">
+             d:DesignHeight="640" d:DesignWidth="1092">
     <UserControl.DataContext>
         <vm:UsersViewModel />
     </UserControl.DataContext>
@@ -25,9 +25,9 @@
         </Grid.RowDefinitions>
         <DockPanel  Height="100">
             <Label DockPanel.Dock="Top" Content="Search User" Style="{StaticResource LabelWindow}"/>
-            <TextBox Height="70" Width="1280" FontSize="30" Style="{StaticResource TextBoxLogin}"  Text="{Binding Path=SearchingUser}" />
+            <TextBox Height="70" Width="1100" FontSize="30" Style="{StaticResource TextBoxLogin}"  Text="{Binding Path=SearchingUser}" />
 
-            <Button  BorderThickness="0" Background="Transparent" DockPanel.Dock="Right" Width="60" Padding="0" >
+            <Button  Margin="-100,0,0,0" BorderThickness="0" Background="Transparent" DockPanel.Dock="Left" Width="60" Padding="0" >
                 <fa5:ImageAwesome Icon="Solid_Search" Foreground="White" />
             </Button>
         </DockPanel>

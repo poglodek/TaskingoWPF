@@ -37,7 +37,7 @@ namespace TaskingoApp.Services
             */
             var userModels = new List<UserModel>();
             userModels.Clear();
-            await Task.Delay(3500);
+            await Task.Delay(1500);
             userModels.Add(new UserModel
             {
                 Address = "Test road 15C, Krk",

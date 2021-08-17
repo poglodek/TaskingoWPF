@@ -32,15 +32,13 @@ namespace TaskingoApp.Behaviors
 
         private void Window_MouseMove(object sender, System.Windows.Input.MouseEventArgs e)
         {
-            
-            if (IsWindowMoving)
-            {
-                var window = (Window)sender;
-                var actualPositionOfCursor = e.GetPosition(window);
-                var move = actualPositionOfCursor - StartingPositionOfCursor;
-                window.Left += move.X;
-                window.Top += move.Y;
-            }
+
+            if (!IsWindowMoving) return;
+            var window = (Window)sender;
+            var actualPositionOfCursor = e.GetPosition(window);
+            var move = actualPositionOfCursor - StartingPositionOfCursor;
+            window.Left += move.X;
+            window.Top += move.Y;
         }
 
         private void Window_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)

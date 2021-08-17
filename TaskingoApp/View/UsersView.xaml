@@ -31,7 +31,7 @@
                 <fa5:ImageAwesome Icon="Solid_Search" Foreground="White" />
             </Button>
         </DockPanel>
-        <ListBox x:Name="ListBoxUsers" Grid.Row="1"  Background="Transparent" ItemsSource="{Binding Path=usersViewModels}" BorderThickness="0">
+        <ListBox x:Name="ListBoxUsers" Grid.Row="1"  Background="Transparent" ItemsSource="{Binding Path=UsersViewModels}" BorderThickness="0">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock  Style="{StaticResource ListBoxTextBlockStyle}" Text="{Binding Mode=OneWay}"/>

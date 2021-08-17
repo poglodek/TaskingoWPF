@@ -6,18 +6,18 @@ namespace TaskingoApp.Commands
 {
     public abstract class AsyncCommandBase : ICommand
     {
-        private bool isExecuting;
+        private bool _isExecuting;
         public event EventHandler CanExecuteChanged;
         public bool CanExecute(object parameter)
         {
-            return !isExecuting;
+            return !_isExecuting;
         }
 
         public async void Execute(object parameter)
         {
-            isExecuting = true;
+            _isExecuting = true;
             await ExecuteAsync(parameter);
-            isExecuting = false;
+            _isExecuting = false;
         }
 
         protected abstract Task ExecuteAsync(object parameter);

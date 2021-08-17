@@ -12,13 +12,13 @@ namespace TaskingoApp.APICall
         private const string Url = "https://localhost:5001/";
         public static string Token = string.Empty;
         private static int MaxCallsInThisSameTime = 3;
-        private static int ActiveCalls = 0;
+        private static int _activeCalls;
 
         public static async Task<string> MakeCall(string endpoint, HttpMethod httpMethod, object body)
         {
-            if (ActiveCalls > MaxCallsInThisSameTime)
-                throw new ToManyCallsException($"To many Calls. Active Calls -> {ActiveCalls}");
-            ActiveCalls++;
+            if (_activeCalls > MaxCallsInThisSameTime)
+                throw new ToManyCallsException($"To many Calls. Active Calls -> {_activeCalls}");
+            _activeCalls++;
             var respone = await CallApi(endpoint, httpMethod, body);
             return await CheckResponse(respone);
         }
@@ -32,24 +32,24 @@ namespace TaskingoApp.APICall
             if (body != null) request.Content = new StringContent(JsonSerializer.Serialize(body));
             if (!string.IsNullOrEmpty(Token)) httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Token);
             var respone = await httpClient.SendAsync(request);
-            --ActiveCalls;
+            --_activeCalls;
             return respone;
         }
 
-        private static async Task<string> CheckResponse(HttpResponseMessage respone)
+        private static async Task<string> CheckResponse(HttpResponseMessage response)
         {
-            if (respone.IsSuccessStatusCode)
+            if (response.IsSuccessStatusCode)
             {
-                var odp = await respone.Content.ReadAsStringAsync();
+                var odp = await response.Content.ReadAsStringAsync();
                 return odp;
             }
-            if (respone.StatusCode == System.Net.HttpStatusCode.NoContent) throw new NotFound("We don't found this. Please try again.");
-            if (respone.StatusCode == System.Net.HttpStatusCode.Forbidden ||
-                respone.StatusCode == System.Net.HttpStatusCode.Unauthorized) throw new Unauthorized("Unauthorized. If you should have access, please contact with admin ");
-            if (respone.StatusCode == System.Net.HttpStatusCode.BadRequest ||
-                ((int)respone.StatusCode) >= 500) throw new ApiServerError("Server ErrorView. Please contact with admin.");
-            if (respone.StatusCode == System.Net.HttpStatusCode.Conflict) throw new Conflict("Conflict with data. Please contact with admin.");
-            throw new OtherRespone(respone.ReasonPhrase);
+            if (response.StatusCode == System.Net.HttpStatusCode.NoContent) throw new NotFoundException("We don't found this. Please try again.");
+            if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized) throw new UnauthorizedException("UnauthorizedException. If you should have access, please contact with admin ");
+            if (response.StatusCode == System.Net.HttpStatusCode.Forbidden) throw new ForbiddenException("Forbidden. If you should have access, please contact with admin ");
+            if (response.StatusCode == System.Net.HttpStatusCode.BadRequest ||
+                ((int)response.StatusCode) >= 500) throw new ApiServerErrorException("Server ErrorView. Please contact with admin.");
+            if (response.StatusCode == System.Net.HttpStatusCode.Conflict) throw new ConflictException("ConflictException with data. Please contact with admin.");
+            throw new OtherResponseException(response.ReasonPhrase);
         }
     }
 }

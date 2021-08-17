@@ -1,9 +1,12 @@
 ﻿using System.Threading.Tasks;
+using TaskingoApp.Services;
 
 namespace TaskingoApp.Model
 {
     public class UserModel
     {
+
+        private readonly IUsersServices _usersServices = new UsersServices();
         public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -11,30 +14,18 @@ namespace TaskingoApp.Model
         public int Phone { get; set; }
         public string Address { get; set; }
 
+        public async Task<UserModel> GetUserFromApiById()
+        {
+           var user =  await _usersServices.GetUserById(Properties.Settings.Default.UserId);
+           return user;
+
+        }
         public override string ToString()
         {
             return $"ID:{Id}    {FirstName} {LastName}";
         }
 
-        public async Task GetFromApi()
-        {
-            //TODO BaseCall.MakeCall();
-            //set Properties from api response 
-            //Properties.Settings.Default.UserId;
-
-            //TEST
-
-            await Task.Delay(1500);
-            Id = Properties.Settings.Default.UserId;
-            FirstName = "Adam";
-            LastName = "SZybki";
-            Email = "Email@admin.com";
-            Phone = 123321123;
-            Address = "Krk, Wawel 15A";
-
-
-
-        }
+       
     }
 
 }

@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using TaskingoApp.Builder;
 using TaskingoApp.Exceptions;
 using TaskingoApp.Services;
-using TaskingoWPF.Core.ViewModel;
+using TaskingoApp.ViewModel;
 
 namespace TaskingoApp.Commands
 {

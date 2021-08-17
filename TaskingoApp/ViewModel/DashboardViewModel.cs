@@ -1,5 +1,5 @@
 ﻿using TaskingoApp.View;
-using WpfTestApp.ViewModel.Base;
+using TaskingoApp.ViewModel.Base;
 
 namespace TaskingoApp.ViewModel
 {

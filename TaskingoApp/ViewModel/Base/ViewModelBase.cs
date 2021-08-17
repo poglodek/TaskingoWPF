@@ -3,7 +3,7 @@ using System.Windows.Input;
 using TaskingoApp.Commands;
 using TaskingoApp.View;
 
-namespace WpfTestApp.ViewModel.Base
+namespace TaskingoApp.ViewModel.Base
 {
     public class ViewModelBase : INotifyPropertyChanged
     {

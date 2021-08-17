@@ -1,16 +1,16 @@
-﻿using WpfTestApp.ViewModel.Base;
+﻿using TaskingoApp.ViewModel.Base;
 
 namespace TaskingoApp.ViewModel
 {
     public class ErrorViewModel : ViewModelBase
     {
-        private string errorText;
+        private string _errorText;
         public string ErrorText
         {
-            get => errorText;
+            get => _errorText;
             set
             {
-                errorText = value;
+                _errorText = value;
                 OnPropertyChanged(ErrorText);
             }
         }

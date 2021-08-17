@@ -10,8 +10,8 @@ namespace TaskingoApp.Commands
 
         public RelayCommand(Action<object> execute, Func<object, bool> canExecute = null)
         {
-            this._Execute = execute ?? throw new ArgumentNullException("Null Execute");
-            this._CanExecute = canExecute;
+            _Execute = execute ?? throw new ArgumentNullException();
+            _CanExecute = canExecute;
         }
 
         public bool CanExecute(object parameter)

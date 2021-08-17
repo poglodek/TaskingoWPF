@@ -1,7 +1,7 @@
 ﻿using System.Windows.Input;
 using TaskingoApp.Commands;
 using TaskingoApp.View;
-using WpfTestApp.ViewModel.Base;
+using TaskingoApp.ViewModel.Base;
 
 namespace TaskingoApp.ViewModel
 {
@@ -45,19 +45,17 @@ namespace TaskingoApp.ViewModel
         {
             Users = false;
         }
-        private ICommand setActualView;
+        private ICommand _setActualView;
 
         public ICommand SetActualView
         {
             get
             {
-                if (setActualView == null)
-                    setActualView = new RelayCommand(x =>
-                    {
-                        if (x == null) return;
-                        ChangeActualView(x as string);
-                    });
-                return setActualView;
+                return _setActualView ?? (_setActualView = new RelayCommand(x =>
+                {
+                    if (x == null) return;
+                    ChangeActualView(x as string);
+                }));
             }
         }
 

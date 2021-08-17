@@ -1,65 +1,52 @@
 ﻿using System.Threading.Tasks;
 using TaskingoApp.Model;
-using WpfTestApp.ViewModel.Base;
+using TaskingoApp.ViewModel.Base;
 
 namespace TaskingoApp.ViewModel.Users
 {
     public class UserViewModel : ViewModelBase
     {
-        private UserModel userModel;
+        private UserModel _userModel;
 
         public UserViewModel()
         {
-            userModel = new UserModel();
+            _userModel = new UserModel();
             if (Properties.Settings.Default.ActualView == "User")
-                ApiCall();
+                GetUserByApi();
+            
 
         }
 
-        private void ApiCall()
+        private void GetUserByApi()
         {
             Task.Run(() =>
             {
-                userModel.GetFromApi().Wait();
+                _userModel = _userModel.GetUserFromApiById().Result;
                 OnPropertyChanged(nameof(FirstName), nameof(LastName), nameof(Id), nameof(Phone), nameof(Email), nameof(Address));
             });
 
         }
         public UserViewModel(UserModel user)
         {
-            userModel = user;
+            _userModel = user;
         }
         #region Getters
 
-        public int Id
-        {
-            get => userModel.Id;
-        }
+        public int Id => _userModel.Id;
 
-        public string FirstName
-        {
-            get => userModel.FirstName;
-        }
-        public string LastName
-        {
-            get => userModel.LastName;
-        }
-        public string Address
-        {
-            get => userModel.Address;
-        }
-        public string Email
-        {
-            get => userModel.Email;
-        }
-        public int Phone
-        {
-            get => userModel.Phone;
-        }
+        public string FirstName => _userModel.FirstName;
+
+        public string LastName => _userModel.LastName;
+
+        public string Address => _userModel.Address;
+
+        public string Email => _userModel.Email;
+
+        public int Phone => _userModel.Phone;
 
         public override string ToString()
         {
-            return userModel.ToString();
+            return _userModel.ToString();
         }
         #endregion
 

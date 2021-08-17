@@ -4,52 +4,52 @@ using System.Windows.Input;
 using TaskingoApp.Commands;
 using TaskingoApp.Components;
 using TaskingoApp.Model;
-using WpfTestApp.ViewModel.Base;
+using TaskingoApp.ViewModel.Base;
 
 namespace TaskingoApp.ViewModel.Users
 {
     public class UsersViewModel : ViewModelBase
     {
-        private UsersModel usersModel;
+        private UsersModel _usersModel;
 
-        public AsyncObservableCollection<UserViewModel> usersViewModels { get; set; } = new AsyncObservableCollection<UserViewModel>();
-        private static AsyncObservableCollection<UserViewModel> usersFromApi { get; set; } = new AsyncObservableCollection<UserViewModel>();
+        public AsyncObservableCollection<UserViewModel> UsersViewModels { get; set; } = new AsyncObservableCollection<UserViewModel>();
+        private static AsyncObservableCollection<UserViewModel> UsersFromApi { get; set; } = new AsyncObservableCollection<UserViewModel>();
         public void CopyFromModel()
         {
-            usersViewModels.Clear();
-            usersFromApi.Clear();
-            foreach (var user in usersModel)
-                usersFromApi.Add(new UserViewModel(user));
-            usersViewModels.AddRange(usersFromApi);
+            UsersViewModels.Clear();
+            UsersFromApi.Clear();
+            foreach (var user in _usersModel)
+                UsersFromApi.Add(new UserViewModel(user));
+            UsersViewModels.AddRange(UsersFromApi);
 
         }
 
-        private string searchingUser;
+        private string _searchingUser;
 
         public string SearchingUser
         {
-            get => searchingUser;
+            get => _searchingUser;
             set
             {
-                searchingUser = value;
+                _searchingUser = value;
                 ShowUsers();
             }
         }
 
         private void ShowUsers()
         {
-            if (string.IsNullOrEmpty(searchingUser))
+            if (string.IsNullOrEmpty(_searchingUser))
                 DownloadUsers();
-            var searchingUsersFromApi = usersFromApi.Where(
-                x => x.FirstName.ToUpper().Contains(searchingUser.ToUpper()) || x.LastName.ToUpper().Contains(searchingUser.ToUpper())).ToList();
-            usersViewModels.Clear();
-            usersViewModels.AddRange(searchingUsersFromApi);
+            var searchingUsersFromApi = UsersFromApi.Where(
+                x => x.FirstName.ToUpper().Contains(_searchingUser.ToUpper()) || x.LastName.ToUpper().Contains(_searchingUser.ToUpper())).ToList();
+            UsersViewModels.Clear();
+            UsersViewModels.AddRange(searchingUsersFromApi);
         }
 
 
         public UsersViewModel()
         {
-            usersModel = new UsersModel();
+            _usersModel = new UsersModel();
             DownloadUsers();
 
         }
@@ -57,23 +57,22 @@ namespace TaskingoApp.ViewModel.Users
         {
             Task.Run(() =>
             {
-                usersModel.GetUsersModelsList().Wait();
+                _usersModel.GetUsersModelsList().Wait();
                 CopyFromModel();
             });
         }
-        private ICommand selectItem;
+        private ICommand _selectItem;
 
         public ICommand SelectItem
         {
             get
             {
-                if (selectItem == null) selectItem = new RelayCommand(x =>
+                return _selectItem ?? (_selectItem = new RelayCommand(x =>
                 {
                     if (x == null) return;
-                    var selectedUserId = usersViewModels[(int)x].Id;
+                    var selectedUserId = UsersViewModels[(int) x].Id;
                     Properties.Settings.Default.UserId = selectedUserId;
-                });
-                return selectItem;
+                }));
             }
         }
     }

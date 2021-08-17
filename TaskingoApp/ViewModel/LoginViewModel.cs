@@ -3,13 +3,13 @@ using System.Windows.Input;
 using TaskingoApp.Commands;
 using TaskingoApp.Model;
 using TaskingoApp.Services;
-using WpfTestApp.ViewModel.Base;
+using TaskingoApp.ViewModel.Base;
 
-namespace TaskingoWPF.Core.ViewModel
+namespace TaskingoApp.ViewModel
 {
     public class LoginViewModel : ViewModelBase
     {
-        private LoginModel _loginModel = new LoginModel();
+        private readonly LoginModel _loginModel = new LoginModel();
 
 
         public LoginViewModel()
@@ -44,8 +44,7 @@ namespace TaskingoWPF.Core.ViewModel
             try
             {
                 var mail = new MailAddress(email);
-                if (email.Length > 5) return true;
-                return false;
+                return email.Length > 5;
             }
             catch
             {

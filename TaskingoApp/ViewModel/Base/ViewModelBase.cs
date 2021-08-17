@@ -28,18 +28,13 @@ namespace TaskingoApp.ViewModel.Base
 
 
         }
-        private ICommand setView;
+        private ICommand _setView;
 
         public ICommand SetView
         {
             get
             {
-                if (setView == null)
-                    setView = new RelayCommand(x =>
-                    {
-                        ChangeView(x as string);
-                    });
-                return setView;
+                return _setView ?? (_setView = new RelayCommand(x => { ChangeView(x as string); }));
             }
         }
 

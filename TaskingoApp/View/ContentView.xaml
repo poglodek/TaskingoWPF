@@ -15,12 +15,12 @@
         <converters:ToolContentViewConverter x:Key="ToolConverter" />
     </UserControl.Resources>
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="70" />
-            <RowDefinition />
-        </Grid.RowDefinitions>
-        <StackPanel Style="{StaticResource BackgroundGradientStackPanel}" />
-        <DockPanel Grid.Row="0" Style="{StaticResource BackgroundGradientDockPanel}"  Visibility="{Binding Path=Users, Converter={StaticResource ToolConverter}}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="4*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="1" Style="{StaticResource BackgroundGradientInverseStackPanel}" />
+        <StackPanel Grid.Column="1" Style="{StaticResource BackgroundGradientInverseStackPanel}"  Visibility="{Binding Path=Users, Converter={StaticResource ToolConverter}}">
 
             <Button Margin="10" Width="257" Height="40" Style="{StaticResource Button}">
                 <Button.Content>
@@ -48,9 +48,9 @@
                 </Button.Content>
             </Button>
 
-        </DockPanel>
+        </StackPanel>
 
-        <DockPanel Grid.Row="0" Style="{StaticResource BackgroundGradientDockPanel}"  Visibility="{Binding Path=Tasks, Converter={StaticResource ToolConverter}}">
+        <StackPanel Grid.Column="1" Style="{StaticResource BackgroundGradientInverseStackPanel}"  Visibility="{Binding Path=Tasks, Converter={StaticResource ToolConverter}}">
 
             <Button Margin="10" Width="321" Height="40" Style="{StaticResource Button}">
                 <Button.Content>
@@ -73,9 +73,9 @@
                 </Button.Content>
             </Button>
 
-        </DockPanel>
+        </StackPanel>
         
-        <ContentControl   Grid.Row="1" Content="{Binding Path=View}" />
+        <ContentControl  Grid.Column="0" Content="{Binding Path=View}" />
        
     </Grid>
 </UserControl>

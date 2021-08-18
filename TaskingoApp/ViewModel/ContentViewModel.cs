@@ -1,4 +1,5 @@
-﻿using System.Windows.Input;
+﻿using System.Collections.Generic;
+using System.Windows.Input;
 using TaskingoApp.Commands;
 using TaskingoApp.View;
 using TaskingoApp.ViewModel.Base;
@@ -15,23 +16,30 @@ namespace TaskingoApp.ViewModel
 
 
         public bool Users { get; set; }
+        public bool AddUsers { get; set; }
         public bool Tasks { get; set; }
 
 
         private void StartUpView()
         {
+            HideTools();
             var viewName = Properties.Settings.Default.ActualView;
             switch (viewName)
             {
                 case "Users":
                     View = new UsersView();
                     Users = true;
-                    OnPropertyChanged(nameof(View));
+                    OnPropertyChanged(nameof(Users));
                     break;
                 case "User":
                     View = new UserView();
                     Users = true;
-                    OnPropertyChanged(nameof(View));
+                    OnPropertyChanged(nameof(Users));
+                    break;
+                case "AddUser":
+                    View = new AddUserView();
+                    AddUsers = true;
+                    OnPropertyChanged(nameof(AddUsers));
                     break;
                 default:
                     View = new HomeView();
@@ -40,10 +48,12 @@ namespace TaskingoApp.ViewModel
 
             }
         }
-
         private void HideTools()
         {
             Users = false;
+            Tasks = false;
+            AddUsers = false;
+            OnPropertyChanged(nameof(Users), nameof(Tasks), nameof(AddUsers));
         }
         private ICommand _setActualView;
 

@@ -28,20 +28,6 @@ namespace TaskingoApp.ViewModel.Base
 
 
         }
-        private ICommand _setView;
-
-        public ICommand SetView
-        {
-            get
-            {
-                return _setView ?? (_setView = new RelayCommand(x => { ChangeView(x as string); }));
-            }
-        }
-
-        public void ChangeView(string viewName)
-        {
-            TaskingoApp.Properties.Settings.Default.ActualView = viewName;
-            View = new ContentView();
-        }
+        
     }
 }

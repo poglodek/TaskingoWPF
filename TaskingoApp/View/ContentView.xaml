@@ -20,9 +20,23 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <StackPanel Grid.Column="1" Style="{StaticResource BackgroundGradientInverseStackPanel}" />
-        <StackPanel Grid.Column="1" Style="{StaticResource BackgroundGradientInverseStackPanel}"  Visibility="{Binding Path=Users, Converter={StaticResource ToolConverter}}">
+        <StackPanel Grid.Column="1" Style="{StaticResource BackgroundGradientInverseStackPanel}"  Visibility="{Binding Path=AddUsers, Converter={StaticResource ToolConverter}}">
 
             <Button Margin="10" Width="257" Height="40" Style="{StaticResource Button}">
+                <Button.Content>
+                    Add new User
+                </Button.Content>
+            </Button>
+            <Button Margin="10" Width="257" Height="40" Style="{StaticResource Button}">
+                <Button.Content>
+                    Clear form
+                </Button.Content>
+            </Button>
+
+        </StackPanel>
+        <StackPanel Grid.Column="1" Style="{StaticResource BackgroundGradientInverseStackPanel}"  Visibility="{Binding Path=Users, Converter={StaticResource ToolConverter}}">
+
+            <Button Margin="10" Width="257" Height="40" Style="{StaticResource Button}" Command="{Binding Path=SetActualView}" CommandParameter="AddUser">
                 <Button.Content>
                     Add new User
                 </Button.Content>
@@ -49,6 +63,7 @@
             </Button>
 
         </StackPanel>
+        
 
         <StackPanel Grid.Column="1" Style="{StaticResource BackgroundGradientInverseStackPanel}"  Visibility="{Binding Path=Tasks, Converter={StaticResource ToolConverter}}">
 

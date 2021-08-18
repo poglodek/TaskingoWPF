@@ -62,7 +62,8 @@ namespace TaskingoApp.ViewModel
         public void ChangeActualView(string viewName)
         {
             if (viewName == "User" && Properties.Settings.Default.UserId < 0 ||
-                viewName == "Task" && Properties.Settings.Default.TaskId < 0) return;
+                viewName == "Task" && Properties.Settings.Default.TaskId < 0) 
+                return;
             TaskingoApp.Properties.Settings.Default.ActualView = viewName;
             StartUpView();
         }

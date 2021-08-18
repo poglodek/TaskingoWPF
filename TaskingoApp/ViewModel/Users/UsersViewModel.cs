@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using TaskingoApp.Commands;
@@ -35,6 +36,17 @@ namespace TaskingoApp.ViewModel.Users
                 ShowUsers();
             }
         }
+        private UserViewModel _selectedUser;
+
+        public UserViewModel SelectedUser
+        {
+            get => _selectedUser;
+            set
+            {
+                _selectedUser = value;
+                Properties.Settings.Default.UserId = _selectedUser.Id;
+            }
+        }
 
         private void ShowUsers()
         {
@@ -61,19 +73,6 @@ namespace TaskingoApp.ViewModel.Users
                 CopyFromModel();
             });
         }
-        private ICommand _selectItem;
-
-        public ICommand SelectItem
-        {
-            get
-            {
-                return _selectItem ?? (_selectItem = new RelayCommand(x =>
-                {
-                    if (x == null || ((int)x) > 0) return;
-                    var selectedUserId = UsersViewModels[(int)x].Id;
-                    Properties.Settings.Default.UserId = selectedUserId;
-                }));
-            }
-        }
+        
     }
 }

@@ -31,19 +31,12 @@
                 <fa5:ImageAwesome Icon="Solid_Search" Foreground="White" />
             </Button>
         </DockPanel>
-        <ListBox x:Name="ListBoxUsers" Grid.Row="1"  Background="Transparent" ItemsSource="{Binding Path=UsersViewModels}" BorderThickness="0">
+        <ListBox SelectedItem="{Binding SelectedUser}" x:Name="ListBoxUsers" Grid.Row="1"  Background="Transparent" ItemsSource="{Binding Path=UsersViewModels}"  BorderThickness="0">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <TextBlock  Style="{StaticResource ListBoxTextBlockStyle}" Text="{Binding Mode=OneWay}"/>
+                    <TextBlock  Style="{StaticResource ListBoxTextBlockStyle}" Text="{Binding Mode=OneWay}" />
                 </DataTemplate>
             </ListBox.ItemTemplate>
-            <i:Interaction.Triggers>
-                <i:EventTrigger EventName="MouseLeftButtonUp">
-                    <i:InvokeCommandAction Command="{Binding Path=SelectItem}" CommandParameter="{Binding ElementName=ListBoxUsers, Path=SelectedIndex}"/>
-                </i:EventTrigger>
-            </i:Interaction.Triggers>
         </ListBox>
-
-        
     </Grid>
 </UserControl>

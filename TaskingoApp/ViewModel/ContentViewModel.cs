@@ -18,6 +18,7 @@ namespace TaskingoApp.ViewModel
 
         public bool Users { get; set; }
         public bool AddUsers { get; set; }
+        public bool EditUsers { get; set; }
         public bool Tasks { get; set; }
 
 
@@ -42,6 +43,11 @@ namespace TaskingoApp.ViewModel
                     AddUsers = true;
                     OnPropertyChanged(nameof(AddUsers));
                     break;
+                case "EditUser":
+                    View = new EditUserView();
+                    EditUsers = true;
+                    OnPropertyChanged(nameof(EditUsers));
+                    break;
                 default:
                     View = new HomeView();
                     OnPropertyChanged(nameof(View));
@@ -53,8 +59,9 @@ namespace TaskingoApp.ViewModel
         {
             Users = false;
             Tasks = false;
+            EditUsers = false;
             AddUsers = false;
-            OnPropertyChanged(nameof(Users), nameof(Tasks), nameof(AddUsers));
+            OnPropertyChanged(nameof(Users), nameof(Tasks), nameof(AddUsers), nameof(EditUsers));
         }
         private ICommand _setActualView;
 
@@ -86,6 +93,7 @@ namespace TaskingoApp.ViewModel
         public void ChangeActualView(string viewName)
         {
             if (viewName == "User" && Properties.Settings.Default.UserId < 0 ||
+                viewName == "EditUser" && Properties.Settings.Default.UserId < 0 ||
                 viewName == "Task" && Properties.Settings.Default.TaskId < 0) 
                 return;
             TaskingoApp.Properties.Settings.Default.ActualView = viewName;

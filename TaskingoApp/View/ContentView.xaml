@@ -29,6 +29,15 @@
             </Button>
 
         </StackPanel>
+        <StackPanel Grid.Column="1" Style="{StaticResource BackgroundGradientInverseStackPanel}"  Visibility="{Binding Path=EditUsers, Converter={StaticResource ToolConverter}}">
+
+            <Button Margin="10" Width="257" Height="40" Style="{StaticResource Button}" Command="{Binding Path=SetActualView}" CommandParameter="EditUser">
+                <Button.Content>
+                    Clear form
+                </Button.Content>
+            </Button>
+
+        </StackPanel>
         <StackPanel Grid.Column="1" Style="{StaticResource BackgroundGradientInverseStackPanel}"  Visibility="{Binding Path=Users, Converter={StaticResource ToolConverter}}">
 
             <Button Margin="10" Width="257" Height="40" Style="{StaticResource Button}" Command="{Binding Path=SetActualView}" CommandParameter="AddUser">
@@ -41,7 +50,7 @@
                     Delete User
                 </Button.Content>
             </Button>
-            <Button  Margin="10" Width="257" Height="40" Style="{StaticResource Button}">
+            <Button  Margin="10" Width="257" Height="40" Style="{StaticResource Button}" Command="{Binding Path=SetActualView}" CommandParameter="EditUser">
                 <Button.Content>
                     Edit User
                 </Button.Content>

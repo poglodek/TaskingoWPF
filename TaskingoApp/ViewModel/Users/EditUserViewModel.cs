@@ -7,18 +7,37 @@ using TaskingoApp.ViewModel.Base;
 
 namespace TaskingoApp.ViewModel.Users
 {
-    public class AddUserViewModel : ViewModelBase
+    public class EditUserViewModel : ViewModelBase
     {
-        private readonly UserModel _userModel;
+        private UserModel _userModel;
         private IUsersServices _usersServices = new UsersServices();
 
-        public AddUserViewModel()
+        public EditUserViewModel()
         {
             _userModel = new UserModel();
+            GetUserByApi();
         }
 
+        private void GetUserByApi()
+        {
+            Task.Run(() =>
+            {
+                _userModel = _userModel.GetUserFromApiById().Result;
+                OnPropertyChanged(nameof(FirstName), nameof(LastName), nameof(Id), nameof(Phone), nameof(Email), nameof(Address));
+            });
+
+        }
         #region Getters
 
+        public int Id
+        {
+            get => _userModel.Id;
+            set
+            {
+                _userModel.Id = value;
+                OnPropertyChanged(nameof(Id));
+            }
+        }
         public string FirstName
         {
             get => _userModel.FirstName;
@@ -76,29 +95,20 @@ namespace TaskingoApp.ViewModel.Users
         #endregion
 
         #region Commands
-        private ICommand _addNewUser;
+        private ICommand _editUser;
 
-        public ICommand AddNewUser
+        public ICommand EditUser
         {
             get
             {
-                return _addNewUser ?? (_addNewUser = new RelayCommand(x =>
+                return _editUser ?? (_editUser = new RelayCommand(x =>
                 {
-                    var respone = _usersServices.AddNewUser(_userModel);
-                    if (!respone) return;
-                    ClearForm();
+                    _usersServices.EditUser(Properties.Settings.Default.UserId,_userModel);
+                    GetUserByApi();
                 }));
             }
         }
 
-        private void ClearForm()
-        {
-            FirstName = "";
-            LastName = "";
-            Address = "";
-            Email = "";
-            Phone = 0;
-        }
 
         #endregion
     }

@@ -77,6 +77,25 @@ namespace TaskingoApp.Services
 
         public bool AddNewUser(UserModel userModel)
         {
+            if (!CheckUserModel(userModel)) return false; 
+            //TODO BaseCall.MakeCall();
+            // if response is ok 
+            ErrorBuilder.BuildError("User Added");
+            // else ErrorBuilder.BuildError("You cannot add this user.");
+            return true;
+        }
+
+        public void EditUser(int defaultUserId, UserModel userModel)
+        {
+            if (!CheckUserModel(userModel)) return;
+            //TODO BaseCall.MakeCall();
+            // if response is ok 
+            ErrorBuilder.BuildError("User Edited Successfully");
+            // else ErrorBuilder.BuildError("You cannot edit this user.");
+        }
+
+        private bool CheckUserModel(UserModel userModel)
+        {
             var regex = new Regex(@"[0-9]{9}$");
 
             if (string.IsNullOrWhiteSpace(userModel.FirstName) || string.IsNullOrWhiteSpace(userModel.LastName)
@@ -87,12 +106,10 @@ namespace TaskingoApp.Services
                 ErrorBuilder.BuildError("The fields are incorrectly completed");
                 return false;
             }
-            //TODO BaseCall.MakeCall();
-            // if response is ok 
-            ErrorBuilder.BuildError("User Added");
-            // else ErrorBuilder.BuildError("You cannot add this user.");
+
             return true;
         }
+
         private bool IsValidEmail(string email)
         {
             try

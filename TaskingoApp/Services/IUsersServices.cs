@@ -10,5 +10,6 @@ namespace TaskingoApp.Services
         Task<List<UserModel>> GetUsers();
         bool DeleteUserById(int defaultUserId);
         bool AddNewUser(UserModel userModel);
+        void EditUser(int defaultUserId, UserModel userModel);
     }
 }

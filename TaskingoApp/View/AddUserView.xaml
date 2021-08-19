@@ -35,7 +35,7 @@
                     <TextBox DockPanel.Dock="Left" Margin="46,0,0,0"  Style="{StaticResource TextBoxLogin}" Text="{Binding Path=Address}"></TextBox>
                 </DockPanel>
                 <DockPanel Margin="10">
-                    <Button Style="{StaticResource BackgroundGradient}" Foreground="White" Height="75" Content="Add new User" Width="300" FontSize="33" Command="{Binding Path=AddNewUser}"> 
+                    <Button Style="{StaticResource BackgroundGradient}" Margin="180,0,0,0"  Foreground="White" Height="75" Content="Add new User" Width="300" FontSize="33" Command="{Binding Path=AddNewUser}"> 
                     </Button>
                 </DockPanel>
 

@@ -28,6 +28,6 @@ namespace TaskingoApp.ViewModel.Base
 
 
         }
-        
+         
     }
 }

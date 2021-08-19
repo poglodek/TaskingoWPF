@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Windows.Input;
 using TaskingoApp.Commands;
+using TaskingoApp.Services;
 using TaskingoApp.View;
 using TaskingoApp.ViewModel.Base;
 
@@ -8,12 +9,12 @@ namespace TaskingoApp.ViewModel
 {
     public class ContentViewModel : ViewModelBase
     {
+        private readonly IUsersServices _usersServices = new UsersServices();
         public ContentViewModel()
         {
             StartUpView();
 
         }
-
 
         public bool Users { get; set; }
         public bool AddUsers { get; set; }
@@ -68,6 +69,19 @@ namespace TaskingoApp.ViewModel
                 }));
             }
         }
+        private ICommand _deleteUser;
+
+        public ICommand DeleteUser
+        {
+            get
+            {
+                return _deleteUser ?? (_deleteUser = new RelayCommand(x =>
+                {
+                    if (_usersServices.DeleteUserById(Properties.Settings.Default.UserId))
+                        StartUpView();
+                }, x => Properties.Settings.Default.UserId > -1 ));
+            }
+        }
 
         public void ChangeActualView(string viewName)
         {
@@ -77,6 +91,9 @@ namespace TaskingoApp.ViewModel
             TaskingoApp.Properties.Settings.Default.ActualView = viewName;
             StartUpView();
         }
+
+
+
 
     }
 }

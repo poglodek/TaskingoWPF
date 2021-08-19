@@ -1,12 +1,16 @@
 ﻿using System.Threading.Tasks;
+using System.Windows.Input;
+using TaskingoApp.Commands;
 using TaskingoApp.Model;
+using TaskingoApp.Services;
 using TaskingoApp.ViewModel.Base;
 
 namespace TaskingoApp.ViewModel.Users
 {
     public class AddUserViewModel : ViewModelBase
     {
-        private UserModel _userModel;
+        private readonly UserModel _userModel;
+        private IUsersServices _usersServices = new UsersServices();
 
         public AddUserViewModel()
         {
@@ -76,7 +80,24 @@ namespace TaskingoApp.ViewModel.Users
         #endregion
 
         #region Commands
+        private ICommand _addNewUser;
 
+        public ICommand AddNewUser
+        {
+            get
+            {
+                return _addNewUser ?? (_addNewUser = new RelayCommand(x =>
+                {
+                    var respone = _usersServices.AddNewUser(_userModel);
+                    if (!respone) return;
+                    FirstName = "";
+                    LastName = "";
+                    Address = "";
+                    Email = "";
+                    Phone = 0;
+                }));
+            }
+        }
 
 
         #endregion

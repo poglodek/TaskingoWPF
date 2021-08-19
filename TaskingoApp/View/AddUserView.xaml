@@ -24,15 +24,19 @@
                 </DockPanel>
                 <DockPanel Margin="10">
                     <Label Content="Email:" Style="{StaticResource LabelWindow}" FontSize="32" />
-                    <TextBox DockPanel.Dock="Left" Margin="10,0,0,0"  Style="{StaticResource TextBoxLogin}" Text="{Binding Path=Email}"></TextBox>
+                    <TextBox DockPanel.Dock="Left" Margin="84,0,0,0"  Style="{StaticResource TextBoxLogin}" Text="{Binding Path=Email}"></TextBox>
                 </DockPanel>
                 <DockPanel Margin="10">
                     <Label Content="Phone:" Style="{StaticResource LabelWindow}" FontSize="32" />
-                    <TextBox DockPanel.Dock="Left" Margin="10,0,0,0"  Style="{StaticResource TextBoxLogin}" Text="{Binding Path=Phone}"></TextBox>
+                    <TextBox DockPanel.Dock="Left" Margin="70,0,0,0"  Style="{StaticResource TextBoxLogin}" Text="{Binding Path=Phone}"></TextBox>
                 </DockPanel>
                 <DockPanel Margin="10">
                     <Label Content="Address:" Style="{StaticResource LabelWindow}" FontSize="32" />
-                    <TextBox DockPanel.Dock="Left" Margin="10,0,0,0"  Style="{StaticResource TextBoxLogin}" Text="{Binding Path=Address}"></TextBox>
+                    <TextBox DockPanel.Dock="Left" Margin="46,0,0,0"  Style="{StaticResource TextBoxLogin}" Text="{Binding Path=Address}"></TextBox>
+                </DockPanel>
+                <DockPanel Margin="10">
+                    <Button Style="{StaticResource BackgroundGradient}" Foreground="White" Height="75" Content="Add new User" Width="300" FontSize="33" Command="{Binding Path=AddNewUser}"> 
+                    </Button>
                 </DockPanel>
 
             </StackPanel>

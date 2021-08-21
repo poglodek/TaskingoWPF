@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TaskingoApp.Annotations;
+using TaskingoApp.ViewModel.Base;
 
 namespace TaskingoApp.Model
 {
-    public class WorkTask
+    public class WorkTaskModel : ViewModelBase
     {
         public int Id { get; set; }
         public string Title { get; set; }

@@ -1,7 +1,4 @@
 ﻿using System.ComponentModel;
-using System.Windows.Input;
-using TaskingoApp.Commands;
-using TaskingoApp.View;
 
 namespace TaskingoApp.ViewModel.Base
 {

@@ -8,24 +8,20 @@ using TaskingoApp.Services;
 
 namespace TaskingoApp.Model
 {
-    public class WorkTasks : IEnumerable<WorkTask>
+    public class WorkTasksModel : IEnumerable<WorkTaskModel>
     {
-        private List<WorkTask> workTasksList { get; set; } = new List<WorkTask>();
+        private List<WorkTaskModel> workTasksList { get; set; } = new List<WorkTaskModel>();
         private readonly IWorkTaskServices _workTaskServices = new WorkTaskServices();
-        public WorkTask this[int index] => workTasksList[index];
+        public WorkTaskModel this[int index] => workTasksList[index];
 
-        public async Task<List<WorkTask>> GetUsersModelsList()
+        public async Task<List<WorkTaskModel>> GetUsersModelsList()
         {
            // workTasksList = await _workTaskServices.GetUsers();
             return workTasksList;
 
         }
 
-        public IEnumerator<WorkTask> GetEnumerator()
-        {
-            throw new NotImplementedException();
-        }
-
+        public IEnumerator<WorkTaskModel> GetEnumerator() => workTasksList.GetEnumerator();
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
     }
 }

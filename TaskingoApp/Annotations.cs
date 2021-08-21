@@ -111,10 +111,10 @@ namespace TaskingoApp.Annotations
     /// </summary>
     /// <example><code>
     /// [StringFormatMethod("message")]
-    /// void BuildError(string message, params object[] args) { /* do something */ }
+    /// void Build(string message, params object[] args) { /* do something */ }
     /// 
     /// void Foo() {
-    ///   BuildError("Failed: {0}"); // Warning: Non-existing argument in format string
+    ///   Build("Failed: {0}"); // Warning: Non-existing argument in format string
     /// }
     /// </code></example>
     [AttributeUsage(
@@ -906,7 +906,7 @@ namespace TaskingoApp.Annotations
     /// [ActionName("Foo")]
     /// public ActionResult LoginModel(string returnUrl) {
     ///   ViewBag.ReturnUrl = Url.Action("Foo"); // OK
-    ///   return RedirectToAction("Bar"); // ErrorView: Cannot resolve action
+    ///   return RedirectToAction("Bar"); // InfoPopupView: Cannot resolve action
     /// }
     /// </code></example>
     [AttributeUsage(AttributeTargets.Parameter | AttributeTargets.Property)]

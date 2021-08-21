@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using TaskingoApp.Builder;
 using TaskingoApp.Commands;
 using TaskingoApp.Services;
 using TaskingoApp.View;
@@ -106,7 +107,6 @@ namespace TaskingoApp.ViewModel
             }
         }
         private ICommand _deleteUser;
-
         public ICommand DeleteUser
         {
             get
@@ -124,6 +124,17 @@ namespace TaskingoApp.ViewModel
                         }
                     });
                 }, x => Properties.Settings.Default.UserId > -1 ));
+            }
+        }
+        private ICommand _showUsersTasks;
+        public ICommand ShowUsersTasks
+        {
+            get
+            {
+                return _showUsersTasks ?? (_showUsersTasks = new RelayCommand(x =>
+                {
+                    PopupBuilder.Build("Go to page with Tasks. Type email in searching TextBox on top. :)");
+                }));
             }
         }
 

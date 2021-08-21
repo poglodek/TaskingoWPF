@@ -32,7 +32,7 @@ namespace TaskingoApp.Services
                 }
                 catch
                 {
-                    ErrorBuilder.BuildError("Cannot log error. Please contact with Admin");
+                    PopupBuilder.Build("Cannot log error. Please contact with Admin");
                 }
         }
 
@@ -45,7 +45,7 @@ namespace TaskingoApp.Services
             }
             catch
             {
-                ErrorBuilder.BuildError("Cannot create a log file. Please contact with Admin");
+                PopupBuilder.Build("Cannot create a log file. Please contact with Admin");
             }
 
         }

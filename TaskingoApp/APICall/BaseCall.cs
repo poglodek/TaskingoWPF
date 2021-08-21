@@ -47,7 +47,7 @@ namespace TaskingoApp.APICall
             if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized) throw new UnauthorizedException("UnauthorizedException. If you should have access, please contact with admin ");
             if (response.StatusCode == System.Net.HttpStatusCode.Forbidden) throw new ForbiddenException("Forbidden. If you should have access, please contact with admin ");
             if (response.StatusCode == System.Net.HttpStatusCode.BadRequest ||
-                ((int)response.StatusCode) >= 500) throw new ApiServerErrorException("Server ErrorView. Please contact with admin.");
+                ((int)response.StatusCode) >= 500) throw new ApiServerErrorException("Server InfoPopupView. Please contact with admin.");
             if (response.StatusCode == System.Net.HttpStatusCode.Conflict) throw new ConflictException("ConflictException with data. Please contact with admin.");
             throw new OtherResponseException(response.ReasonPhrase);
         }

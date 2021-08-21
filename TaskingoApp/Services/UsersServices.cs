@@ -71,8 +71,8 @@ namespace TaskingoApp.Services
             //TODO BaseCall.MakeCall();
             // if response is ok 
             await Task.Delay(1500);
-            ErrorBuilder.BuildError("User Deleted");
-            // else ErrorBuilder.BuildError("You cannot delete this user.");
+            PopupBuilder.Build("User Deleted");
+            // else PopupBuilder.Build("You cannot delete this user.");
             return true;
         }
 
@@ -82,8 +82,8 @@ namespace TaskingoApp.Services
             //TODO BaseCall.MakeCall();
             // if response is ok 
             await Task.Delay(1500);
-            ErrorBuilder.BuildError("User Added");
-            // else ErrorBuilder.BuildError("You cannot add this user.");
+            PopupBuilder.Build("User Added");
+            // else PopupBuilder.Build("You cannot add this user.");
             return true;
         }
 
@@ -93,8 +93,8 @@ namespace TaskingoApp.Services
             //TODO BaseCall.MakeCall();
             // if response is ok 
             await Task.Delay(1500);
-            ErrorBuilder.BuildError("User Edited Successfully");
-            // else ErrorBuilder.BuildError("You cannot edit this user.");
+            PopupBuilder.Build("User Edited Successfully");
+            // else PopupBuilder.Build("You cannot edit this user.");
             
         }
 
@@ -107,7 +107,7 @@ namespace TaskingoApp.Services
                                                                !IsValidEmail(userModel.Email) ||
                                                                !regex.IsMatch(userModel.Phone.ToString()))
             {
-                ErrorBuilder.BuildError("The fields are incorrectly completed");
+                PopupBuilder.Build("The fields are incorrectly completed");
                 return false;
             }
 

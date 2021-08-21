@@ -14,7 +14,7 @@ namespace TaskingoApp.ViewModel.WorkTask
     {
         private WorkTasksModel _workTaskModels;
         public AsyncObservableCollection<WorkTaskViewModel> workTaskViewModels { get; set; } = new AsyncObservableCollection<WorkTaskViewModel>();
-        private static AsyncObservableCollection<WorkTaskViewModel> TasksFromApi { get; set; } = new AsyncObservableCollection<WorkTaskViewModel>();
+        private AsyncObservableCollection<WorkTaskViewModel> TasksFromApi { get; set; } = new AsyncObservableCollection<WorkTaskViewModel>();
 
 
         public void CopyFromModel()
@@ -45,6 +45,19 @@ namespace TaskingoApp.ViewModel.WorkTask
             });
         }
 
+
+        private WorkTaskViewModel _selectedTask;
+
+        public WorkTaskViewModel SelectedTask
+        {
+            get => _selectedTask;
+            set
+            {
+                _selectedTask = value;
+                if(_selectedTask != null)
+                    Properties.Settings.Default.TaskId = _selectedTask.Id;
+            }
+        }
         private string _searchingTask;
 
         public string SearchingTask
@@ -71,9 +84,9 @@ namespace TaskingoApp.ViewModel.WorkTask
 
                 x =>
                 {
-                    var searchingByTitle = x.Title.Contains(_searchingTask);
+                    var searchingByTitle = x.Title.ToUpper().Contains(_searchingTask.ToUpper());
                     if (x.AssignedUser != null)
-                        return x.AssignedUser.Email.Equals(_searchingTask) || searchingByTitle;
+                        return x.AssignedUser.Email.ToUpper().Equals(_searchingTask.ToUpper()) || searchingByTitle;
                     return searchingByTitle;
                 }
             );

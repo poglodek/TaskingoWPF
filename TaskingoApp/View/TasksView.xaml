@@ -33,7 +33,7 @@
                 </Button>
             </DockPanel>
 
-            <ListBox SelectedItem="" x:Name="ListBoxUsers" Grid.Row="1"  Background="Transparent" ItemsSource="{Binding Path=workTaskViewModels}"  BorderThickness="0">
+            <ListBox SelectedItem="{Binding Path=SelectedTask}" x:Name="ListBoxUsers" Grid.Row="1"  Background="Transparent" ItemsSource="{Binding Path=workTaskViewModels}"  BorderThickness="0">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock  Style="{StaticResource ListBoxTextBlockStyle}" Text="{Binding   Mode=OneWay}" />

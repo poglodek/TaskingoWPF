@@ -15,6 +15,17 @@ namespace TaskingoApp.ViewModel.WorkTask
         public WorkTaskViewModel()
         {
             _workTaskModel = new WorkTaskModel();
+            if (Properties.Settings.Default.ActualView == "Task")
+                GetTaskFromApi();
+        }
+        private void GetTaskFromApi()
+        {
+            Task.Run(() =>
+            {
+                _workTaskModel = _workTaskModel.GetTaskById().Result;
+                OnPropertyChanged(nameof(Id), nameof(Priority), nameof(Title), nameof(Description), nameof(Status), nameof(Comment), nameof(CreatedTime), nameof(DeadLine), nameof(WhoCreated), nameof(IsAssigned), nameof(AssignedUser));
+            });
+
         }
 
         public WorkTaskViewModel(WorkTaskModel workTaskModel)

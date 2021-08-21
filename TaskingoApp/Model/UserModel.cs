@@ -22,7 +22,7 @@ namespace TaskingoApp.Model
         }
         public override string ToString()
         {
-            return $"ID:{Id}    {FirstName} {LastName}";
+            return $"ID:{Id}    {FirstName} {LastName}, {Email}";
         }
 
 

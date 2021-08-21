@@ -78,6 +78,11 @@ namespace TaskingoApp.ViewModel
                     Tasks = true;
                     OnPropertyChanged(nameof(Tasks));
                     break;
+                case "Task":
+                    View = new TaskView();
+                    Tasks = true;
+                    OnPropertyChanged(nameof(Tasks));
+                    break;
                 default:
                     View = new HomeView();
                     OnPropertyChanged(nameof(View));

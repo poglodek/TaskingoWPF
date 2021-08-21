@@ -14,7 +14,7 @@ namespace TaskingoApp.ViewModel.Users
         private UsersModel _usersModel;
 
         public AsyncObservableCollection<UserViewModel> UsersViewModels { get; set; } = new AsyncObservableCollection<UserViewModel>();
-        private static AsyncObservableCollection<UserViewModel> UsersFromApi { get; set; } = new AsyncObservableCollection<UserViewModel>();
+        private AsyncObservableCollection<UserViewModel> UsersFromApi { get; set; } = new AsyncObservableCollection<UserViewModel>();
         public void CopyFromModel()
         {
             UsersViewModels.Clear();

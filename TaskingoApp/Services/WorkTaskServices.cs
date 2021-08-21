@@ -75,5 +75,45 @@ namespace TaskingoApp.Services
             return tasks;
 
         }
+
+        public async Task<WorkTaskModel> GetTaskById(int Id)
+        {
+            await Task.Delay(1500);
+            var task = new WorkTaskModel
+            {
+                Id = Id,
+                Priority = 5,
+                Title = "First Task",
+                Description = "This is First Task in this app. :)This is First Task in this app. :)This is First Task in this app. :)This is First Task in this app. :)This is First Task in this app. :)This is First Task in this app. :)This is First Task in this app. :)This is First Task in this app. :)This is First Task in this app. :)This is First Task in this app. :)",
+                Status = "In Progress",
+                Comment = "FiThis is First Task in this app. :)This is First Task in this app. :)This is First Task in this app. :)This is First Task in this app. :)This is First Task in this app. :)This is First Task in this app. :)This is First Task in this app. :)This is First Task in this app. :)This is First Task in this app. :)This is First Task in this apprst comm",
+                CreatedTime = DateTime.Now.AddDays(-2),
+                DeadLine = DateTime.Now.AddHours(5),
+                WhoCreated = new UserModel
+                {
+                    Id = 2,
+                    FirstName = "Adam",
+                    LastName = "SZybki",
+                    Email = "Email@admin.com",
+                    Phone = 123321123,
+                    Address = "Krk, Wawel 15A"
+                },
+                IsAssigned = true,
+                AssignedUser = new UserModel
+                {
+                    Address = "Test road 15C, Krk",
+                    Email = "mail@test.com",
+                    FirstName = "Pablos",
+                    LastName = "Cucumber",
+                    Phone = 321321123,
+                    Id = 15
+                }
+            };
+            return task;
+        }
+
+
     }
+        
+    
 }

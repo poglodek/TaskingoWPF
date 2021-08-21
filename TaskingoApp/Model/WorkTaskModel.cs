@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TaskingoApp.Annotations;
+using TaskingoApp.Services;
 using TaskingoApp.ViewModel.Base;
 
 namespace TaskingoApp.Model
@@ -24,5 +25,12 @@ namespace TaskingoApp.Model
         [CanBeNull]
         public UserModel AssignedUser { get; set; }
         public override string ToString() => $"Id:{Id}, {Title}, {DeadLine}";
+
+        private IWorkTaskServices _workTaskServices = new WorkTaskServices();
+        public async Task<WorkTaskModel> GetTaskById()
+        {
+           var task = await _workTaskServices.GetTaskById(Properties.Settings.Default.TaskId);
+           return task;
+        }
     }
 }

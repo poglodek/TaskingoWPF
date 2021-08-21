@@ -23,13 +23,19 @@ namespace TaskingoApp.ViewModel.WorkTask
             TasksFromApi.Clear();
             foreach (var task in _workTaskModels)
                 TasksFromApi.Add(new WorkTaskViewModel(task));
-            workTaskViewModels.AddRange(TasksFromApi);
+            if(!Properties.Settings.Default.TaskFilter.Equals("All"))
+                workTaskViewModels.AddRange(TasksFromApi
+                    .Where(x=> x.Status.Contains(Properties.Settings.Default.TaskFilter))
+                    .ToList());
+            else
+                workTaskViewModels.AddRange(TasksFromApi);
 
         }
         public WorkTasksViewModel()
         {
             _workTaskModels = new WorkTasksModel();
             DownloadTasks();
+            
 
         }
         private void DownloadTasks()
@@ -65,7 +71,10 @@ namespace TaskingoApp.ViewModel.WorkTask
                         return x.AssignedUser.Email.Equals(_searchingTask) || searchingByTitle;
                     return searchingByTitle;
                 }
-                   ).ToList();
+                   )
+                .ToList();
+            if(!Properties.Settings.Default.TaskFilter.Equals("All")) searchingUsersFromApi
+                .Where(x => x.Status.Contains(Properties.Settings.Default.TaskFilter));
             workTaskViewModels.Clear();
             workTaskViewModels.AddRange(searchingUsersFromApi);
         }

@@ -26,6 +26,7 @@ namespace TaskingoApp.ViewModel
             {
                 Properties.Settings.Default.TaskFilter = value.Substring(38);
                 OnPropertyChanged(nameof(TaskFilter));
+                StartUpView();
             }
         }
 

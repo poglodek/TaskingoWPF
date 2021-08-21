@@ -44,8 +44,10 @@ namespace TaskingoApp.ViewModel.Users
             set
             {
                 _selectedUser = value;
-                if(_selectedUser != null)
+                if (_selectedUser != null)
                     Properties.Settings.Default.UserId = _selectedUser.Id;
+
+                    
             }
         }
 

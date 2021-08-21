@@ -29,16 +29,45 @@ namespace TaskingoApp.ViewModel.WorkTask
         public WorkTasksViewModel()
         {
             _workTaskModels = new WorkTasksModel();
-            DownloadUsers();
+            DownloadTasks();
 
         }
-        private void DownloadUsers()
+        private void DownloadTasks()
         {
             Task.Run(() =>
             {
                 _workTaskModels.GetUsersModelsList().Wait();
                 CopyFromModel();
             });
+        }
+
+        private string _searchingTask;
+
+        public string SearchingTask
+        {
+            get => _searchingTask;
+            set
+            {
+                _searchingTask = value;
+                ShowTasks();
+            }
+        }
+        private void ShowTasks()
+        {
+            if (string.IsNullOrEmpty(_searchingTask))
+                DownloadTasks();
+            var searchingUsersFromApi = TasksFromApi.Where(
+
+                x =>
+                {
+                    var searchingByTitle = x.Title.Contains(_searchingTask);
+                    if (x.AssignedUser != null)
+                        return x.AssignedUser.Email.Equals(_searchingTask) || searchingByTitle;
+                    return searchingByTitle;
+                }
+                   ).ToList();
+            workTaskViewModels.Clear();
+            workTaskViewModels.AddRange(searchingUsersFromApi);
         }
 
     }

@@ -26,7 +26,7 @@
             </Grid.RowDefinitions>
             <DockPanel  Height="100">
                 <Label DockPanel.Dock="Top" Content="Search Task" Style="{StaticResource LabelWindow}"/>
-                <TextBox Height="70" Width="1100" FontSize="30" Style="{StaticResource TextBoxLogin}"  Text="" />
+                <TextBox Height="70" Width="1100" FontSize="30" Style="{StaticResource TextBoxLogin}"  Text="{Binding Path=SearchingTask}" />
 
                 <Button  Margin="-100,0,0,0" BorderThickness="0" Background="Transparent" DockPanel.Dock="Left" Width="60" Padding="0" >
                     <fa5:ImageAwesome Icon="Solid_Search" Foreground="White" />

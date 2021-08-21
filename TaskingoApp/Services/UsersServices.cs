@@ -63,35 +63,39 @@ namespace TaskingoApp.Services
             return userModels;
         }
 
-        public bool DeleteUserById(int defaultUserId)
+        public async Task<bool> DeleteUserById(int defaultUserId)
         {
             var result = MessageBox.Show($"Do you wanna delete user with id: {defaultUserId}", "Delete user", MessageBoxButton.YesNo);
             if (result == MessageBoxResult.Cancel || result == MessageBoxResult.No) return false;
 
             //TODO BaseCall.MakeCall();
             // if response is ok 
+            await Task.Delay(1500);
             ErrorBuilder.BuildError("User Deleted");
             // else ErrorBuilder.BuildError("You cannot delete this user.");
             return true;
         }
 
-        public bool AddNewUser(UserModel userModel)
+        public async Task<bool> AddNewUser(UserModel userModel)
         {
-            if (!CheckUserModel(userModel)) return false; 
+            if (!CheckUserModel(userModel)) return false;
             //TODO BaseCall.MakeCall();
             // if response is ok 
+            await Task.Delay(1500);
             ErrorBuilder.BuildError("User Added");
             // else ErrorBuilder.BuildError("You cannot add this user.");
             return true;
         }
 
-        public void EditUser(int defaultUserId, UserModel userModel)
+        public async Task EditUser(int defaultUserId, UserModel userModel)
         {
             if (!CheckUserModel(userModel)) return;
             //TODO BaseCall.MakeCall();
             // if response is ok 
+            await Task.Delay(1500);
             ErrorBuilder.BuildError("User Edited Successfully");
             // else ErrorBuilder.BuildError("You cannot edit this user.");
+            
         }
 
         private bool CheckUserModel(UserModel userModel)

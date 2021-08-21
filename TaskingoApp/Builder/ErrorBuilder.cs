@@ -1,4 +1,5 @@
-﻿using TaskingoApp.View;
+﻿using System.Windows;
+using TaskingoApp.View;
 
 namespace TaskingoApp.Builder
 {
@@ -6,8 +7,13 @@ namespace TaskingoApp.Builder
     {
         public static void BuildError(string errorMessage)
         {
-            var error = new ErrorView { ErrorMessage = { Text = errorMessage } };
-            error.Show();
+            
+            Application.Current.Dispatcher.Invoke(() =>
+            {
+                var error = new ErrorView { ErrorMessage = { Text = errorMessage } };
+                error.Show();
+            });
+            
         }
     }
 }

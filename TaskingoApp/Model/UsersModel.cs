@@ -16,10 +16,7 @@ namespace TaskingoApp.Model
             return userModels;
 
         }
-        public UserModel this[int index]
-        {
-            get => userModels[index];
-        }
+        public UserModel this[int index] => userModels[index];
         public IEnumerator<UserModel> GetEnumerator() => userModels.GetEnumerator();
         IEnumerator IEnumerable.GetEnumerator() => (IEnumerator)this.GetEnumerator();
     }

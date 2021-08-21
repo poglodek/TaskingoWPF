@@ -84,9 +84,13 @@ namespace TaskingoApp.ViewModel.Users
             {
                 return _addNewUser ?? (_addNewUser = new RelayCommand(x =>
                 {
-                    var respone = _usersServices.AddNewUser(_userModel);
-                    if (!respone) return;
-                    ClearForm();
+                    Task.Run(() =>
+                    {
+                        var respone = _usersServices.AddNewUser(_userModel).Result;
+                        if (!respone) return;
+                        ClearForm();
+                    });
+                    
                 }));
             }
         }

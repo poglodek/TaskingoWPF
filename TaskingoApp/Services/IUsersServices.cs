@@ -8,8 +8,8 @@ namespace TaskingoApp.Services
     {
         Task<UserModel> GetUserById(int id);
         Task<List<UserModel>> GetUsers();
-        bool DeleteUserById(int defaultUserId);
-        bool AddNewUser(UserModel userModel);
-        void EditUser(int defaultUserId, UserModel userModel);
+        Task<bool> DeleteUserById(int defaultUserId);
+        Task<bool> AddNewUser(UserModel userModel);
+        Task EditUser(int defaultUserId, UserModel userModel);
     }
 }

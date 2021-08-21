@@ -1,4 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 using TaskingoApp.Commands;
 using TaskingoApp.Services;
@@ -84,8 +87,16 @@ namespace TaskingoApp.ViewModel
             {
                 return _deleteUser ?? (_deleteUser = new RelayCommand(x =>
                 {
-                    if (_usersServices.DeleteUserById(Properties.Settings.Default.UserId))
-                        StartUpView();
+                    Task.Run(() =>
+                    {
+                        if (_usersServices.DeleteUserById(Properties.Settings.Default.UserId).Result)
+                        {
+                            Application.Current.Dispatcher.Invoke(() =>
+                            {
+                                ChangeActualView("Users");
+                            });
+                        }
+                    });
                 }, x => Properties.Settings.Default.UserId > -1 ));
             }
         }

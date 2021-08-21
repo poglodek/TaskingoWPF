@@ -103,8 +103,11 @@ namespace TaskingoApp.ViewModel.Users
             {
                 return _editUser ?? (_editUser = new RelayCommand(x =>
                 {
-                    _usersServices.EditUser(Properties.Settings.Default.UserId,_userModel);
-                    GetUserByApi();
+                    Task.Run(() =>
+                    {
+                        _usersServices.EditUser(Properties.Settings.Default.UserId, _userModel).Wait();
+                        GetUserByApi();
+                    });
                 }));
             }
         }

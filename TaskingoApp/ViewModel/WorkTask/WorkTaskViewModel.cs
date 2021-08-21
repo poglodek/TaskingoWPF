@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TaskingoApp.Model;
+using TaskingoApp.ViewModel.Base;
 
 namespace TaskingoApp.ViewModel.WorkTask
 {
-    public class WorkTaskViewModel
+    public class WorkTaskViewModel : ViewModelBase
     {
         private WorkTaskModel _workTaskModel;
 
@@ -23,6 +24,7 @@ namespace TaskingoApp.ViewModel.WorkTask
         #region Getters
 
         public int Id => _workTaskModel.Id;
+        public int Priority => _workTaskModel.Priority;
         public string Title => _workTaskModel.Title;
         public string Description => _workTaskModel.Description;
         public string Status => _workTaskModel.Status;
@@ -33,6 +35,7 @@ namespace TaskingoApp.ViewModel.WorkTask
         public bool IsAssigned => _workTaskModel.IsAssigned;
         public UserModel AssignedUser => _workTaskModel.AssignedUser;
 
+        public override string ToString() => $"Id:{Id}, {Title}, {DeadLine}";
         #endregion
     }
 }

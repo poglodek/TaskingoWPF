@@ -16,7 +16,7 @@ namespace TaskingoApp.Model
 
         public async Task<List<WorkTaskModel>> GetUsersModelsList()
         {
-           // workTasksList = await _workTaskServices.GetUsers();
+            workTasksList = await _workTaskServices.GetAllTasks();
             return workTasksList;
 
         }

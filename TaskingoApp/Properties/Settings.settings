@@ -11,5 +11,14 @@
     <Setting Name="ActualView" Type="System.String" Scope="User">
       <Value Profile="(Default)">Home</Value>
     </Setting>
+    <Setting Name="TaskFilter" Type="System.String" Scope="User">
+      <Value Profile="(Default)">All</Value>
+    </Setting>
+    <Setting Name="TaskUserMail" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="MonthOfTasks" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
   </Settings>
 </SettingsFile>

@@ -58,5 +58,41 @@ namespace TaskingoApp.Properties {
                 this["ActualView"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("All")]
+        public string TaskFilter {
+            get {
+                return ((string)(this["TaskFilter"]));
+            }
+            set {
+                this["TaskFilter"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string TaskUserMail {
+            get {
+                return ((string)(this["TaskUserMail"]));
+            }
+            set {
+                this["TaskUserMail"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string MonthOfTasks {
+            get {
+                return ((string)(this["MonthOfTasks"]));
+            }
+            set {
+                this["MonthOfTasks"] = value;
+            }
+        }
     }
 }

@@ -43,7 +43,7 @@
             <Button Width="100" Style="{StaticResource ButtonWindow}" Command="{Binding Path=SetView}" CommandParameter="Users" >
                 <fa5:ImageAwesome Icon="Solid_Users" Foreground="White"/>
             </Button>
-            <Button Width="100" Style="{StaticResource ButtonWindow}">
+            <Button Width="100" Style="{StaticResource ButtonWindow}" Command="{Binding Path=SetView}" CommandParameter="Tasks" >
                 <fa5:ImageAwesome Icon="Solid_Tasks" Foreground="White"/>
             </Button>
             <Button Width="100" Style="{StaticResource ButtonWindow}">

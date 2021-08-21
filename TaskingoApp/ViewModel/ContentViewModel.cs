@@ -16,9 +16,29 @@ namespace TaskingoApp.ViewModel
         public ContentViewModel()
         {
             StartUpView();
-
+            Properties.Settings.Default.MonthOfTasks = DateTime.Now.ToString("MM/yyyy");
         }
 
+        public string TaskFilter
+        {
+            get => Properties.Settings.Default.TaskFilter;
+            set
+            {
+                Properties.Settings.Default.TaskFilter = value.Substring(38);
+                OnPropertyChanged(nameof(TaskFilter));
+            }
+        }
+
+        public string MonthOfTasks
+        {
+            get => Properties.Settings.Default.MonthOfTasks;
+            set
+            {
+                var dateTime =DateTime.Parse( value);
+                Properties.Settings.Default.MonthOfTasks = dateTime.ToString("MM/yyyy");
+                OnPropertyChanged(nameof(MonthOfTasks));
+            }
+        }
         public bool Users { get; set; }
         public bool AddUsers { get; set; }
         public bool EditUsers { get; set; }
@@ -50,6 +70,11 @@ namespace TaskingoApp.ViewModel
                     View = new EditUserView();
                     EditUsers = true;
                     OnPropertyChanged(nameof(EditUsers));
+                    break;
+                case "Tasks":
+                    View = new TasksView();
+                    Tasks = true;
+                    OnPropertyChanged(nameof(Tasks));
                     break;
                 default:
                     View = new HomeView();

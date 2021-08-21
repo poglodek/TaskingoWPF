@@ -40,5 +40,6 @@ namespace TaskingoApp.ViewModel.WorkTask
                 CopyFromModel();
             });
         }
+
     }
 }

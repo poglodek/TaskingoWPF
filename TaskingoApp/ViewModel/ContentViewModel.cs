@@ -83,6 +83,11 @@ namespace TaskingoApp.ViewModel
                     Tasks = true;
                     OnPropertyChanged(nameof(Tasks));
                     break;
+                case "EditTask":
+                    View = new EditTaskView();
+                    Tasks = true;
+                    OnPropertyChanged(nameof(Tasks));
+                    break;
                 default:
                     View = new HomeView();
                     OnPropertyChanged(nameof(View));
@@ -147,6 +152,7 @@ namespace TaskingoApp.ViewModel
         {
             if (viewName == "User" && Properties.Settings.Default.UserId < 0 ||
                 viewName == "EditUser" && Properties.Settings.Default.UserId < 0 ||
+                viewName == "EditTask" && Properties.Settings.Default.TaskId < 0 ||
                 viewName == "Task" && Properties.Settings.Default.TaskId < 0) 
                 return;
             TaskingoApp.Properties.Settings.Default.ActualView = viewName;

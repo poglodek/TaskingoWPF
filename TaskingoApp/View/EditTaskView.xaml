@@ -1,0 +1,66 @@
+﻿<UserControl x:Class="TaskingoApp.View.EditTaskView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TaskingoApp.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="710" d:DesignWidth="1366">
+    <Grid>
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <StackPanel Width="auto" Style="{StaticResource BackgroundGradientStackPanel}" >
+
+                <StackPanel  VerticalAlignment="Center" HorizontalAlignment="Center" Width="1000">
+
+                    <DockPanel Margin="10,3,10,5">
+                        <Label Content="Id:" Style="{StaticResource LabelWindow}" FontSize="25" />
+                        <TextBox IsEnabled="False" DockPanel.Dock="Left" Margin="122,0,0,0"  FontSize="25"  Style="{StaticResource TextBox}" Text="{Binding Path=Id}"></TextBox>
+                    </DockPanel>
+                    <DockPanel Margin="5">
+                        <Label Content="Priority :" Style="{StaticResource LabelWindow}" FontSize="25" />
+                        <TextBox DockPanel.Dock="Left" Margin="63,0,0,0"  FontSize="25" Style="{StaticResource TextBox}" Text="{Binding Path=Priority}"></TextBox>
+                    </DockPanel>
+                    <DockPanel Margin="5">
+                        <Label Content="Title :" Style="{StaticResource LabelWindow}" FontSize="25" />
+                        <TextBox DockPanel.Dock="Left" Margin="95,0,0,0"  TextWrapping="Wrap"  FontSize="25" Style="{StaticResource TextBox}" Text="{Binding Path=Title }"></TextBox>
+                    </DockPanel>
+                    <DockPanel Margin="5">
+                        <Label Content="Description :" Style="{StaticResource LabelWindow}"  FontSize="25" />
+                        <TextBox DockPanel.Dock="Left" Margin="17,0,0,0"  FontSize="25" Style="{StaticResource TextBox}" Text="{Binding Path=Description }"  TextWrapping="Wrap"></TextBox>
+                    </DockPanel>
+                    <DockPanel Margin="5">
+                        <Label Content="Status :" Style="{StaticResource LabelWindow}"  FontSize="25" />
+                        <TextBox DockPanel.Dock="Left" Margin="76,0,0,0"  FontSize="25" Style="{StaticResource TextBox}" Text="{Binding Path=Status }"></TextBox>
+                    </DockPanel>
+                    <DockPanel Margin="5">
+                        <Label Content="Comment :" Style="{StaticResource LabelWindow}"  FontSize="25" />
+                        <TextBox DockPanel.Dock="Left" Margin="34,0,0,0" FontSize="25" TextWrapping="Wrap"  Style="{StaticResource TextBox}" Text="{Binding Path=Comment }"></TextBox>
+                    </DockPanel>
+                    <DockPanel Margin="5">
+                        <Label Content="CreatedTime:" Style="{StaticResource LabelWindow}"  FontSize="25" />
+                        <TextBox IsEnabled="False" DockPanel.Dock="Left" Margin="10,0,0,0"  FontSize="25" Style="{StaticResource TextBox}" Text="{Binding Path=CreatedTime}"></TextBox>
+                    </DockPanel>
+                    <DockPanel Margin="5">
+                        <Label Content="DeadLine :" Style="{StaticResource LabelWindow}"  FontSize="25" />
+                        <TextBox DockPanel.Dock="Left" Margin="40,0,0,0"  FontSize="25" Style="{StaticResource TextBox}" Text="{Binding Path=DeadLine }"></TextBox>
+                    </DockPanel>
+                    <DockPanel Margin="5">
+                        <Label Content="WhoCreated:" Style="{StaticResource LabelWindow}"  FontSize="25" />
+                        <TextBox IsEnabled="False" DockPanel.Dock="Left" Margin="11,0,0,0"  TextWrapping="Wrap"  FontSize="25" Style="{StaticResource TextBox}" Text="{Binding Path=WhoCreated }"></TextBox>
+                    </DockPanel>
+                    <DockPanel Margin="5">
+                        <Label Content="IsAssigned  :" Style="{StaticResource LabelWindow}"  FontSize="25" />
+                        <TextBox IsEnabled="False" DockPanel.Dock="Left" Margin="19,0,0,0"  FontSize="25" Style="{StaticResource TextBox}" Text="{Binding Path=IsAssigned }"></TextBox>
+                    </DockPanel>
+                    <DockPanel Margin="5">
+                        <Label Content="AssignedUser:" Style="{StaticResource LabelWindow}"  FontSize="25" />
+                        <TextBox DockPanel.Dock="Left" Margin="1,0,0,0"  TextWrapping="Wrap"  FontSize="25" Style="{StaticResource TextBox}" Text="test"></TextBox>
+                    </DockPanel>
+                    <DockPanel Margin="3">
+                        <Button Style="{StaticResource BackgroundGradient}" Margin="180,0,0,0" Foreground="White" Height="45" Content="Edit this User" Width="300" FontSize="33" Command="{Binding Path=EditUser}" />
+                    </DockPanel>
+                </StackPanel>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</UserControl>

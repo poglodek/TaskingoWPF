@@ -17,7 +17,7 @@
             <StackPanel Margin="0,10,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" Width="1000">
                 <DockPanel Margin="10">
                     <Label Content="ID:" Style="{StaticResource LabelWindow}" FontSize="32" />
-                    <TextBlock DockPanel.Dock="Left" Margin="130,0,0,0"  Style="{StaticResource TextBlock}" Text="{Binding Path=Id}"></TextBlock>
+                    <TextBlock DockPanel.Dock="Left" Margin="132,0,0,0"  Style="{StaticResource TextBlock}" Text="{Binding Path=Id}"></TextBlock>
                 </DockPanel>
                 <DockPanel Margin="10">
                     <Label Content="First Name:" Style="{StaticResource LabelWindow}" FontSize="32" />

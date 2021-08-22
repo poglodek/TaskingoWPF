@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Windows;
 using TaskingoApp.Builder;
 using TaskingoApp.Model;
 
@@ -123,6 +124,19 @@ namespace TaskingoApp.Services
             var a = workTaskModel.Status.Substring(38);
             PopupBuilder.Build("Task Edited Successfully");
             // else PopupBuilder.Build("You cannot edit this user.");
+        }
+
+        public async Task<bool> DeleteTaskById(int Id)
+        {
+            var result = MessageBox.Show($"Do you wanna delete task with id: {Id}", "Delete Task", MessageBoxButton.YesNo);
+            if (result == MessageBoxResult.Cancel || result == MessageBoxResult.No) return false;
+
+            //TODO BaseCall.MakeCall();
+            // if response is ok 
+            await Task.Delay(1500);
+            PopupBuilder.Build("Task Deleted");
+            // else PopupBuilder.Build("You cannot delete this user.");
+            return true;
         }
         private bool CheckTaskModel(WorkTaskModel workTaskModel)
         {

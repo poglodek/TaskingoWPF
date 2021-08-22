@@ -9,5 +9,6 @@ namespace TaskingoApp.Services
         Task<List<WorkTaskModel>> GetAllTasks();
         Task <WorkTaskModel> GetTaskById(int Id);
         Task EditTask(int Id, WorkTaskModel workTaskModel);
+        Task<bool> DeleteTaskById(int Id);
     }
 }

@@ -14,6 +14,7 @@ namespace TaskingoApp.ViewModel
     public class ContentViewModel : ViewModelBase
     {
         private readonly IUsersServices _usersServices = new UsersServices();
+        private readonly IWorkTaskServices _workTaskServices = new WorkTaskServices();
         public ContentViewModel()
         {
             StartUpView();
@@ -136,6 +137,26 @@ namespace TaskingoApp.ViewModel
                         }
                     });
                 }, x => Properties.Settings.Default.UserId > -1 ));
+            }
+        }
+        private ICommand _deleteTask;
+        public ICommand DeleteTask
+        {
+            get
+            {
+                return _deleteTask ?? (_deleteTask = new RelayCommand(x =>
+                {
+                    Task.Run(() =>
+                    {
+                        if (_workTaskServices.DeleteTaskById(Properties.Settings.Default.TaskId).Result)
+                        {
+                            Application.Current.Dispatcher.Invoke(() =>
+                            {
+                                ChangeActualView("Tasks");
+                            });
+                        }
+                    });
+                }, x => Properties.Settings.Default.TaskId > -1));
             }
         }
         private ICommand _showUsersTasks;

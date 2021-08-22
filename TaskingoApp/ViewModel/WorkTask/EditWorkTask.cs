@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
+using TaskingoApp.Commands;
 using TaskingoApp.Model;
+using TaskingoApp.Services;
 using TaskingoApp.ViewModel.Base;
 
 namespace TaskingoApp.ViewModel.WorkTask
@@ -11,12 +14,12 @@ namespace TaskingoApp.ViewModel.WorkTask
     public class EditWorkTask : ViewModelBase
     {
         private WorkTaskModel _workTaskModel;
+        private IWorkTaskServices _workTaskServices = new WorkTaskServices();
 
         public EditWorkTask()
         {
             _workTaskModel = new WorkTaskModel();
-            if (Properties.Settings.Default.ActualView == "Task")
-                GetTaskFromApi();
+            GetTaskFromApi();
         }
         private void GetTaskFromApi()
         {
@@ -65,11 +68,28 @@ namespace TaskingoApp.ViewModel.WorkTask
         }
         public UserModel WhoCreated => _workTaskModel.WhoCreated;
         public bool IsAssigned => _workTaskModel.IsAssigned;
-        public UserModel AssignedUser
+        public UserModel AssignedUser => _workTaskModel.AssignedUser;
+
+        #endregion
+        #region Commands
+        private ICommand _editTask;
+
+        public ICommand EditTask
         {
-            get => _workTaskModel.AssignedUser;
-            set => _workTaskModel.AssignedUser = value;
+            get
+            {
+                return _editTask ?? (_editTask = new RelayCommand(x =>
+                {
+                    Task.Run(() =>
+                    {
+                        _workTaskServices.EditTask(Properties.Settings.Default.TaskId, _workTaskModel).Wait();
+                        GetTaskFromApi();
+                    });
+                }));
+            }
         }
+
+
         #endregion
     }
 }

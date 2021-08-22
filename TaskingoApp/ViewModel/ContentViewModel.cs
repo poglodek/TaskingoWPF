@@ -44,6 +44,7 @@ namespace TaskingoApp.ViewModel
         public bool Users { get; set; }
         public bool AddUsers { get; set; }
         public bool EditUsers { get; set; }
+        public bool EditTask { get; set; }
         public bool Tasks { get; set; }
 
 
@@ -85,8 +86,8 @@ namespace TaskingoApp.ViewModel
                     break;
                 case "EditTask":
                     View = new EditTaskView();
-                    Tasks = true;
-                    OnPropertyChanged(nameof(Tasks));
+                    EditTask = true;
+                    OnPropertyChanged(nameof(EditTask));
                     break;
                 default:
                     View = new HomeView();
@@ -97,11 +98,12 @@ namespace TaskingoApp.ViewModel
         }
         private void HideTools()
         {
+            EditTask = false;
             Users = false;
             Tasks = false;
             EditUsers = false;
             AddUsers = false;
-            OnPropertyChanged(nameof(Users), nameof(Tasks), nameof(AddUsers), nameof(EditUsers));
+            OnPropertyChanged(nameof(Users), nameof(Tasks), nameof(AddUsers), nameof(EditUsers), nameof(EditTask));
         }
         private ICommand _setActualView;
 

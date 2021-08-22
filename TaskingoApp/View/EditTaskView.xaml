@@ -64,10 +64,10 @@
                     </DockPanel>
                     <DockPanel Margin="5">
                         <Label Content="AssignedUser:" Style="{StaticResource LabelWindow}"  FontSize="25" />
-                        <TextBox DockPanel.Dock="Left" Margin="1,0,0,0"  TextWrapping="Wrap"  FontSize="25" Style="{StaticResource TextBox}" Text="test"></TextBox>
+                        <TextBox IsEnabled="False" DockPanel.Dock="Left" Margin="1,0,0,0"  TextWrapping="Wrap"  FontSize="25" Style="{StaticResource TextBox}" Text="{Binding Path=AssignedUser, Mode=OneWay}"></TextBox>
                     </DockPanel>
                     <DockPanel Margin="3">
-                        <Button Style="{StaticResource BackgroundGradient}" Margin="180,0,0,0" Foreground="White" Height="45" Content="Edit this User" Width="300" FontSize="33" Command="{Binding Path=EditTask}" />
+                        <Button Style="{StaticResource BackgroundGradient}" Margin="180,0,0,0" Foreground="White" Height="45" Content="Edit this Task" Width="300" FontSize="33" Command="{Binding Path=EditTask}" />
                     </DockPanel>
                 </StackPanel>
             </StackPanel>

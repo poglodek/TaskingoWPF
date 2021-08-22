@@ -68,7 +68,7 @@
             </Button>
 
         </StackPanel>
-        
+
 
         <StackPanel Grid.Column="1" Style="{StaticResource BackgroundGradientInverseStackPanel}"  Visibility="{Binding Path=Tasks, Converter={StaticResource ToolConverter}}">
 
@@ -92,7 +92,7 @@
                     Show Information about Task
                 </Button.Content>
             </Button>
-            
+
             <Label Margin="0,10,0,0" Style="{StaticResource LabelWindow}" Content="Select Status:" />
             <ComboBox SelectedIndex="0" Height="40" Width="257" BorderThickness="1" Background="DarkBlue" Foreground="White"
                       Style="{StaticResource {x:Static ToolBar.ComboBoxStyleKey}}" SelectedValue="{Binding Path=TaskFilter}">
@@ -121,7 +121,25 @@
                 </Button.Content>
             </Button>
         </StackPanel>
-        
+        <StackPanel Grid.Column="1" Style="{StaticResource BackgroundGradientInverseStackPanel}"  Visibility="{Binding Path=EditTask, Converter={StaticResource ToolConverter}}">
+
+            <Button Margin="10" Width="257" Height="40" Style="{StaticResource Button}">
+                <Button.Content>
+                    Add new Task
+                </Button.Content>
+            </Button>
+            <Button  Margin="10" Width="257" Height="40" Style="{StaticResource Button}">
+                <Button.Content>
+                    Delete Task
+                </Button.Content>
+            </Button>
+            <Button  Margin="10" Width="257" Height="40" Style="{StaticResource Button}" Command="{Binding Path=SetActualView}" CommandParameter="Task">
+                <Button.Content>
+                    Show Information about Task
+                </Button.Content>
+            </Button>
+        </StackPanel>
+
         <ContentControl  Grid.Column="0" Content="{Binding Path=View}" />
        
     </Grid>

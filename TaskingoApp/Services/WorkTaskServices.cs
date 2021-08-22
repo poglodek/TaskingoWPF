@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using TaskingoApp.Builder;
 using TaskingoApp.Model;
 
 namespace TaskingoApp.Services
@@ -112,7 +114,30 @@ namespace TaskingoApp.Services
             return task;
         }
 
+        public async Task EditTask(int Id, WorkTaskModel workTaskModel)
+        {
+            if (!CheckTaskModel(workTaskModel)) return;
+            //TODO BaseCall.MakeCall();
+            // if response is ok 
+            await Task.Delay(1500);
+            var a = workTaskModel.Status.Substring(38);
+            PopupBuilder.Build("Task Edited Successfully");
+            // else PopupBuilder.Build("You cannot edit this user.");
+        }
+        private bool CheckTaskModel(WorkTaskModel workTaskModel)
+        {
+            if (string.IsNullOrWhiteSpace(workTaskModel.Title) ||
+                string.IsNullOrWhiteSpace(workTaskModel.Status) ||
+                workTaskModel.DeadLine < DateTime.Now.AddMinutes(-5) ||
+                workTaskModel.Priority < 0 || 
+                workTaskModel.Priority > 11)
+            {
+                PopupBuilder.Build("The fields are incorrectly completed");
+                return false;
+            }
 
+            return true;
+        }
     }
         
     

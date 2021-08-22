@@ -11,28 +11,20 @@ using TaskingoApp.ViewModel.Base;
 
 namespace TaskingoApp.ViewModel.WorkTask
 {
-    public class EditWorkTask : ViewModelBase
+    public class AddWorkTaskViewModel : ViewModelBase
     {
         private WorkTaskModel _workTaskModel;
         private IWorkTaskServices _workTaskServices = new WorkTaskServices();
 
-        public EditWorkTask()
+
+        public AddWorkTaskViewModel()
         {
             _workTaskModel = new WorkTaskModel();
-            GetTaskFromApi();
-        }
-        private void GetTaskFromApi()
-        {
-            Task.Run(() =>
-            {
-                _workTaskModel = _workTaskModel.GetTaskById().Result;
-                OnPropertyChanged(nameof(Id), nameof(Priority), nameof(Title), nameof(Description), nameof(Status), nameof(Comment), nameof(CreatedTime), nameof(DeadLine), nameof(WhoCreated), nameof(IsAssigned), nameof(AssignedUser));
-            });
-
+            DeadLine = DateTime.Now.AddHours(1);
+            OnPropertyChanged(nameof(DeadLine));
         }
         #region Getters
 
-        public int Id  => _workTaskModel.Id;
 
         public int Priority
         {
@@ -52,38 +44,33 @@ namespace TaskingoApp.ViewModel.WorkTask
         public string Status
         {
             get => _workTaskModel.Status;
-            set =>  _workTaskModel.Status = value;
-           
+            set => _workTaskModel.Status = value;
+
         }
         public string Comment
         {
             get => _workTaskModel.Comment;
             set => _workTaskModel.Comment = value;
         }
-        public DateTime CreatedTime => _workTaskModel.CreatedTime;
         public DateTime DeadLine
         {
             get => _workTaskModel.DeadLine;
             set => _workTaskModel.DeadLine = value;
         }
-        public UserModel WhoCreated => _workTaskModel.WhoCreated;
-        public bool IsAssigned => _workTaskModel.IsAssigned;
-        public UserModel AssignedUser => _workTaskModel.AssignedUser;
 
         #endregion
         #region Commands
-        private ICommand _editTask;
+        private ICommand _addTask;
 
-        public ICommand EditTask
+        public ICommand AddTask
         {
             get
             {
-                return _editTask ?? (_editTask = new RelayCommand(x =>
+                return _addTask ?? (_addTask = new RelayCommand(x =>
                 {
                     Task.Run(() =>
                     {
-                        _workTaskServices.EditTask(Properties.Settings.Default.TaskId, _workTaskModel).Wait();
-                        GetTaskFromApi();
+                        _workTaskServices.AddTask( _workTaskModel).Wait();
                     });
                 }));
             }

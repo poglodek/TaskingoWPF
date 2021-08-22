@@ -138,12 +138,24 @@ namespace TaskingoApp.Services
             // else PopupBuilder.Build("You cannot delete this user.");
             return true;
         }
+
+        public async Task AddTask(WorkTaskModel workTaskModel)
+        {
+            if (!CheckTaskModel(workTaskModel)) return;
+            //TODO BaseCall.MakeCall();
+            // if response is ok 
+            await Task.Delay(1500);
+            PopupBuilder.Build("Task Added Successfully");
+            // else PopupBuilder.Build("You cannot edit this user.");
+        }
+
         private bool CheckTaskModel(WorkTaskModel workTaskModel)
         {
             if (string.IsNullOrWhiteSpace(workTaskModel.Title) ||
                 string.IsNullOrWhiteSpace(workTaskModel.Status) ||
+                workTaskModel.Status.Length < 38 ||
                 workTaskModel.DeadLine < DateTime.Now.AddMinutes(-5) ||
-                workTaskModel.Priority < 0 || 
+                workTaskModel.Priority < 1 || 
                 workTaskModel.Priority > 11)
             {
                 PopupBuilder.Build("The fields are incorrectly completed");

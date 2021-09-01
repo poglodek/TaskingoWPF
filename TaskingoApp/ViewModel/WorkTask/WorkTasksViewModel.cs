@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using TaskingoApp.Components;
 using TaskingoApp.Model;
 using TaskingoApp.ViewModel.Base;
@@ -35,6 +36,7 @@ namespace TaskingoApp.ViewModel.WorkTask
         {
             _workTaskModels = new WorkTasksModel();
             DownloadTasks();
+            
         }
         private void DownloadTasks()
         {
@@ -42,6 +44,14 @@ namespace TaskingoApp.ViewModel.WorkTask
             {
                 _workTaskModels.GetUsersModelsList().Wait();
                 CopyFromModel();
+                if (!string.IsNullOrEmpty(Properties.Settings.Default.TaskUserMail))
+                {
+                    Application.Current.Dispatcher.Invoke(() =>
+                    {
+                        SearchingTask = Properties.Settings.Default.TaskUserMail;
+                    });
+                }
+                    
             });
         }
 
@@ -54,9 +64,10 @@ namespace TaskingoApp.ViewModel.WorkTask
             set
             {
                 _selectedTask = value;
-                if(_selectedTask != null)
+                if (_selectedTask != null)
                     Properties.Settings.Default.TaskId = _selectedTask.Id;
-            }
+
+                }
         }
         private string _searchingTask;
 
@@ -71,6 +82,7 @@ namespace TaskingoApp.ViewModel.WorkTask
         }
         private void ShowTasks()
         {
+            Properties.Settings.Default.TaskUserMail = string.Empty;
             if (string.IsNullOrEmpty(_searchingTask))
                 DownloadTasks();
             var searchingUsersFromApi = SelectTasks(); 

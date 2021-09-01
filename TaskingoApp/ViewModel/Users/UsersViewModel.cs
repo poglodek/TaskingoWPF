@@ -45,7 +45,11 @@ namespace TaskingoApp.ViewModel.Users
             {
                 _selectedUser = value;
                 if (_selectedUser != null)
+                {
                     Properties.Settings.Default.UserId = _selectedUser.Id;
+                    Properties.Settings.Default.TaskUserMail = _selectedUser.Email;
+                }
+                    
 
                     
             }

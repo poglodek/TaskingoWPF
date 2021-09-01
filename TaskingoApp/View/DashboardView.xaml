@@ -46,20 +46,14 @@
             <Button Width="100" Style="{StaticResource ButtonWindow}" Command="{Binding Path=SetView}" CommandParameter="Tasks" >
                 <fa5:ImageAwesome Icon="Solid_Tasks" Foreground="White"/>
             </Button>
-            <Button Width="100" Style="{StaticResource ButtonWindow}">
-                <fa5:ImageAwesome Icon="Regular_Clock" Foreground="White"/>
-            </Button>
-            <Button Width="100" Style="{StaticResource ButtonWindow}" Margin="0, 0, 0,0">
+            <Button Width="100" Style="{StaticResource ButtonWindow}" Margin="0, 0, 0,0" IsEnabled="False" Opacity="0.5">
                 <fa5:ImageAwesome Icon="Solid_EnvelopeOpenText" Foreground="White"/>
             </Button>
-            <Border Margin="210,0" Background="#f04d55" Width="300" CornerRadius="30">
+            <Border Margin="300,0" Background="#f04d55" Width="300" CornerRadius="30">
                 <Label Content="Your Name" Style="{StaticResource LabelWindow}"/>
             </Border>
-            <Button Width="75" Style="{StaticResource ButtonWindow}">
-                <fa5:ImageAwesome Icon="Solid_PeopleArrows" Foreground="White"/>
 
-            </Button>
-            <Button x:Name="ButtonExit" Width="75" Style="{StaticResource ButtonWindow}">
+            <Button x:Name="ButtonExit" Width="75" Style="{StaticResource ButtonWindow}" Margin="-10,0,0,0">
                 <fa5:ImageAwesome Icon="Solid_Times" Foreground="White"/>
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="Click">

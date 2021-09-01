@@ -173,8 +173,8 @@ namespace TaskingoApp.ViewModel
             {
                 return _showUsersTasks ?? (_showUsersTasks = new RelayCommand(x =>
                 {
-                    PopupBuilder.Build("Go to page with Tasks. Type email in searching TextBox on top. :)");
-                }));
+                    ChangeActualView("Tasks");
+                }, x=> !string.IsNullOrEmpty(Properties.Settings.Default.TaskUserMail)));
             }
         }
 

@@ -24,6 +24,7 @@ namespace TaskingoApp.Services
                 LastName = "SZybki",
                 Email = "Email@admin.com",
                 Phone = 123321123,
+                ActualStatus = "Free",
                 Address = "Krk, Wawel 15A"
             };
             await Task.Delay(1500);
@@ -49,6 +50,7 @@ namespace TaskingoApp.Services
                 FirstName = "Pablos",
                 LastName = "Cucumber",
                 Phone = 321321123,
+                ActualStatus = "Free",
                 Id = 1
             });
             userModels.Add(new UserModel
@@ -58,6 +60,7 @@ namespace TaskingoApp.Services
                 FirstName = "Adam",
                 LastName = "Majster",
                 Phone = 123123123,
+                ActualStatus = "Break",
                 Id = 2
             });
             return userModels;

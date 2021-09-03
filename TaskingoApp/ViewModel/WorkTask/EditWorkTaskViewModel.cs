@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using TaskingoApp.Commands;
@@ -32,7 +29,7 @@ namespace TaskingoApp.ViewModel.WorkTask
         }
         #region Getters
 
-        public int Id  => _workTaskModel.Id;
+        public int Id => _workTaskModel.Id;
 
         public int Priority
         {
@@ -52,8 +49,8 @@ namespace TaskingoApp.ViewModel.WorkTask
         public string Status
         {
             get => _workTaskModel.Status;
-            set =>  _workTaskModel.Status = value;
-           
+            set => _workTaskModel.Status = value;
+
         }
         public string Comment
         {

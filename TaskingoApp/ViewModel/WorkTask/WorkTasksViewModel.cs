@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using TaskingoApp.Components;
 using TaskingoApp.Model;
 using TaskingoApp.ViewModel.Base;
-using TaskingoApp.ViewModel.Users;
 
 namespace TaskingoApp.ViewModel.WorkTask
 {
@@ -24,9 +21,9 @@ namespace TaskingoApp.ViewModel.WorkTask
             TasksFromApi.Clear();
             foreach (var task in _workTaskModels)
                 TasksFromApi.Add(new WorkTaskViewModel(task));
-            if(!Properties.Settings.Default.TaskFilter.Equals("All"))
+            if (!Properties.Settings.Default.TaskFilter.Equals("All"))
                 workTaskViewModels.AddRange(TasksFromApi
-                    .Where(x=> x.Status.Contains(Properties.Settings.Default.TaskFilter))
+                    .Where(x => x.Status.Contains(Properties.Settings.Default.TaskFilter))
                     .ToList());
             else
                 workTaskViewModels.AddRange(TasksFromApi);
@@ -36,7 +33,7 @@ namespace TaskingoApp.ViewModel.WorkTask
         {
             _workTaskModels = new WorkTasksModel();
             DownloadTasks();
-            
+
         }
         private void DownloadTasks()
         {
@@ -51,7 +48,7 @@ namespace TaskingoApp.ViewModel.WorkTask
                         SearchingTask = Properties.Settings.Default.TaskUserMail;
                     });
                 }
-                    
+
             });
         }
 
@@ -67,7 +64,7 @@ namespace TaskingoApp.ViewModel.WorkTask
                 if (_selectedTask != null)
                     Properties.Settings.Default.TaskId = _selectedTask.Id;
 
-                }
+            }
         }
         private string _searchingTask;
 
@@ -85,7 +82,7 @@ namespace TaskingoApp.ViewModel.WorkTask
             Properties.Settings.Default.TaskUserMail = string.Empty;
             if (string.IsNullOrEmpty(_searchingTask))
                 DownloadTasks();
-            var searchingUsersFromApi = SelectTasks(); 
+            var searchingUsersFromApi = SelectTasks();
             workTaskViewModels.Clear();
             workTaskViewModels.AddRange(searchingUsersFromApi.ToList());
         }

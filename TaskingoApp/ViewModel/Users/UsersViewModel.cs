@@ -1,8 +1,5 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
-using System.Windows.Input;
-using TaskingoApp.Commands;
 using TaskingoApp.Components;
 using TaskingoApp.Model;
 using TaskingoApp.ViewModel.Base;
@@ -49,9 +46,9 @@ namespace TaskingoApp.ViewModel.Users
                     Properties.Settings.Default.UserId = _selectedUser.Id;
                     Properties.Settings.Default.TaskUserMail = _selectedUser.Email;
                 }
-                    
 
-                    
+
+
             }
         }
 
@@ -80,6 +77,6 @@ namespace TaskingoApp.ViewModel.Users
                 CopyFromModel();
             });
         }
-        
+
     }
 }

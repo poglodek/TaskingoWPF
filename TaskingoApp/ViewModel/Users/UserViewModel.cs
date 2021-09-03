@@ -1,6 +1,4 @@
 ﻿using System.Threading.Tasks;
-using System.Windows.Input;
-using TaskingoApp.Commands;
 using TaskingoApp.Model;
 using TaskingoApp.ViewModel.Base;
 
@@ -55,7 +53,7 @@ namespace TaskingoApp.ViewModel.Users
 
         #region Commands
 
-        
+
 
         #endregion
     }

@@ -1,15 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using TaskingoApp.Annotations;
 using TaskingoApp.Services;
-using TaskingoApp.ViewModel.Base;
 
 namespace TaskingoApp.Model
 {
-    public class WorkTaskModel 
+    public class WorkTaskModel
     {
         public int Id { get; set; }
         public int Priority { get; set; }
@@ -29,8 +25,8 @@ namespace TaskingoApp.Model
         private IWorkTaskServices _workTaskServices = new WorkTaskServices();
         public async Task<WorkTaskModel> GetTaskById()
         {
-           var task = await _workTaskServices.GetTaskById(Properties.Settings.Default.TaskId);
-           return task;
+            var task = await _workTaskServices.GetTaskById(Properties.Settings.Default.TaskId);
+            return task;
         }
     }
 }

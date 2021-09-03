@@ -27,7 +27,7 @@ namespace TaskingoApp.ViewModel.Users
                 _userModel.FirstName = value;
                 OnPropertyChanged(nameof(FirstName));
             }
-        } 
+        }
 
         public string LastName
         {
@@ -90,7 +90,7 @@ namespace TaskingoApp.ViewModel.Users
                         if (!respone) return;
                         ClearForm();
                     });
-                    
+
                 }));
             }
         }

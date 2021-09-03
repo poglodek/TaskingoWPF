@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
-using TaskingoApp.Builder;
 using TaskingoApp.Commands;
 using TaskingoApp.Services;
 using TaskingoApp.View;
@@ -37,7 +35,7 @@ namespace TaskingoApp.ViewModel
             get => Properties.Settings.Default.MonthOfTasks;
             set
             {
-                var dateTime =DateTime.Parse( value);
+                var dateTime = DateTime.Parse(value);
                 Properties.Settings.Default.MonthOfTasks = dateTime.ToString("MM/yyyy");
                 OnPropertyChanged(nameof(MonthOfTasks));
             }
@@ -147,7 +145,7 @@ namespace TaskingoApp.ViewModel
                             });
                         }
                     });
-                }, x => Properties.Settings.Default.UserId > -1 ));
+                }, x => Properties.Settings.Default.UserId > -1));
             }
         }
         private ICommand _deleteTask;
@@ -178,7 +176,7 @@ namespace TaskingoApp.ViewModel
                 return _showUsersTasks ?? (_showUsersTasks = new RelayCommand(x =>
                 {
                     ChangeActualView("Tasks");
-                }, x=> !string.IsNullOrEmpty(Properties.Settings.Default.TaskUserMail)));
+                }, x => !string.IsNullOrEmpty(Properties.Settings.Default.TaskUserMail)));
             }
         }
 
@@ -187,7 +185,7 @@ namespace TaskingoApp.ViewModel
             if (viewName == "User" && Properties.Settings.Default.UserId < 0 ||
                 viewName == "EditUser" && Properties.Settings.Default.UserId < 0 ||
                 viewName == "EditTask" && Properties.Settings.Default.TaskId < 0 ||
-                viewName == "Task" && Properties.Settings.Default.TaskId < 0) 
+                viewName == "Task" && Properties.Settings.Default.TaskId < 0)
                 return;
             TaskingoApp.Properties.Settings.Default.ActualView = viewName;
             StartUpView();

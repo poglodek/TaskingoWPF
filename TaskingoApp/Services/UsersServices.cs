@@ -98,7 +98,7 @@ namespace TaskingoApp.Services
             await Task.Delay(1500);
             PopupBuilder.Build("User Edited Successfully");
             // else PopupBuilder.Build("You cannot edit this user.");
-            
+
         }
 
         private bool CheckUserModel(UserModel userModel)

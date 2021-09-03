@@ -7,13 +7,13 @@ namespace TaskingoApp.Builder
     {
         public static void Build(string errorMessage)
         {
-            
+
             Application.Current.Dispatcher.Invoke(() =>
             {
                 var info = new InfoPopupView { Message = { Text = errorMessage } };
                 info.Show();
             });
-            
+
         }
     }
 }

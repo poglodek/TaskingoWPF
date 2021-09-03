@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Threading.Tasks;
 using TaskingoApp.Components;
 using TaskingoApp.Model;
 using TaskingoApp.ViewModel.Base;
@@ -33,7 +28,7 @@ namespace TaskingoApp.ViewModel.WorkTime
             workTimeModels.Clear();
             foreach (var time in workTimesModel)
                 workTimeModels.Add(new WorkTimeViewModel(time));
-            
+
         }
     }
 }

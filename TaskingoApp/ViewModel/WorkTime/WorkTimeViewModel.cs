@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TaskingoApp.Model;
 using TaskingoApp.ViewModel.Base;
 
@@ -25,12 +21,12 @@ namespace TaskingoApp.ViewModel.WorkTime
                 return $"{timeSpan.Hours}:{minutes}:{seconds}";
 
             }
-            
-        }  
+
+        }
 
         public WorkTimeViewModel()
         {
-            
+
         }
 
         public WorkTimeViewModel(WorkTimeModel workTimeModel)
@@ -38,6 +34,6 @@ namespace TaskingoApp.ViewModel.WorkTime
             WorkTimeModel = workTimeModel;
         }
 
-        public override string ToString() => $"Start: {WorkTimeStart} | End: {WorkTimeEnd} \n   Working Time: {WorkTime} | Break Time: {BreakTimeInMinutes} min";
+        public override string ToString() => $"Start: {WorkTimeStart} | End: {WorkTimeEnd} \n Working Time: {WorkTime} | Break Time: {BreakTimeInMinutes} min";
     }
 }

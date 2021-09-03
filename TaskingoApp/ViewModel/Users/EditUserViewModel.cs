@@ -46,7 +46,7 @@ namespace TaskingoApp.ViewModel.Users
                 _userModel.FirstName = value;
                 OnPropertyChanged(nameof(FirstName));
             }
-        } 
+        }
 
         public string LastName
         {

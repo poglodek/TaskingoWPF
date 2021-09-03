@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using TaskingoApp.Commands;
@@ -70,7 +67,7 @@ namespace TaskingoApp.ViewModel.WorkTask
                 {
                     Task.Run(() =>
                     {
-                        _workTaskServices.AddTask( _workTaskModel).Wait();
+                        _workTaskServices.AddTask(_workTaskModel).Wait();
                     });
                 }));
             }

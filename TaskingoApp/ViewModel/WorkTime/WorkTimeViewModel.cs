@@ -15,7 +15,18 @@ namespace TaskingoApp.ViewModel.WorkTime
         public int BreakTimeInMinutes => WorkTimeModel.BreakTimeInMinutes;
         public DateTime WorkTimeEnd => WorkTimeModel.WorkTimeEnd;
 
-        public TimeSpan WorkTime => WorkTimeModel.WorkTimeStart - WorkTimeModel.WorkTimeEnd;
+        public string WorkTime
+        {
+            get
+            {
+                var timeSpan = WorkTimeModel.WorkTimeEnd - WorkTimeModel.WorkTimeStart;
+                var minutes = timeSpan.Minutes > 10 ? timeSpan.Minutes.ToString() : "0" + timeSpan.Minutes;
+                var seconds = timeSpan.Seconds > 10 ? timeSpan.Seconds.ToString() : "0" + timeSpan.Seconds;
+                return $"{timeSpan.Hours}:{minutes}:{seconds}";
+
+            }
+            
+        }  
 
         public WorkTimeViewModel()
         {
@@ -27,6 +38,6 @@ namespace TaskingoApp.ViewModel.WorkTime
             WorkTimeModel = workTimeModel;
         }
 
-        public override string ToString() => $"{WorkTimeStart} | {WorkTimeEnd} \n {WorkTime} | Break Time: {BreakTimeInMinutes} min";
+        public override string ToString() => $"Start: {WorkTimeStart} | End: {WorkTimeEnd} \n   Working Time: {WorkTime} | Break Time: {BreakTimeInMinutes} min";
     }
 }

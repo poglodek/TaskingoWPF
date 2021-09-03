@@ -18,8 +18,9 @@ namespace TaskingoApp.ViewModel.WorkTime
         public WorkTimesViewModel()
         {
             workTimesModel = new WorkTimesModel();
+            DownloadWorkTimeData();
         }
-        private void DownloadTasks()
+        private void DownloadWorkTimeData()
         {
             Task.Run(() =>
             {

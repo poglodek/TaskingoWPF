@@ -75,7 +75,7 @@
                     Show User's Task
                 </Button.Content>
             </Button>
-            <Button  Margin="10" Width="257" Height="40" Style="{StaticResource Button}">
+            <Button  Margin="10" Width="257" Height="40" Style="{StaticResource Button}" Command="{Binding Path=SetActualView}" CommandParameter="WorkTime">
                 <Button.Content>
                     Show User's Work Time
                 </Button.Content>

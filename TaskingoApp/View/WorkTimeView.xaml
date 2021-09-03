@@ -1,0 +1,30 @@
+﻿<UserControl x:Class="TaskingoApp.View.WorkTimeView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TaskingoApp.View"
+             xmlns:vm="clr-namespace:TaskingoApp.ViewModel.WorkTime"
+             xmlns:fa5="http://schemas.fontawesome.com/icons/"
+             mc:Ignorable="d" 
+             d:DesignHeight="640" d:DesignWidth="1092">
+    <UserControl.DataContext>
+        <vm:WorkTimesViewModel />
+    </UserControl.DataContext>
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="#1c064f" Offset="0"/>
+                <GradientStop Color="#0041b3" Offset="1.0"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+
+        <ListBox Background="Transparent" ItemsSource="{Binding Path=workTimeModels}"  BorderThickness="0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock  Style="{StaticResource ListBoxTextBlockStyle}" Text="{Binding Mode=OneWay}" />
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </Grid>
+</UserControl>

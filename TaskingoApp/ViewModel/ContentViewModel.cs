@@ -96,6 +96,10 @@ namespace TaskingoApp.ViewModel
                     AddTask = true;
                     OnPropertyChanged(nameof(AddTask));
                     break;
+                case "WorkTime":
+                    View = new WorkTimeView();
+                    OnPropertyChanged(nameof(View));
+                    break;
                 default:
                     View = new HomeView();
                     OnPropertyChanged(nameof(View));

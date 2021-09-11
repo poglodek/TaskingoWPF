@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using TaskingoApp.Config;
 
 namespace TaskingoApp
 {
@@ -9,6 +10,7 @@ namespace TaskingoApp
     {
         public App()
         {
+            new ConfigReader().ReadConfig();
         }
     }
 

@@ -9,7 +9,7 @@ namespace TaskingoApp.APICall
 {
     public class BaseCall
     {
-        private const string Url = "https://localhost:5001/";
+        private static string Url = Properties.Settings.Default.ApiUrl;
         public static string Token = string.Empty;
         private static int MaxCallsInThisSameTime = 3;
         private static int _activeCalls;

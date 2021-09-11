@@ -8,9 +8,7 @@ namespace TaskingoApp.Model
     {
 
         private readonly IUsersServices _usersServices = new UsersServices();
-        [JsonProperty(PropertyName = "id")]
         public int Id { get; set; }
-        [JsonProperty(PropertyName = "firstName")]
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }

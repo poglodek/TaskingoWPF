@@ -3,6 +3,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text.Json;
 using System.Threading.Tasks;
+using TaskingoApp.Builder;
 using TaskingoApp.Exceptions;
 
 namespace TaskingoApp.APICall
@@ -35,19 +36,19 @@ namespace TaskingoApp.APICall
                 request.Content = new StringContent(JsonSerializer.Serialize(body));
             if (!string.IsNullOrEmpty(Token)) httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Token);
             request.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
-            var respone = await httpClient.SendAsync(request);
+            var response = await httpClient.SendAsync(request);
             --_activeCalls;
-            return respone;
+            return response;
         }
 
         private static async Task<string> CheckResponse(HttpResponseMessage response)
         {
             if (response.IsSuccessStatusCode)
             {
+                if (response.StatusCode == System.Net.HttpStatusCode.NoContent) PopupBuilder.Build("Deleted.");
                 var odp = await response.Content.ReadAsStringAsync();
                 return odp;
             }
-            if (response.StatusCode == System.Net.HttpStatusCode.NoContent) throw new NotFoundException("We don't found this. Please try again.");
             if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized) throw new UnauthorizedException("UnauthorizedException. If you should have access, please contact with admin ");
             if (response.StatusCode == System.Net.HttpStatusCode.Forbidden) throw new ForbiddenException("Forbidden. If you should have access, please contact with admin ");
             if (response.StatusCode == System.Net.HttpStatusCode.BadRequest ||

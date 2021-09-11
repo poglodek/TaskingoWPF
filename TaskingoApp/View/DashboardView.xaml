@@ -50,7 +50,7 @@
                 <fa5:ImageAwesome Icon="Solid_EnvelopeOpenText" Foreground="White"/>
             </Button>
             <Border Margin="300,0" Background="#f04d55" Width="300" CornerRadius="30">
-                <Label Content="Your Name" Style="{StaticResource LabelWindow}"/>
+                <Label Content="{Binding Path=Name}" Style="{StaticResource LabelWindow}"/>
             </Border>
 
             <Button x:Name="ButtonExit" Width="75" Style="{StaticResource ButtonWindow}" Margin="-10,0,0,0">

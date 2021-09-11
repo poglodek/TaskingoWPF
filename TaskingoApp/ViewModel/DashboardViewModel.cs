@@ -1,5 +1,8 @@
-﻿using System.Windows.Input;
+﻿using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Input;
 using TaskingoApp.Commands;
+using TaskingoApp.Services;
 using TaskingoApp.View;
 using TaskingoApp.ViewModel.Base;
 
@@ -7,12 +10,31 @@ namespace TaskingoApp.ViewModel
 {
     public class DashboardViewModel : ViewModelBase
     {
+        private readonly IDashboardServices _dashboardServices = new DashboardServices();
         public DashboardViewModel()
         {
             View = new ContentView();
+            Task.Run(() =>
+            {
+                var nameFromApi = _dashboardServices.GetMyName().Result;
+                Application.Current.Dispatcher.Invoke(() =>
+                {
+                    Name = nameFromApi;
+                });
+            });
+
         }
 
-
+        private string name;
+        public string Name
+        {
+            get => name;
+            set
+            {
+                name = value;
+                OnPropertyChanged(nameof(name));
+            }
+        }
 
         #region ICommand
 

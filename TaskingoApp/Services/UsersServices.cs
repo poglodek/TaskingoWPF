@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using Newtonsoft.Json;
+using System.Collections.Generic;
 using System.Net.Mail;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
-using Newtonsoft.Json;
 using TaskingoApp.APICall;
 using TaskingoApp.Builder;
 using TaskingoApp.Model;
@@ -21,10 +21,10 @@ namespace TaskingoApp.Services
 
         public async Task<List<UserModel>> GetUsers()
         {
-             //TODO BaseCall.MakeCall();
-           var jsonUsers =  await BaseCall.MakeCall("User/GetAll",System.Net.Http.HttpMethod.Get, null);
-           var userModels = Newtonsoft.Json.JsonConvert.DeserializeObject<List<UserModel>>(jsonUsers);
-           return userModels;
+            //TODO BaseCall.MakeCall();
+            var jsonUsers = await BaseCall.MakeCall("User/GetAll", System.Net.Http.HttpMethod.Get, null);
+            var userModels = Newtonsoft.Json.JsonConvert.DeserializeObject<List<UserModel>>(jsonUsers);
+            return userModels;
         }
 
         public async Task<bool> DeleteUserById(int defaultUserId)
@@ -51,7 +51,7 @@ namespace TaskingoApp.Services
             PopupBuilder.Build("User Edited Successfully");
 
         }
-        
+
         private bool CheckUserModel(UserModel userModel)
         {
             var regex = new Regex(@"[0-9]{9}$");

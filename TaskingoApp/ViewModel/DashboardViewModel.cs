@@ -22,6 +22,8 @@ namespace TaskingoApp.ViewModel
                     Name = nameFromApi;
                 });
             });
+            var loginScreen = Application.Current.Windows[0];
+            loginScreen.Close();
 
         }
 

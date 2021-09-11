@@ -29,11 +29,8 @@ namespace TaskingoApp.APICall
             using var httpClient = new HttpClient();
             var request = new HttpRequestMessage();
             request.Method = httpMethod;
-            
-           // httpClient.DefaultRequestHeaders.Add("Content-Type", "application/json");
             request.RequestUri = new Uri(Url + endpoint);
-           // if (body != null) 
-                request.Content = new StringContent(JsonSerializer.Serialize(body));
+            request.Content = new StringContent(JsonSerializer.Serialize(body));
             if (!string.IsNullOrEmpty(Token)) httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Token);
             request.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
             var response = await httpClient.SendAsync(request);
@@ -45,7 +42,6 @@ namespace TaskingoApp.APICall
         {
             if (response.IsSuccessStatusCode)
             {
-                if (response.StatusCode == System.Net.HttpStatusCode.NoContent) PopupBuilder.Build("Deleted.");
                 var odp = await response.Content.ReadAsStringAsync();
                 return odp;
             }

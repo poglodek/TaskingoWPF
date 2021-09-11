@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Windows.Documents;
+using Newtonsoft.Json;
+using TaskingoApp.APICall;
 using TaskingoApp.Model;
 
 namespace TaskingoApp.Services
@@ -9,22 +12,8 @@ namespace TaskingoApp.Services
     {
         public async Task<List<WorkTimeModel>> GetWorkTimeByUserId(int id)
         {
-            //TODO API CALL
-            //tests
-            await Task.Delay(1500);
-            var workTask = new List<WorkTimeModel>();
-            workTask.Add(new WorkTimeModel
-            {
-                BreakTimeInMinutes = 30,
-                WorkTimeStart = DateTime.Now.AddHours(-8),
-                WorkTimeEnd = DateTime.Now
-            });
-            workTask.Add(new WorkTimeModel
-            {
-                BreakTimeInMinutes = 29,
-                WorkTimeStart = DateTime.Now.AddHours(-12).AddDays(-4),
-                WorkTimeEnd = DateTime.Now.AddDays(-4).AddHours(-5).AddMinutes(25)
-            });
+            var jsonWorkTime = await BaseCall.MakeCall($"WorkTime/{id}", System.Net.Http.HttpMethod.Get, null);
+            var workTask = JsonConvert.DeserializeObject<List<WorkTimeModel>>(jsonWorkTime);
             return workTask;
         }
     }

@@ -28,10 +28,10 @@ namespace TaskingoApp.ViewModel
 
         public string Password
         {
-            get => _loginModel.Password;
+            get => _loginModel.PasswordHashed;
             set
             {
-                _loginModel.Password = value;
+                _loginModel.PasswordHashed = value;
                 OnPropertyChanged(nameof(Password));
             }
         }

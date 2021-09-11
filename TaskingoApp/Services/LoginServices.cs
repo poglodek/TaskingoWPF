@@ -12,9 +12,9 @@ namespace TaskingoApp.Services
             var login = new LoginModel
             {
                 Email = email,
-                Password = password
+                PasswordHashed = password
             };
-            var token = await BaseCall.MakeCall("login", HttpMethod.Post, login);
+            var token = await BaseCall.MakeCall("User/Login", HttpMethod.Post, login);
             if (string.IsNullOrEmpty(token)) return false;
             BaseCall.Token = token;
             return true;

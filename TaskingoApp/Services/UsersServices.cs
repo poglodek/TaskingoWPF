@@ -3,6 +3,8 @@ using System.Net.Mail;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
+using Newtonsoft.Json;
+using TaskingoApp.APICall;
 using TaskingoApp.Builder;
 using TaskingoApp.Model;
 
@@ -34,36 +36,10 @@ namespace TaskingoApp.Services
 
         public async Task<List<UserModel>> GetUsers()
         {
-            /* //TODO BaseCall.MakeCall();
-           var jsonUsers =  await BaseCall.MakeCall("/getUsers",System.Net.Http.HttpMethod.Get, null);
-           var users = JsonSerializer.Deserialize<List<UserModel>>(jsonUsers);
-           userModels.Clear();
-           userModels.AddRange(users);
-            */
-            var userModels = new List<UserModel>();
-            userModels.Clear();
-            await Task.Delay(1500);
-            userModels.Add(new UserModel
-            {
-                Address = "Test road 15C, Krk",
-                Email = "mail@test.com",
-                FirstName = "Pablos",
-                LastName = "Cucumber",
-                Phone = 321321123,
-                ActualStatus = "Free",
-                Id = 1
-            });
-            userModels.Add(new UserModel
-            {
-                Address = "Curie 18, WWa",
-                Email = "adam@admin.com",
-                FirstName = "Adam",
-                LastName = "Majster",
-                Phone = 123123123,
-                ActualStatus = "Break",
-                Id = 2
-            });
-            return userModels;
+             //TODO BaseCall.MakeCall();
+           var jsonUsers =  await BaseCall.MakeCall("User/GetAll",System.Net.Http.HttpMethod.Get, null);
+           var userModels = Newtonsoft.Json.JsonConvert.DeserializeObject<List<UserModel>>(jsonUsers);
+           return userModels;
         }
 
         public async Task<bool> DeleteUserById(int defaultUserId)

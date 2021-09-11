@@ -27,10 +27,14 @@ namespace TaskingoApp.APICall
         {
             using var httpClient = new HttpClient();
             var request = new HttpRequestMessage();
-            request.Method = HttpMethod.Put;
+            request.Method = httpMethod;
+            
+           // httpClient.DefaultRequestHeaders.Add("Content-Type", "application/json");
             request.RequestUri = new Uri(Url + endpoint);
-            if (body != null) request.Content = new StringContent(JsonSerializer.Serialize(body));
+           // if (body != null) 
+                request.Content = new StringContent(JsonSerializer.Serialize(body));
             if (!string.IsNullOrEmpty(Token)) httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Token);
+            request.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
             var respone = await httpClient.SendAsync(request);
             --_activeCalls;
             return respone;

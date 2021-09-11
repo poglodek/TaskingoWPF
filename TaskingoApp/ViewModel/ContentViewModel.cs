@@ -35,8 +35,8 @@ namespace TaskingoApp.ViewModel
             get => Properties.Settings.Default.MonthOfTasks;
             set
             {
-                var dateTime = DateTime.Parse(value);
-                Properties.Settings.Default.MonthOfTasks = dateTime.ToString("MM/yyyy");
+                var dateTime = DateTime.Parse(value).ToString("MM/yyyy");
+                Properties.Settings.Default.MonthOfTasks = dateTime;
                 OnPropertyChanged(nameof(MonthOfTasks));
             }
         }

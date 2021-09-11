@@ -10,11 +10,12 @@ namespace TaskingoApp.ViewModel
     public class LoginViewModel : ViewModelBase
     {
         private readonly LoginModel _loginModel = new LoginModel();
+        private readonly ILoginServices _loginServices = new LoginServices();
 
 
         public LoginViewModel()
         {
-            LoginCommand = new LoginCommand(this, new LoginServices());
+            LoginCommand = new LoginCommand(this, _loginServices);
         }
         public string Email
         {
@@ -35,6 +36,21 @@ namespace TaskingoApp.ViewModel
                 OnPropertyChanged(nameof(Password));
             }
         }
+
+        private ICommand forgotPassword;
+
+        public ICommand ForgotPassword
+        {
+            get
+            {
+                if (forgotPassword == null) forgotPassword = new RelayCommand(x =>
+                {
+                    _loginServices.ForgotPassword(Email);
+                }, x => Email.Length > 5);
+                return forgotPassword;
+            }
+        }
+
         public ICommand LoginCommand { get; }
 
 

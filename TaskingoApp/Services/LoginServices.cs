@@ -19,5 +19,10 @@ namespace TaskingoApp.Services
             BaseCall.Token = token;
             return true;
         }
+
+        public async Task ForgotPassword(string email)
+        {
+            await BaseCall.MakeCall($"user/ForgotPassword?email={email}", HttpMethod.Post, null);
+        }
     }
 }

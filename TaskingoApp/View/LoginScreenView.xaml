@@ -30,7 +30,7 @@
             </components:BindablePasswordBox>
             <DockPanel HorizontalAlignment="Center" >
                 
-                <Button  Style="{StaticResource ButtonLogin}">
+                <Button  Style="{StaticResource ButtonLogin}" Command="{Binding Path=ForgotPassword}">
                     <Button.Content>Forgot Password</Button.Content>
 
                 </Button>

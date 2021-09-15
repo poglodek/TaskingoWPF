@@ -27,6 +27,11 @@
                     <TextBox DockPanel.Dock="Left" Margin="84,0,0,0"  Style="{StaticResource TextBoxLogin}" Text="{Binding Path=Email}"></TextBox>
                 </DockPanel>
                 <DockPanel Margin="10">
+                <Label Content="Role:" Style="{StaticResource LabelWindow}" FontSize="32" />
+                <ComboBox ItemsSource="{Binding Path=RoleNames, Mode=OneWay}" SelectedItem="{Binding Path=Role}" FontSize="25" Background="DarkBlue" Foreground="White" Width="800" Margin="96,0,0,0"
+                          Style="{StaticResource {x:Static ToolBar.ComboBoxStyleKey}}" />
+                </DockPanel>
+                <DockPanel Margin="10">
                     <Label Content="Phone:" Style="{StaticResource LabelWindow}" FontSize="32" />
                     <TextBox DockPanel.Dock="Left" Margin="70,0,0,0"  Style="{StaticResource TextBoxLogin}" Text="{Binding Path=Phone}"></TextBox>
                 </DockPanel>

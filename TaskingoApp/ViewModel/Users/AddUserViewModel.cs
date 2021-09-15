@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using TaskingoApp.Commands;
 using TaskingoApp.Model;
@@ -11,14 +12,27 @@ namespace TaskingoApp.ViewModel.Users
     {
         private readonly UserModel _userModel;
         private IUsersServices _usersServices = new UsersServices();
-
+        private IRoleServices _roleServices = new RoleServices();
+        private List<Role> Roles { get; set; } = new List<Role>();
+        public List<string> RoleNames { get; set; } = new List<string>();
         public AddUserViewModel()
         {
             _userModel = new UserModel();
+            GetRoleByApi();
         }
 
         #region Getters
 
+        private void GetRoleByApi()
+        {
+            Task.Run(() =>
+            {
+                Roles = _roleServices.GetRoles().Result;
+                RoleNames = _roleServices.GetRolesName(Roles);
+                OnPropertyChanged(nameof(RoleNames));
+            });
+
+        }
         public string FirstName
         {
             get => _userModel.FirstName;

@@ -22,7 +22,7 @@ namespace TaskingoApp.ViewModel.Users
             Task.Run(() =>
             {
                 _userModel = _userModel.GetUserFromApiById().Result;
-                OnPropertyChanged(nameof(FirstName), nameof(LastName), nameof(Id), nameof(Phone), nameof(Email), nameof(Address), nameof(Status));
+                OnPropertyChanged(nameof(FirstName), nameof(LastName), nameof(Id), nameof(Phone), nameof(Email), nameof(Address), nameof(Role), nameof(Status));
             });
 
         }
@@ -41,6 +41,7 @@ namespace TaskingoApp.ViewModel.Users
         public string Address => _userModel.Address;
 
         public string Email => _userModel.Email;
+        public string Role => _userModel.Role;
         public string Status => _userModel.ActualStatus;
 
         public int Phone => _userModel.Phone;

@@ -58,6 +58,15 @@ namespace TaskingoApp.ViewModel.Users
                 OnPropertyChanged(nameof(Email));
             }
         }
+        public string Role
+        {
+            get => _userModel.Role;
+            set
+            {
+                _userModel.Role = value;
+                OnPropertyChanged(nameof(Role));
+            }
+        }
 
         public int Phone
         {

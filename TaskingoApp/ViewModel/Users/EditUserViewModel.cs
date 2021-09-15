@@ -1,4 +1,7 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Threading.Tasks;
+using System.Windows.Data;
 using System.Windows.Input;
 using TaskingoApp.Commands;
 using TaskingoApp.Model;
@@ -11,6 +14,9 @@ namespace TaskingoApp.ViewModel.Users
     {
         private UserModel _userModel;
         private IUsersServices _usersServices = new UsersServices();
+        private IRoleServices _roleServices = new RoleServices();
+        private List<Role> Roles { get; set; } = new List<Role>();
+        public List<string> RoleNames { get; set; } = new List<string>();
 
         public EditUserViewModel()
         {
@@ -23,7 +29,9 @@ namespace TaskingoApp.ViewModel.Users
             Task.Run(() =>
             {
                 _userModel = _userModel.GetUserFromApiById().Result;
-                OnPropertyChanged(nameof(FirstName), nameof(LastName), nameof(Id), nameof(Phone), nameof(Email), nameof(Address));
+                Roles = _roleServices.GetRoles().Result;
+                RoleNames = _roleServices.GetRolesName(Roles);
+                OnPropertyChanged(nameof(FirstName), nameof(LastName), nameof(Id), nameof(Phone), nameof(Email), nameof(Address), nameof(RoleNames), nameof(Role));
             });
 
         }
@@ -78,6 +86,15 @@ namespace TaskingoApp.ViewModel.Users
             }
         }
 
+        public string Role
+        {
+            get => _userModel.Role;
+            set
+            {
+                _userModel.Role = value;
+                OnPropertyChanged(nameof(Role));
+            }
+        }
         public int Phone
         {
             get => _userModel.Phone;

@@ -111,6 +111,7 @@
         <Style x:Key="ButtonWindow"  TargetType="{x:Type Button}">
             <Setter Property="Background" Value="Transparent" />
             <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="FontSize" Value="20" />
             <Setter Property="BorderThickness" Value="0" />
             <Setter Property="OverridesDefaultStyle" Value="True" />
             <Setter Property="Cursor" Value="Hand" />

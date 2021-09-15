@@ -14,7 +14,7 @@
 
         <StackPanel Width="auto" Style="{StaticResource BackgroundGradientStackPanel}">
             <StackPanel  VerticalAlignment="Center" HorizontalAlignment="Center" Width="1000">
-                <DockPanel Margin="10,140,10,10">
+                <DockPanel Margin="10,100,10,10">
                     <Label Content="Id:" Style="{StaticResource LabelWindow}" FontSize="32" />
                     <TextBlock DockPanel.Dock="Left" Margin="10,0,0,0"  Style="{StaticResource ListBoxTextBlockStyle}" Text="{Binding Path=Id}"></TextBlock>
                 </DockPanel>
@@ -29,6 +29,10 @@
                 <DockPanel Margin="10">
                     <Label Content="Email:" Style="{StaticResource LabelWindow}" FontSize="32" />
                     <TextBlock DockPanel.Dock="Left" Margin="10,0,0,0"  Style="{StaticResource ListBoxTextBlockStyle}" Text="{Binding Path=Email}"></TextBlock>
+                </DockPanel>
+                <DockPanel Margin="10">
+                    <Label Content="Role:" Style="{StaticResource LabelWindow}" FontSize="32" />
+                    <TextBlock DockPanel.Dock="Left" Margin="10,0,0,0"  Style="{StaticResource ListBoxTextBlockStyle}" Text="{Binding Path=Role}"></TextBlock>
                 </DockPanel>
                 <DockPanel Margin="10">
                     <Label Content="Phone:" Style="{StaticResource LabelWindow}" FontSize="32" />

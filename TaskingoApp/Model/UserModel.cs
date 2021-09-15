@@ -11,6 +11,7 @@ namespace TaskingoApp.Model
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }
+        public string Role { get; set; }
         public string ActualStatus { get; set; }
         public int Phone { get; set; }
         public string Address { get; set; }
@@ -23,7 +24,7 @@ namespace TaskingoApp.Model
         }
         public override string ToString()
         {
-            return $"ID:{Id}    {FirstName} {LastName}, {Email}";
+            return $"ID:{Id}    {FirstName} {LastName}, {Email}, {Role}";
         }
 
 

@@ -13,6 +13,7 @@ namespace TaskingoApp.Model
         public string Description { get; set; }
         public string Status { get; set; } //In queue, In progress, Done, Canceled
         public string Comment { get; set; }
+        public string WorkGroup { get; set; }
         public DateTime CreatedTime { get; set; }
         public DateTime DeadLine { get; set; }
         public UserModel WhoCreated { get; set; }

@@ -39,6 +39,11 @@
                         </ComboBox>
                     </DockPanel>
                     <DockPanel Margin="5">
+                        <Label Content="Workgroup:" Style="{StaticResource LabelWindow}" FontSize="25" />
+                        <ComboBox ItemsSource="{Binding Path=RoleNames, Mode=OneWay}" SelectedItem="{Binding Path=Role}" FontSize="25" Background="DarkBlue" Foreground="White" Width="825" Margin="25,0,0,0"
+                                  DockPanel.Dock="Left" Style="{StaticResource {x:Static ToolBar.ComboBoxStyleKey}}" />
+                    </DockPanel>
+                    <DockPanel Margin="5">
                         <Label Content="Comment :" Style="{StaticResource LabelWindow}"  FontSize="25" />
                         <TextBox DockPanel.Dock="Left" Margin="34,0,0,0" FontSize="25" TextWrapping="Wrap"  Style="{StaticResource TextBox}" Text="{Binding Path=Comment }"></TextBox>
                     </DockPanel>

@@ -45,6 +45,7 @@ namespace TaskingoApp.Services
         public async Task AddTask(WorkTaskModel workTaskModel)
         {
             if (!CheckTaskModel(workTaskModel)) return;
+            workTaskModel.Status = workTaskModel.Status.Substring(38);
             await BaseCall.MakeCall($"WorkTask", System.Net.Http.HttpMethod.Post, workTaskModel);
             PopupBuilder.Build("Task Added Successfully");
         }
@@ -53,6 +54,7 @@ namespace TaskingoApp.Services
         {
             if (string.IsNullOrWhiteSpace(workTaskModel.Title) ||
                 string.IsNullOrWhiteSpace(workTaskModel.Status) ||
+                string.IsNullOrWhiteSpace(workTaskModel.WorkGroup) ||
                 workTaskModel.Status.Length < 38 ||
                 workTaskModel.Priority < 1 ||
                 workTaskModel.Priority > 11)

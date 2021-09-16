@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using TaskingoApp.Commands;
@@ -12,7 +13,8 @@ namespace TaskingoApp.ViewModel.WorkTask
     {
         private WorkTaskModel _workTaskModel;
         private IWorkTaskServices _workTaskServices = new WorkTaskServices();
-
+        private IRoleServices _roleServices = new RoleServices();
+        public List<string> RoleNames { get; set; }
         public EditWorkTaskViewModel()
         {
             _workTaskModel = new WorkTaskModel();
@@ -23,7 +25,8 @@ namespace TaskingoApp.ViewModel.WorkTask
             Task.Run(() =>
             {
                 _workTaskModel = _workTaskModel.GetTaskById().Result;
-                OnPropertyChanged(nameof(Id), nameof(Priority), nameof(Title), nameof(Description), nameof(Status), nameof(Comment), nameof(CreatedTime), nameof(DeadLine), nameof(WhoCreated), nameof(IsAssigned), nameof(AssignedUser));
+                RoleNames = _roleServices.GetRolesName();
+                OnPropertyChanged(nameof(Id), nameof(Priority), nameof(Title), nameof(Description), nameof(Status), nameof(Comment), nameof(CreatedTime), nameof(DeadLine), nameof(WhoCreated), nameof(IsAssigned), nameof(AssignedUser), nameof(Role), nameof(RoleNames));
             });
 
         }
@@ -51,6 +54,15 @@ namespace TaskingoApp.ViewModel.WorkTask
             get => _workTaskModel.Status;
             set => _workTaskModel.Status = value;
 
+        }
+        public string Role
+        {
+            get => _workTaskModel.WorkGroup;
+            set
+            {
+                _workTaskModel.WorkGroup = value;
+                OnPropertyChanged(nameof(Role));
+            }
         }
         public string Comment
         {

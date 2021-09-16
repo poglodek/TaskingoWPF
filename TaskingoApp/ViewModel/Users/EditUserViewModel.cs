@@ -15,8 +15,7 @@ namespace TaskingoApp.ViewModel.Users
         private UserModel _userModel;
         private IUsersServices _usersServices = new UsersServices();
         private IRoleServices _roleServices = new RoleServices();
-        private List<Role> Roles { get; set; } = new List<Role>();
-        public List<string> RoleNames { get; set; } = new List<string>();
+        public List<string> RoleNames { get; set; }
 
         public EditUserViewModel()
         {
@@ -29,8 +28,7 @@ namespace TaskingoApp.ViewModel.Users
             Task.Run(() =>
             {
                 _userModel = _userModel.GetUserFromApiById().Result;
-                Roles = _roleServices.GetRoles().Result;
-                RoleNames = _roleServices.GetRolesName(Roles);
+                RoleNames = _roleServices.GetRolesName();
                 OnPropertyChanged(nameof(FirstName), nameof(LastName), nameof(Id), nameof(Phone), nameof(Email), nameof(Address), nameof(RoleNames), nameof(Role));
             });
 

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using TaskingoApp.Commands;
@@ -12,6 +13,8 @@ namespace TaskingoApp.ViewModel.WorkTask
     {
         private WorkTaskModel _workTaskModel;
         private IWorkTaskServices _workTaskServices = new WorkTaskServices();
+        private IRoleServices _roleServices = new RoleServices();
+        public List<string> RoleNames { get; set; } 
 
 
         public AddWorkTaskViewModel()
@@ -19,10 +22,19 @@ namespace TaskingoApp.ViewModel.WorkTask
             _workTaskModel = new WorkTaskModel();
             DeadLine = DateTime.Now.AddHours(1);
             OnPropertyChanged(nameof(DeadLine));
+            GetRoleByApi();
         }
         #region Getters
 
+        private void GetRoleByApi()
+        {
+            Task.Run(() =>
+            {
+                RoleNames = _roleServices.GetRolesName();
+                OnPropertyChanged(nameof(RoleNames));
+            });
 
+        }
         public int Priority
         {
             get => _workTaskModel.Priority;
@@ -43,6 +55,11 @@ namespace TaskingoApp.ViewModel.WorkTask
             get => _workTaskModel.Status;
             set => _workTaskModel.Status = value;
 
+        }
+        public string Role
+        {
+            get => _workTaskModel.WorkGroup;
+            set => _workTaskModel.WorkGroup = value;
         }
         public string Comment
         {

@@ -1,9 +1,6 @@
-﻿using System;
+﻿using Newtonsoft.Json;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
 using TaskingoApp.APICall;
 using TaskingoApp.Model;
 
@@ -18,8 +15,9 @@ namespace TaskingoApp.Services
             return roles;
         }
 
-        public List<string> GetRolesName(List<Role> roles)
+        public List<string> GetRolesName()
         {
+            var roles = GetRoles().Result;
             var roleNames = new List<string>();
             foreach (var role in roles)
                 roleNames.Add(role.RoleName);

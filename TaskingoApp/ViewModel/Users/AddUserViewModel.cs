@@ -13,8 +13,7 @@ namespace TaskingoApp.ViewModel.Users
         private readonly UserModel _userModel;
         private IUsersServices _usersServices = new UsersServices();
         private IRoleServices _roleServices = new RoleServices();
-        private List<Role> Roles { get; set; } = new List<Role>();
-        public List<string> RoleNames { get; set; } = new List<string>();
+        public List<string> RoleNames { get; set; }
         public AddUserViewModel()
         {
             _userModel = new UserModel();
@@ -27,8 +26,7 @@ namespace TaskingoApp.ViewModel.Users
         {
             Task.Run(() =>
             {
-                Roles = _roleServices.GetRoles().Result;
-                RoleNames = _roleServices.GetRolesName(Roles);
+                RoleNames = _roleServices.GetRolesName();
                 OnPropertyChanged(nameof(RoleNames));
             });
 

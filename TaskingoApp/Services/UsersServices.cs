@@ -58,6 +58,7 @@ namespace TaskingoApp.Services
 
             if (string.IsNullOrWhiteSpace(userModel.FirstName) || string.IsNullOrWhiteSpace(userModel.LastName)
                                                                || string.IsNullOrWhiteSpace(userModel.Address) ||
+                                                               string.IsNullOrWhiteSpace(userModel.Role) ||
                                                                !IsValidEmail(userModel.Email) ||
                                                                !regex.IsMatch(userModel.Phone.ToString()))
             {

@@ -47,6 +47,8 @@ namespace TaskingoApp.ViewModel
         public bool EditUsers { get; set; }
         public bool EditTask { get; set; }
         public bool Tasks { get; set; }
+        public bool Role { get; set; }
+        public bool AddRole { get; set; }
         #endregion
 
         private void StartUpView()
@@ -99,6 +101,14 @@ namespace TaskingoApp.ViewModel
                     View = new WorkTimeView();
                     OnPropertyChanged(nameof(View));
                     break;
+                case "Roles":
+                    View = new RoleView();
+                    OnPropertyChanged(nameof(Role));
+                    break;
+                case "AddRoleView":
+                    View = new AddRoleView();
+                    OnPropertyChanged(nameof(AddRole));
+                    break;
                 default:
                     View = new HomeView();
                     OnPropertyChanged(nameof(View));
@@ -114,7 +124,9 @@ namespace TaskingoApp.ViewModel
             Tasks = false;
             EditUsers = false;
             AddUsers = false;
-            OnPropertyChanged(nameof(Users), nameof(Tasks), nameof(AddUsers), nameof(EditUsers), nameof(EditTask), nameof(AddTask));
+            Role = false;
+            AddRole = false;
+            OnPropertyChanged(nameof(Users), nameof(Tasks), nameof(AddUsers), nameof(EditUsers), nameof(EditTask), nameof(AddTask), nameof(Role), nameof(AddRole));
         }
         #region Commands
         private ICommand _setActualView;

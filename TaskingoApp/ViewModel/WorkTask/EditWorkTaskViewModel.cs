@@ -26,7 +26,7 @@ namespace TaskingoApp.ViewModel.WorkTask
             Task.Run(() =>
             {
                 _workTaskModel = _workTaskModel.GetTaskById().Result;
-                RoleNames = _roleServices.GetRolesName();
+                RoleNames = _roleServices.GetRolesName().Result;
                 OnPropertyChanged(nameof(Id), nameof(Priority), nameof(Title), nameof(Description), nameof(Status), nameof(Comment), nameof(CreatedTime), nameof(DeadLine), nameof(WhoCreated), nameof(IsAssigned), nameof(AssignedUser), nameof(Role), nameof(RoleNames));
             });
 

@@ -26,7 +26,7 @@ namespace TaskingoApp.ViewModel.Users
         {
             Task.Run(() =>
             {
-                RoleNames = _roleServices.GetRolesName();
+                RoleNames = _roleServices.GetRolesName().Result;
                 OnPropertyChanged(nameof(RoleNames));
             });
 

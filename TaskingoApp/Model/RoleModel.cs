@@ -1,6 +1,6 @@
 ﻿namespace TaskingoApp.Model
 {
-    public class Role
+    public class RoleModel
     {
         public string RoleName { get; set; }
     }

@@ -80,6 +80,17 @@
                     Show User's Work Time
                 </Button.Content>
             </Button>
+            <Separator Margin="0,20,0,20"/>
+            <Button  Margin="10" Width="257" Height="40" Style="{StaticResource Button}" Command="{Binding Path=SetActualView}" CommandParameter="Roles">
+                <Button.Content>
+                    Show Roles
+                </Button.Content>
+            </Button>
+            <Button  Margin="10" Width="257" Height="40" Style="{StaticResource Button}" Command="{Binding Path=SetActualView}" CommandParameter="AddRoleView">
+                <Button.Content>
+                    Add Roles
+                </Button.Content>
+            </Button>
 
         </StackPanel>
 

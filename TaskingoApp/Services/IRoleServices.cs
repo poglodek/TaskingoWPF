@@ -6,7 +6,8 @@ namespace TaskingoApp.Services
 {
     public interface IRoleServices
     {
-        Task<List<Role>> GetRoles();
-        public List<string> GetRolesName();
+        Task<List<RoleModel>> GetRoles();
+        public Task<List<string>> GetRolesName();
+        public Task AddNewRole(string roleName);
     }
 }

@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using TaskingoApp.Components;
 using TaskingoApp.Model;
+using TaskingoApp.Model.User;
 using TaskingoApp.ViewModel.Base;
 
 namespace TaskingoApp.ViewModel.Users

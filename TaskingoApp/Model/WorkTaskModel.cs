@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using TaskingoApp.Annotations;
+using TaskingoApp.Model.User;
 using TaskingoApp.Services;
 
 namespace TaskingoApp.Model

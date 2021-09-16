@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using TaskingoApp.Services;
 
-namespace TaskingoApp.Model
+namespace TaskingoApp.Model.User
 {
     public class UserModel
     {

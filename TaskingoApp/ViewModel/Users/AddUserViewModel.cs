@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using TaskingoApp.Commands;
 using TaskingoApp.Model;
+using TaskingoApp.Model.User;
 using TaskingoApp.Services;
 using TaskingoApp.ViewModel.Base;
 
@@ -10,13 +11,13 @@ namespace TaskingoApp.ViewModel.Users
 {
     public class AddUserViewModel : ViewModelBase
     {
-        private readonly UserModel _userModel;
+        private readonly UserCreateModel _userModel;
         private IUsersServices _usersServices = new UsersServices();
         private IRoleServices _roleServices = new RoleServices();
         public List<string> RoleNames { get; set; }
         public AddUserViewModel()
         {
-            _userModel = new UserModel();
+            _userModel = new UserCreateModel();
             GetRoleByApi();
         }
 

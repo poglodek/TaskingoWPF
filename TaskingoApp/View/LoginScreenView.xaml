@@ -24,14 +24,14 @@
             <TextBox x:Name="email" Style="{StaticResource TextBoxLogin}" Text="{Binding Path=Email}">
                 
             </TextBox>
-            <Label Foreground="White">Password:</Label>
-            <components:BindablePasswordBox Password="{Binding Password, Mode=TwoWay}" >
+            <Label Foreground="White">PasswordHashed:</Label>
+            <components:BindablePasswordBox Password="{Binding Path=Password, Mode=TwoWay}" >
 
             </components:BindablePasswordBox>
             <DockPanel HorizontalAlignment="Center" >
                 
                 <Button  Style="{StaticResource ButtonLogin}" Command="{Binding Path=ForgotPassword}">
-                    <Button.Content>Forgot Password</Button.Content>
+                    <Button.Content>Forgot PasswordHashed</Button.Content>
 
                 </Button>
                 <Button  Style="{StaticResource ButtonLogin}" Command="{Binding Path=LoginCommand}">

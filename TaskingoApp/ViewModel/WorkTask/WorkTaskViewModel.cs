@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using TaskingoApp.Model;
+using TaskingoApp.Model.User;
 using TaskingoApp.ViewModel.Base;
 
 namespace TaskingoApp.ViewModel.WorkTask

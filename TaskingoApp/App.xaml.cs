@@ -11,6 +11,7 @@ namespace TaskingoApp
         public App()
         {
             new ConfigReader().ReadConfig();
+            MyMapper.Initialize();
         }
     }
 

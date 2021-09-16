@@ -14,7 +14,7 @@ namespace TaskingoApp.ViewModel.WorkTask
         private WorkTaskModel _workTaskModel;
         private IWorkTaskServices _workTaskServices = new WorkTaskServices();
         private IRoleServices _roleServices = new RoleServices();
-        public List<string> RoleNames { get; set; } 
+        public List<string> RoleNames { get; set; }
 
 
         public AddWorkTaskViewModel()

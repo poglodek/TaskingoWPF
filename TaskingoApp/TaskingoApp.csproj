@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="10.1.1" />
     <PackageReference Include="Extended.Wpf.Toolkit" Version="4.1.0" />
     <PackageReference Include="FontAwesome5" Version="2.1.4" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.2" />
@@ -17,6 +18,8 @@
 
   <ItemGroup>
     <Folder Include="Converter\" />
+    <Folder Include="Model\WorkTask\" />
+    <Folder Include="Model\WorkTime\" />
   </ItemGroup>
 
   <ItemGroup>

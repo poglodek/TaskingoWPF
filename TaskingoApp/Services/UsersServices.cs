@@ -7,6 +7,7 @@ using System.Windows;
 using TaskingoApp.APICall;
 using TaskingoApp.Builder;
 using TaskingoApp.Model;
+using TaskingoApp.Model.User;
 
 namespace TaskingoApp.Services
 {
@@ -36,10 +37,11 @@ namespace TaskingoApp.Services
             return true;
         }
 
-        public async Task<bool> AddNewUser(UserModel userModel)
+        public async Task<bool> AddNewUser(UserCreateModel userCreateModel)
         {
+            var userModel = MyMapper.iMapper.Map<UserModel>(userCreateModel);
             if (!CheckUserModel(userModel)) return false;
-            await BaseCall.MakeCall("User/Register", System.Net.Http.HttpMethod.Post, userModel);
+            await BaseCall.MakeCall("User/Register", System.Net.Http.HttpMethod.Post, userCreateModel);
             PopupBuilder.Build("User Added");
             return true;
         }
@@ -49,7 +51,6 @@ namespace TaskingoApp.Services
             if (!CheckUserModel(userModel)) return;
             await BaseCall.MakeCall("User", System.Net.Http.HttpMethod.Patch, userModel);
             PopupBuilder.Build("User Edited Successfully");
-
         }
 
         private bool CheckUserModel(UserModel userModel)

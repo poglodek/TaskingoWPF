@@ -34,7 +34,7 @@
                     </DockPanel>
                     <DockPanel Margin="5">
                         <Label Content="Status :" Style="{StaticResource LabelWindow}"  FontSize="25" />
-                        <ComboBox  SelectedIndex="{Binding Path=Status }" Width="825" DockPanel.Dock="Left" Margin="76,0,0,0"  FontSize="25" Background="DarkBlue" Foreground="White"
+                        <ComboBox  SelectedItem="{Binding Path=Status }" Width="825" DockPanel.Dock="Left" Margin="76,0,0,0"  FontSize="25" Background="DarkBlue" Foreground="White"
                                   Style="{StaticResource {x:Static ToolBar.ComboBoxStyleKey}}" >
                             <ComboBoxItem Content="In queue" />
                             <ComboBoxItem Content="In progress" />

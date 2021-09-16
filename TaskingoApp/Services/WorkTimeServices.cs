@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using TaskingoApp.APICall;
-using TaskingoApp.Model;
+using TaskingoApp.Model.WorkTime;
 
 namespace TaskingoApp.Services
 {

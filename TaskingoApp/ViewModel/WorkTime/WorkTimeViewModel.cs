@@ -1,5 +1,5 @@
 ﻿using System;
-using TaskingoApp.Model;
+using TaskingoApp.Model.WorkTime;
 using TaskingoApp.ViewModel.Base;
 
 namespace TaskingoApp.ViewModel.WorkTime
@@ -23,12 +23,6 @@ namespace TaskingoApp.ViewModel.WorkTime
             }
 
         }
-
-        public WorkTimeViewModel()
-        {
-
-        }
-
         public WorkTimeViewModel(WorkTimeModel workTimeModel)
         {
             WorkTimeModel = workTimeModel;

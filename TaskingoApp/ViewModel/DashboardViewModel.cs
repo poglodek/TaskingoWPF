@@ -38,7 +38,7 @@ namespace TaskingoApp.ViewModel
             }
         }
 
-        #region ICommand
+        #region Commands
 
         private ICommand _setView;
 

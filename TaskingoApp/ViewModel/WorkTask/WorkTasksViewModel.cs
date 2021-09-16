@@ -3,7 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using TaskingoApp.Components;
-using TaskingoApp.Model;
+using TaskingoApp.Model.WorkTask;
 using TaskingoApp.ViewModel.Base;
 
 namespace TaskingoApp.ViewModel.WorkTask
@@ -14,21 +14,6 @@ namespace TaskingoApp.ViewModel.WorkTask
         public AsyncObservableCollection<WorkTaskViewModel> workTaskViewModels { get; set; } = new AsyncObservableCollection<WorkTaskViewModel>();
         private AsyncObservableCollection<WorkTaskViewModel> TasksFromApi { get; set; } = new AsyncObservableCollection<WorkTaskViewModel>();
 
-
-        public void CopyFromModel()
-        {
-            workTaskViewModels.Clear();
-            TasksFromApi.Clear();
-            foreach (var task in _workTaskModels)
-                TasksFromApi.Add(new WorkTaskViewModel(task));
-            if (!Properties.Settings.Default.TaskFilter.Equals("All"))
-                workTaskViewModels.AddRange(TasksFromApi
-                    .Where(x => x.Status.Contains(Properties.Settings.Default.TaskFilter))
-                    .ToList());
-            else
-                workTaskViewModels.AddRange(TasksFromApi);
-
-        }
         public WorkTasksViewModel()
         {
             _workTaskModels = new WorkTasksModel();
@@ -51,8 +36,21 @@ namespace TaskingoApp.ViewModel.WorkTask
 
             });
         }
+        public void CopyFromModel()
+        {
+            workTaskViewModels.Clear();
+            TasksFromApi.Clear();
+            foreach (var task in _workTaskModels)
+                TasksFromApi.Add(new WorkTaskViewModel(task));
+            if (!Properties.Settings.Default.TaskFilter.Equals("All"))
+                workTaskViewModels.AddRange(TasksFromApi
+                    .Where(x => x.Status.Contains(Properties.Settings.Default.TaskFilter))
+                    .ToList());
+            else
+                workTaskViewModels.AddRange(TasksFromApi);
 
-
+        }
+        #region getters
         private WorkTaskViewModel _selectedTask;
 
         public WorkTaskViewModel SelectedTask
@@ -66,6 +64,7 @@ namespace TaskingoApp.ViewModel.WorkTask
 
             }
         }
+
         private string _searchingTask;
 
         public string SearchingTask
@@ -77,6 +76,9 @@ namespace TaskingoApp.ViewModel.WorkTask
                 ShowTasks();
             }
         }
+        #endregion
+
+        #region searching
         private void ShowTasks()
         {
             Properties.Settings.Default.TaskUserMail = string.Empty;
@@ -100,8 +102,9 @@ namespace TaskingoApp.ViewModel.WorkTask
                 }
             );
             if (!Properties.Settings.Default.TaskFilter.Equals("All")) tasks
-               .Where(x => x.Status.Contains(Properties.Settings.Default.TaskFilter));
+                .Where(x => x.Status.Contains(Properties.Settings.Default.TaskFilter));
             return tasks;
         }
+        #endregion
     }
 }

@@ -1,5 +1,4 @@
 ﻿using System.Threading.Tasks;
-using TaskingoApp.Model;
 using TaskingoApp.Model.User;
 using TaskingoApp.ViewModel.Base;
 
@@ -17,7 +16,10 @@ namespace TaskingoApp.ViewModel.Users
 
 
         }
-
+        public UserViewModel(UserModel user)
+        {
+            _userModel = user;
+        }
         private void GetUserByApi()
         {
             Task.Run(() =>
@@ -27,10 +29,7 @@ namespace TaskingoApp.ViewModel.Users
             });
 
         }
-        public UserViewModel(UserModel user)
-        {
-            _userModel = user;
-        }
+
         #region Getters
 
         public int Id => _userModel.Id;

@@ -4,7 +4,7 @@ using TaskingoApp.Annotations;
 using TaskingoApp.Model.User;
 using TaskingoApp.Services;
 
-namespace TaskingoApp.Model
+namespace TaskingoApp.Model.WorkTask
 {
     public class WorkTaskModel
     {

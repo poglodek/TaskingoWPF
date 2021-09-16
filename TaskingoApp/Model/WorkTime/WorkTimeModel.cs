@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TaskingoApp.Model
+namespace TaskingoApp.Model.WorkTime
 {
     public class WorkTimeModel
     {

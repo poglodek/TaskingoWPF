@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AutoMapper;
+﻿using AutoMapper;
 using TaskingoApp.Model.User;
+using TaskingoApp.Model.WorkTask;
 
 namespace TaskingoApp
 {
@@ -16,8 +12,10 @@ namespace TaskingoApp
         {
             if (!_isInitialized)
             {
-                var config = new MapperConfiguration(cfg => {
+                var config = new MapperConfiguration(cfg =>
+                {
                     cfg.CreateMap<UserModel, UserCreateModel>().ReverseMap();
+                    cfg.CreateMap<WorkTaskModel, WorkTaskCreate>().ReverseMap();
                 });
                 iMapper = config.CreateMapper();
                 _isInitialized = true;

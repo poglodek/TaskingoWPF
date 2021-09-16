@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using TaskingoApp.Model;
+using TaskingoApp.Model.WorkTask;
 
 namespace TaskingoApp.Services
 {
@@ -10,6 +10,6 @@ namespace TaskingoApp.Services
         Task<WorkTaskModel> GetTaskById(int Id);
         Task EditTask(int Id, WorkTaskModel workTaskModel);
         Task<bool> DeleteTaskById(int Id);
-        Task AddTask(WorkTaskModel workTaskModel);
+        Task AddTask(WorkTaskCreate workTaskModel);
     }
 }

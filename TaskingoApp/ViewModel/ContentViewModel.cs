@@ -40,13 +40,14 @@ namespace TaskingoApp.ViewModel
                 OnPropertyChanged(nameof(MonthOfTasks));
             }
         }
+        #region bools
         public bool Users { get; set; }
         public bool AddUsers { get; set; }
         public bool AddTask { get; set; }
         public bool EditUsers { get; set; }
         public bool EditTask { get; set; }
         public bool Tasks { get; set; }
-
+        #endregion
 
         private void StartUpView()
         {
@@ -115,6 +116,7 @@ namespace TaskingoApp.ViewModel
             AddUsers = false;
             OnPropertyChanged(nameof(Users), nameof(Tasks), nameof(AddUsers), nameof(EditUsers), nameof(EditTask), nameof(AddTask));
         }
+        #region Commands
         private ICommand _setActualView;
 
         public ICommand SetActualView
@@ -179,7 +181,7 @@ namespace TaskingoApp.ViewModel
                 }, x => !string.IsNullOrEmpty(Properties.Settings.Default.TaskUserMail)));
             }
         }
-
+        #endregion
         public void ChangeActualView(string viewName)
         {
             if (viewName == "User" && Properties.Settings.Default.UserId < 0 ||

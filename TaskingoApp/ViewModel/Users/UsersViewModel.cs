@@ -1,7 +1,6 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
 using TaskingoApp.Components;
-using TaskingoApp.Model;
 using TaskingoApp.Model.User;
 using TaskingoApp.ViewModel.Base;
 
@@ -13,6 +12,20 @@ namespace TaskingoApp.ViewModel.Users
 
         public AsyncObservableCollection<UserViewModel> UsersViewModels { get; set; } = new AsyncObservableCollection<UserViewModel>();
         private AsyncObservableCollection<UserViewModel> UsersFromApi { get; set; } = new AsyncObservableCollection<UserViewModel>();
+        public UsersViewModel()
+        {
+            _usersModel = new UsersModel();
+            DownloadUsers();
+
+        }
+        private void DownloadUsers()
+        {
+            Task.Run(() =>
+            {
+                _usersModel.GetUsersModelsList().Wait();
+                CopyFromModel();
+            });
+        }
         public void CopyFromModel()
         {
             UsersViewModels.Clear();
@@ -34,6 +47,15 @@ namespace TaskingoApp.ViewModel.Users
                 ShowUsers();
             }
         }
+        private void ShowUsers()
+        {
+            if (string.IsNullOrEmpty(_searchingUser))
+                DownloadUsers();
+            var searchingUsersFromApi = UsersFromApi.Where(
+                x => x.FirstName.ToUpper().Contains(_searchingUser.ToUpper()) || x.LastName.ToUpper().Contains(_searchingUser.ToUpper())).ToList();
+            UsersViewModels.Clear();
+            UsersViewModels.AddRange(searchingUsersFromApi);
+        }
         private UserViewModel _selectedUser;
 
         public UserViewModel SelectedUser
@@ -51,32 +73,6 @@ namespace TaskingoApp.ViewModel.Users
 
 
             }
-        }
-
-        private void ShowUsers()
-        {
-            if (string.IsNullOrEmpty(_searchingUser))
-                DownloadUsers();
-            var searchingUsersFromApi = UsersFromApi.Where(
-                x => x.FirstName.ToUpper().Contains(_searchingUser.ToUpper()) || x.LastName.ToUpper().Contains(_searchingUser.ToUpper())).ToList();
-            UsersViewModels.Clear();
-            UsersViewModels.AddRange(searchingUsersFromApi);
-        }
-
-
-        public UsersViewModel()
-        {
-            _usersModel = new UsersModel();
-            DownloadUsers();
-
-        }
-        private void DownloadUsers()
-        {
-            Task.Run(() =>
-            {
-                _usersModel.GetUsersModelsList().Wait();
-                CopyFromModel();
-            });
         }
 
     }

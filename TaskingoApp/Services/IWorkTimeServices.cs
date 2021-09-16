@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using TaskingoApp.Model;
+using TaskingoApp.Model.WorkTime;
 
 namespace TaskingoApp.Services
 {

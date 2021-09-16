@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using TaskingoApp.APICall;
 using TaskingoApp.Builder;
-using TaskingoApp.Model;
+using TaskingoApp.Model.WorkTask;
 
 namespace TaskingoApp.Services
 {
@@ -42,11 +42,12 @@ namespace TaskingoApp.Services
             return true;
         }
 
-        public async Task AddTask(WorkTaskModel workTaskModel)
+        public async Task AddTask(WorkTaskCreate workTaskCreate)
         {
+            var workTaskModel = MyMapper.iMapper.Map<WorkTaskModel>(workTaskCreate);
             if (!CheckTaskModel(workTaskModel)) return;
-            workTaskModel.Status = workTaskModel.Status.Substring(38);
-            await BaseCall.MakeCall($"WorkTask", System.Net.Http.HttpMethod.Post, workTaskModel);
+            workTaskCreate.Status = workTaskCreate.Status.Substring(38);
+            await BaseCall.MakeCall($"WorkTask", System.Net.Http.HttpMethod.Post, workTaskCreate);
             PopupBuilder.Build("Task Added Successfully");
         }
 

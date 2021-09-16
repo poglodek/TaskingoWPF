@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
-using TaskingoApp.Model;
 using TaskingoApp.Model.User;
+using TaskingoApp.Model.WorkTask;
 using TaskingoApp.ViewModel.Base;
 
 namespace TaskingoApp.ViewModel.WorkTask
@@ -9,7 +9,10 @@ namespace TaskingoApp.ViewModel.WorkTask
     public class WorkTaskViewModel : ViewModelBase
     {
         private WorkTaskModel _workTaskModel;
-
+        public WorkTaskViewModel(WorkTaskModel workTaskModel)
+        {
+            _workTaskModel = workTaskModel;
+        }
         public WorkTaskViewModel()
         {
             _workTaskModel = new WorkTaskModel();
@@ -21,15 +24,12 @@ namespace TaskingoApp.ViewModel.WorkTask
             Task.Run(() =>
             {
                 _workTaskModel = _workTaskModel.GetTaskById().Result;
-                OnPropertyChanged(nameof(Id), nameof(Priority), nameof(Title), nameof(Description), nameof(Status), nameof(Comment), nameof(CreatedTime), nameof(DeadLine), nameof(WhoCreated), nameof(IsAssigned), nameof(AssignedUser));
+                OnPropertyChanged(nameof(Id), nameof(Priority), nameof(Title), nameof(Description), nameof(Status), nameof(Comment), nameof(CreatedTime), nameof(DeadLine), nameof(WhoCreated), nameof(IsAssigned), nameof(AssignedUser), nameof(WorkGroup));
             });
 
         }
 
-        public WorkTaskViewModel(WorkTaskModel workTaskModel)
-        {
-            _workTaskModel = workTaskModel;
-        }
+
         #region Getters
 
         public int Id => _workTaskModel.Id;
@@ -37,7 +37,9 @@ namespace TaskingoApp.ViewModel.WorkTask
         public string Title => _workTaskModel.Title;
         public string Description => _workTaskModel.Description;
         public string Status => _workTaskModel.Status;
+        public string WorkGroup => _workTaskModel.WorkGroup;
         public string Comment => _workTaskModel.Comment;
+
         public DateTime CreatedTime => _workTaskModel.CreatedTime;
         public DateTime DeadLine => _workTaskModel.DeadLine;
         public UserModel WhoCreated => _workTaskModel.WhoCreated;

@@ -18,8 +18,6 @@
 
   <ItemGroup>
     <Folder Include="Converter\" />
-    <Folder Include="Model\WorkTask\" />
-    <Folder Include="Model\WorkTime\" />
   </ItemGroup>
 
   <ItemGroup>

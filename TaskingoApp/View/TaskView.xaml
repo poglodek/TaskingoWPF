@@ -36,6 +36,10 @@
                         <TextBlock DockPanel.Dock="Left" Margin="10,0,0,0"  FontSize="25" Style="{StaticResource ListBoxTextBlockStyle}" Text="{Binding Path=Status }"></TextBlock>
                     </DockPanel>
                     <DockPanel Margin="5">
+                        <Label Content="Workgroup :" Style="{StaticResource LabelWindow}"  FontSize="25" />
+                        <TextBlock DockPanel.Dock="Left" Margin="10,0,0,0"  FontSize="25" Style="{StaticResource ListBoxTextBlockStyle}" Text="{Binding Path=WorkGroup }"></TextBlock>
+                    </DockPanel>
+                    <DockPanel Margin="5">
                         <Label Content="Comment :" Style="{StaticResource LabelWindow}"  FontSize="25" />
                         <TextBlock DockPanel.Dock="Left" Margin="10,0,0,0" FontSize="25" TextWrapping="Wrap"  Style="{StaticResource ListBoxTextBlockStyle}" Text="{Binding Path=Comment }"></TextBlock>
                     </DockPanel>

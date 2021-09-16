@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 using TaskingoApp.Components;
-using TaskingoApp.Model;
+using TaskingoApp.Model.WorkTime;
 using TaskingoApp.ViewModel.Base;
 
 namespace TaskingoApp.ViewModel.WorkTime

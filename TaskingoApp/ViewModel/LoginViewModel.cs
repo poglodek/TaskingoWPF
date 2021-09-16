@@ -1,5 +1,4 @@
-﻿using System.Net.Mail;
-using System.Windows.Input;
+﻿using System.Windows.Input;
 using TaskingoApp.Commands;
 using TaskingoApp.Model;
 using TaskingoApp.Services;
@@ -17,6 +16,7 @@ namespace TaskingoApp.ViewModel
         {
             LoginCommand = new LoginCommand(this, _loginServices);
         }
+        #region getters
         public string Email
         {
             get => _loginModel.Email;
@@ -36,7 +36,8 @@ namespace TaskingoApp.ViewModel
                 OnPropertyChanged(nameof(Password));
             }
         }
-
+        #endregion
+        #region Commands
         private ICommand forgotPassword;
 
         public ICommand ForgotPassword
@@ -53,20 +54,8 @@ namespace TaskingoApp.ViewModel
 
         public ICommand LoginCommand { get; }
 
+        #endregion
 
-
-        private bool IsEmailValid(string email)
-        {
-            try
-            {
-                var mail = new MailAddress(email);
-                return email.Length > 5;
-            }
-            catch
-            {
-                return false;
-            }
-        }
     }
 
 }

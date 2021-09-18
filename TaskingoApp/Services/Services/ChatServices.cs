@@ -36,7 +36,7 @@ namespace TaskingoApp.Services.Services
 
         public async Task<List<UserModel>> GetLastUsers()
         {
-            var jsonUser = await BaseCall.MakeCall($"LastChats", System.Net.Http.HttpMethod.Get, null);
+            var jsonUser = await BaseCall.MakeCall($"Message/LastUsers", System.Net.Http.HttpMethod.Get, null);
             var user = JsonConvert.DeserializeObject<List<UserModel>>(jsonUser);
             return user;
         }

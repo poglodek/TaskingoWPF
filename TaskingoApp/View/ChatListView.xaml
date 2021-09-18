@@ -12,15 +12,21 @@
         <vm:ChatListViewModel />
     </UserControl.DataContext>
     <Grid>
+
         <Grid.Background>
             <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                 <GradientStop Color="#1c064f" Offset="0"/>
                 <GradientStop Color="#0041b3" Offset="1.0"/>
             </LinearGradientBrush>
         </Grid.Background>
-
-
-        <ListBox SelectedItem="{Binding SelectedUser}" x:Name="ListBoxUsers" Background="Transparent" ItemsSource="{Binding Path=messageModels}"  BorderThickness="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <DockPanel >
+            <Label Style="{StaticResource LabelWindow}"  Content="Last Chats" />
+        </DockPanel>
+        <ListBox SelectedItem="{Binding SelectedUser}" x:Name="ListBoxUsers" Grid.Row="1" Background="Transparent" ItemsSource="{Binding Path=messageModels}"  BorderThickness="0">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock  Style="{StaticResource ListBoxTextBlockStyle}" Text="{Binding Mode=OneWay}" />

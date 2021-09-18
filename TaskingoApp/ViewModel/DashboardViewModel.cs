@@ -19,15 +19,16 @@ namespace TaskingoApp.ViewModel
             Task.Run(() =>
             {
                 var nameFromApi = _dashboardServices.GetMyName().Result;
-                _dashboardServices.GetMyId().Wait();
                 Application.Current.Dispatcher.Invoke(() =>
                 {
                     Name = nameFromApi;
                 });
+                _dashboardServices.GetMyId().Wait();
+                _dashboardServices.ConnectWithApi().Wait();
             });
             var loginScreen = Application.Current.Windows[0];
             loginScreen.Close();
-            _dashboardServices.ConnectWithApi().Wait();
+            
         }
 
         private string name;

@@ -6,6 +6,8 @@ using TaskingoApp.Commands;
 using TaskingoApp.Model.User;
 using TaskingoApp.Model.WorkTask;
 using TaskingoApp.Services;
+using TaskingoApp.Services.IServices;
+using TaskingoApp.Services.Services;
 using TaskingoApp.ViewModel.Base;
 
 namespace TaskingoApp.ViewModel.WorkTask

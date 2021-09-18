@@ -3,6 +3,8 @@ using System.Windows;
 using System.Windows.Input;
 using TaskingoApp.Commands;
 using TaskingoApp.Services;
+using TaskingoApp.Services.IServices;
+using TaskingoApp.Services.Services;
 using TaskingoApp.View;
 using TaskingoApp.ViewModel.Base;
 
@@ -17,6 +19,7 @@ namespace TaskingoApp.ViewModel
             Task.Run(() =>
             {
                 var nameFromApi = _dashboardServices.GetMyName().Result;
+                _dashboardServices.GetMyId().Wait();
                 Application.Current.Dispatcher.Invoke(() =>
                 {
                     Name = nameFromApi;
@@ -24,7 +27,7 @@ namespace TaskingoApp.ViewModel
             });
             var loginScreen = Application.Current.Windows[0];
             loginScreen.Close();
-
+            _dashboardServices.ConnectWithApi().Wait();
         }
 
         private string name;

@@ -2,8 +2,9 @@
 using System.Threading.Tasks;
 using TaskingoApp.APICall;
 using TaskingoApp.Model;
+using TaskingoApp.Services.IServices;
 
-namespace TaskingoApp.Services
+namespace TaskingoApp.Services.Services
 {
     public class LoginServices : ILoginServices
     {

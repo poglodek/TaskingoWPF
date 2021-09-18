@@ -23,5 +23,8 @@
     <Setting Name="ApiUrl" Type="System.String" Scope="User">
       <Value Profile="(Default)">https://localhost:5001/</Value>
     </Setting>
+    <Setting Name="MyId" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">-1</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

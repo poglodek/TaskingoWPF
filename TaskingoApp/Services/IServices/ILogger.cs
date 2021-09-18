@@ -1,4 +1,4 @@
-﻿namespace TaskingoApp.Services
+﻿namespace TaskingoApp.Services.IServices
 {
     public interface ILogger
     {

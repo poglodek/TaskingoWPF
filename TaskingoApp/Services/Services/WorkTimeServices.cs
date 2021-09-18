@@ -1,10 +1,11 @@
-﻿using Newtonsoft.Json;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 using TaskingoApp.APICall;
 using TaskingoApp.Model.WorkTime;
+using TaskingoApp.Services.IServices;
 
-namespace TaskingoApp.Services
+namespace TaskingoApp.Services.Services
 {
     public class WorkTimeServices : IWorkTimeServices
     {

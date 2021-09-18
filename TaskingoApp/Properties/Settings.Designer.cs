@@ -106,5 +106,17 @@ namespace TaskingoApp.Properties {
                 this["ApiUrl"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("-1")]
+        public int MyId {
+            get {
+                return ((int)(this["MyId"]));
+            }
+            set {
+                this["MyId"] = value;
+            }
+        }
     }
 }

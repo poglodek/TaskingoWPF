@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using TaskingoApp.Services;
+using TaskingoApp.Services.Services;
 
 namespace TaskingoApp.Model.User
 {
@@ -12,7 +13,7 @@ namespace TaskingoApp.Model.User
         public string LastName { get; set; }
         public string Email { get; set; }
         public string Role { get; set; }
-        public string ActualStatus { get; set; }
+        public bool IsOnline { get; set; }
         public int Phone { get; set; }
         public string Address { get; set; }
 

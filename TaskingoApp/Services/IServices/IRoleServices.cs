@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using TaskingoApp.Model;
 
-namespace TaskingoApp.Services
+namespace TaskingoApp.Services.IServices
 {
     public interface IRoleServices
     {

@@ -1,9 +1,11 @@
 ﻿using System.Threading.Tasks;
 
-namespace TaskingoApp.Services
+namespace TaskingoApp.Services.IServices
 {
     public interface IDashboardServices
     {
         Task<string> GetMyName();
+        Task GetMyId();
+        Task ConnectWithApi();
     }
 }

@@ -1,11 +1,12 @@
-﻿using Newtonsoft.Json;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 using TaskingoApp.APICall;
 using TaskingoApp.Builder;
 using TaskingoApp.Model;
+using TaskingoApp.Services.IServices;
 
-namespace TaskingoApp.Services
+namespace TaskingoApp.Services.Services
 {
     public class RoleServices : IRoleServices
     {

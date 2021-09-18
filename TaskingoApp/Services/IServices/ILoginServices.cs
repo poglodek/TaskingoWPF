@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace TaskingoApp.Services
+namespace TaskingoApp.Services.IServices
 {
     public interface ILoginServices
     {

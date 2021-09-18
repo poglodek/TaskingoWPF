@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using TaskingoApp.Model.WorkTime;
 
-namespace TaskingoApp.Services
+namespace TaskingoApp.Services.IServices
 {
     public interface IWorkTimeServices
     {

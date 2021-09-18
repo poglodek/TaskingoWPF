@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using TaskingoApp.Services;
+using TaskingoApp.Services.Services;
 
 namespace TaskingoApp.Model.User
 {

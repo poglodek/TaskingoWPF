@@ -2,6 +2,8 @@
 using TaskingoApp.Commands;
 using TaskingoApp.Model;
 using TaskingoApp.Services;
+using TaskingoApp.Services.IServices;
+using TaskingoApp.Services.Services;
 using TaskingoApp.ViewModel.Base;
 
 namespace TaskingoApp.ViewModel

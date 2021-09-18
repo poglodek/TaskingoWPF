@@ -43,8 +43,8 @@
                     <TextBlock DockPanel.Dock="Left" Margin="10,0,0,0"  Style="{StaticResource ListBoxTextBlockStyle}" Text="{Binding Path=Address}"></TextBlock>
                 </DockPanel>
                 <DockPanel Margin="10">
-                    <Label Content="Actual Status:" Style="{StaticResource LabelWindow}" FontSize="32" />
-                    <TextBlock DockPanel.Dock="Left" Margin="10,0,0,0"  Style="{StaticResource ListBoxTextBlockStyle}" Text="{Binding Path=Status}"></TextBlock>
+                    <Label Content="Is Online:" Style="{StaticResource LabelWindow}" FontSize="32" />
+                    <TextBlock DockPanel.Dock="Left" Margin="10,0,0,0"  Style="{StaticResource ListBoxTextBlockStyle}" Text="{Binding Path=IsOnline}"></TextBlock>
                 </DockPanel>
 
             </StackPanel>

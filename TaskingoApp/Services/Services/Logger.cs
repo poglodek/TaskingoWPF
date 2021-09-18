@@ -1,8 +1,9 @@
 ﻿using System;
 using System.IO;
 using TaskingoApp.Builder;
+using TaskingoApp.Services.IServices;
 
-namespace TaskingoApp.Services
+namespace TaskingoApp.Services.Services
 {
     public class Logger : ILogger
     {

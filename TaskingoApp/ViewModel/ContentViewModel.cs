@@ -15,7 +15,6 @@ namespace TaskingoApp.ViewModel
     {
         private readonly IUsersServices _usersServices = new UsersServices();
         private readonly IWorkTaskServices _workTaskServices = new WorkTaskServices();
-        private readonly IChatServices _chatServices = new ChatServices();
         public ContentViewModel()
         {
             StartUpView();
@@ -52,6 +51,7 @@ namespace TaskingoApp.ViewModel
         public bool Tasks { get; set; }
         public bool Role { get; set; }
         public bool AddRole { get; set; }
+        public bool Chat { get; set; }
         #endregion
 
         private void StartUpView()
@@ -106,12 +106,15 @@ namespace TaskingoApp.ViewModel
                     break;
                 case "Roles":
                     View = new RoleView();
-                    _chatServices.SendMessage("test", 3);
                     OnPropertyChanged(nameof(Role));
                     break;
                 case "AddRoleView":
                     View = new AddRoleView();
                     OnPropertyChanged(nameof(AddRole));
+                    break;
+                case "Chat":
+                    View = new ChatListView();
+                    OnPropertyChanged(nameof(Chat));
                     break;
                 default:
                     View = new HomeView();
@@ -129,8 +132,9 @@ namespace TaskingoApp.ViewModel
             EditUsers = false;
             AddUsers = false;
             Role = false;
+            Chat = false;
             AddRole = false;
-            OnPropertyChanged(nameof(Users), nameof(Tasks), nameof(AddUsers), nameof(EditUsers), nameof(EditTask), nameof(AddTask), nameof(Role), nameof(AddRole));
+            OnPropertyChanged(nameof(Users), nameof(Tasks), nameof(AddUsers), nameof(EditUsers), nameof(EditTask), nameof(AddTask), nameof(Role), nameof(AddRole), nameof(Chat));
         }
         #region Commands
         private ICommand _setActualView;

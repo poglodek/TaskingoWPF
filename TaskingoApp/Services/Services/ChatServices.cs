@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.SignalR.Client;
+using Newtonsoft.Json;
+using TaskingoApp.APICall;
+using TaskingoApp.Model.User;
 using TaskingoApp.Services.IServices;
 
 namespace TaskingoApp.Services.Services
@@ -29,6 +32,13 @@ namespace TaskingoApp.Services.Services
         public async Task SendMessage(string message, int recipient)
         {
             await _connection.SendAsync("SendMessage", message, recipient);
+        }
+
+        public async Task<List<UserModel>> GetLastUsers()
+        {
+            var jsonUser = await BaseCall.MakeCall($"LastChats", System.Net.Http.HttpMethod.Get, null);
+            var user = JsonConvert.DeserializeObject<List<UserModel>>(jsonUser);
+            return user;
         }
     }
 }

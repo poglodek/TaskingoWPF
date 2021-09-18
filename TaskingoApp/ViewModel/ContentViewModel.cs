@@ -15,6 +15,7 @@ namespace TaskingoApp.ViewModel
     {
         private readonly IUsersServices _usersServices = new UsersServices();
         private readonly IWorkTaskServices _workTaskServices = new WorkTaskServices();
+        private readonly IChatServices _chatServices = new ChatServices();
         public ContentViewModel()
         {
             StartUpView();
@@ -105,6 +106,7 @@ namespace TaskingoApp.ViewModel
                     break;
                 case "Roles":
                     View = new RoleView();
+                    _chatServices.SendMessage("test", 3);
                     OnPropertyChanged(nameof(Role));
                     break;
                 case "AddRoleView":

@@ -11,7 +11,7 @@ namespace TaskingoApp.Services.Services
     public class ChatServices : IChatServices
     {
         public event Action<string> ReceiveMessage;
-        HubConnection _connection = new HubConnectionBuilder()
+        public static HubConnection _connection = new HubConnectionBuilder()
             .WithAutomaticReconnect()
             .WithUrl(Properties.Settings.Default.ApiUrl+"chat")
             .Build();

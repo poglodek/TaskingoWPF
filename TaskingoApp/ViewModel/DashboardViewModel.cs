@@ -22,6 +22,7 @@ namespace TaskingoApp.ViewModel
                 Application.Current.Dispatcher.Invoke(() =>
                 {
                     Name = nameFromApi;
+                    Properties.Settings.Default.MyName = Name;
                 });
                 _dashboardServices.GetMyId().Wait();
                 _dashboardServices.ConnectWithApi().Wait();

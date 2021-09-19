@@ -74,7 +74,7 @@ namespace TaskingoApp.ViewModel.Chat
                         _chatServices.SendMessage(Message, Properties.Settings.Default.UserId);
                         MessagesList.Add(new MessageModel
                         {
-                            Sender = "ME",
+                            Sender = Properties.Settings.Default.MyName,
                             UserMessage = Message
                         });
                         Message = "";

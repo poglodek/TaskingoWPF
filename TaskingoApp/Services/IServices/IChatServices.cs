@@ -10,9 +10,10 @@ namespace TaskingoApp.Services.IServices
 {
     public interface IChatServices
     {
-        event Action<string> ReceiveMessage;
+        event Action<MessageModel> ReceiveMessage;
         Task Connect();
         Task SendMessage(string message, int recipient);
         Task<List<UserModel>> GetLastUsers();
+        Task<List<MessageModel>> GetMessages(int skip);
     }
 }

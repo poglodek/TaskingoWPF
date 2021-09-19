@@ -10,5 +10,9 @@ namespace TaskingoApp.Model.Chat
     {
         public string Sender { get; set; }
         public string UserMessage { get; set; }
+        public override string ToString()
+        {
+            return $"{Sender}: {UserMessage}";
+        }
     }
 }

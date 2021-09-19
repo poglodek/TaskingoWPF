@@ -51,6 +51,7 @@ namespace TaskingoApp.ViewModel
         public bool Tasks { get; set; }
         public bool Role { get; set; }
         public bool AddRole { get; set; }
+        public bool ChatList { get; set; }
         public bool Chat { get; set; }
         #endregion
 
@@ -112,8 +113,12 @@ namespace TaskingoApp.ViewModel
                     View = new AddRoleView();
                     OnPropertyChanged(nameof(AddRole));
                     break;
-                case "Chat":
+                case "ChatList":
                     View = new ChatListView();
+                    OnPropertyChanged(nameof(ChatList));
+                    break;
+                case "Chat":
+                    View = new ChatView();
                     OnPropertyChanged(nameof(Chat));
                     break;
                 default:
@@ -132,9 +137,10 @@ namespace TaskingoApp.ViewModel
             EditUsers = false;
             AddUsers = false;
             Role = false;
+            ChatList = false;
             Chat = false;
             AddRole = false;
-            OnPropertyChanged(nameof(Users), nameof(Tasks), nameof(AddUsers), nameof(EditUsers), nameof(EditTask), nameof(AddTask), nameof(Role), nameof(AddRole), nameof(Chat));
+            OnPropertyChanged(nameof(Users), nameof(Tasks), nameof(AddUsers), nameof(EditUsers), nameof(EditTask), nameof(AddTask), nameof(Role), nameof(AddRole), nameof(ChatList), nameof(Chat));
         }
         #region Commands
         private ICommand _setActualView;

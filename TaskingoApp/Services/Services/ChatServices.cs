@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.SignalR.Client;
 using Newtonsoft.Json;
 using TaskingoApp.APICall;
+using TaskingoApp.Model.Chat;
 using TaskingoApp.Model.User;
 using TaskingoApp.Services.IServices;
 
@@ -13,7 +14,7 @@ namespace TaskingoApp.Services.Services
 {
     public class ChatServices : IChatServices
     {
-        public event Action<string> ReceiveMessage;
+        public event Action<MessageModel> ReceiveMessage;
         public static HubConnection _connection = new HubConnectionBuilder()
             .WithAutomaticReconnect()
             .WithUrl(Properties.Settings.Default.ApiUrl+"chat")
@@ -21,7 +22,7 @@ namespace TaskingoApp.Services.Services
 
         public ChatServices()
         {
-            _connection.On<string>("ReceiveMessage", (x) => ReceiveMessage?.Invoke(x));
+            _connection.On<MessageModel>("ReceiveMessage",(x) => ReceiveMessage?.Invoke(x));
         }
         public async Task Connect()
         {
@@ -39,6 +40,13 @@ namespace TaskingoApp.Services.Services
             var jsonUser = await BaseCall.MakeCall($"Message/LastUsers", System.Net.Http.HttpMethod.Get, null);
             var user = JsonConvert.DeserializeObject<List<UserModel>>(jsonUser);
             return user;
+        }
+        public async Task<List<MessageModel>> GetMessages(int skip)
+        {
+            var jsonMessages = await BaseCall.MakeCall($"Message/{Properties.Settings.Default.UserId}/{skip}", System.Net.Http.HttpMethod.Get, null);
+            var messages = JsonConvert.DeserializeObject<List<MessageModel>>(jsonMessages);
+            messages.Reverse();
+            return messages;
         }
     }
 }

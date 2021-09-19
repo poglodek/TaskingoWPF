@@ -46,7 +46,7 @@
             <Button Width="50" Style="{StaticResource ButtonWindow}" Command="{Binding Path=SetView}" CommandParameter="Tasks"  Margin="10" >
                 <fa5:ImageAwesome Icon="Solid_Tasks" Foreground="White"/>
             </Button>
-            <Button Width="50" Style="{StaticResource ButtonWindow}" Margin="10" Command="{Binding Path=SetView}" CommandParameter="Chat" >
+            <Button Width="50" Style="{StaticResource ButtonWindow}" Margin="10" Command="{Binding Path=SetView}" CommandParameter="ChatList" >
                 <fa5:ImageAwesome Icon="Solid_EnvelopeOpenText" Foreground="White"/>
             </Button>
             <Border Margin="360,0" Background="#f04d55" Width="300" CornerRadius="30">

@@ -8,17 +8,17 @@ namespace TaskingoApp.Model.User
 {
     public class UsersModel : IEnumerable<UserModel>
     {
-        private List<UserModel> userModels { get; set; } = new List<UserModel>();
+        private List<UserModel> UserModels { get; set; } = new List<UserModel>();
         private readonly IUsersServices _usersServices = new UsersServices();
 
         public async Task<List<UserModel>> GetUsersModelsList()
         {
-            userModels = await _usersServices.GetUsers();
-            return userModels;
+            UserModels = await _usersServices.GetUsers();
+            return UserModels;
 
         }
-        public UserModel this[int index] => userModels[index];
-        public IEnumerator<UserModel> GetEnumerator() => userModels.GetEnumerator();
+        public UserModel this[int index] => UserModels[index];
+        public IEnumerator<UserModel> GetEnumerator() => UserModels.GetEnumerator();
         IEnumerator IEnumerable.GetEnumerator() => (IEnumerator)this.GetEnumerator();
     }
 }

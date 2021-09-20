@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
-        Title="Taskingo" Height="330" Width="250">
+        Title="Taskingo" Height="360" Width="300">
     <Window.DataContext>
         <viewModel:LoginViewModel />
     </Window.DataContext>
@@ -21,17 +21,17 @@
                 <Label.Content> Welcome to Taskingo!</Label.Content>
             </Label>
             <Label Foreground="White">Email:</Label>
-            <TextBox x:Name="email" Style="{StaticResource TextBoxLogin}" Text="{Binding Path=Email}">
+            <TextBox x:Name="email" Style="{StaticResource TextBoxLogin}" Text="{Binding Path=Email}" Margin="10">
                 
             </TextBox>
-            <Label Foreground="White">PasswordHashed:</Label>
-            <components:BindablePasswordBox Password="{Binding Path=Password, Mode=TwoWay}" >
+            <Label Foreground="White">Password:</Label>
+            <components:BindablePasswordBox Password="{Binding Path=Password, Mode=TwoWay}" Margin="10">
 
             </components:BindablePasswordBox>
             <DockPanel HorizontalAlignment="Center" >
                 
                 <Button  Style="{StaticResource ButtonLogin}" Command="{Binding Path=ForgotPassword}">
-                    <Button.Content>Forgot PasswordHashed</Button.Content>
+                    <Button.Content>Forgot Password</Button.Content>
 
                 </Button>
                 <Button  Style="{StaticResource ButtonLogin}" Command="{Binding Path=LoginCommand}">

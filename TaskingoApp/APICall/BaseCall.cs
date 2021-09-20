@@ -9,7 +9,7 @@ namespace TaskingoApp.APICall
 {
     public class BaseCall
     {
-        private static string Url = Properties.Settings.Default.ApiUrl;
+        private static readonly string Url = Properties.Settings.Default.ApiUrl;
         public static string Token = string.Empty;
         private static int MaxCallsInThisSameTime = 3;
         private static int _activeCalls;
@@ -19,8 +19,8 @@ namespace TaskingoApp.APICall
             if (_activeCalls > MaxCallsInThisSameTime)
                 throw new ToManyCallsException($"To many Calls. Active Calls -> {_activeCalls}");
             _activeCalls++;
-            var respone = await CallApi(endpoint, httpMethod, body);
-            return await CheckResponse(respone);
+            var response = await CallApi(endpoint, httpMethod, body);
+            return await CheckResponse(response);
         }
 
         private static async Task<HttpResponseMessage> CallApi(string endpoint, HttpMethod httpMethod, object body)

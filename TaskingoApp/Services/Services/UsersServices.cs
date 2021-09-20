@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using Newtonsoft.Json;
+using System.Collections.Generic;
 using System.Net.Mail;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
-using Newtonsoft.Json;
 using TaskingoApp.APICall;
 using TaskingoApp.Builder;
 using TaskingoApp.Model.User;

@@ -19,7 +19,7 @@
             </LinearGradientBrush>
         </Grid.Background>
 
-        <ListBox Background="Transparent" ItemsSource="{Binding Path=workTimeModels}"  BorderThickness="0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center">
+        <ListBox Background="Transparent" ItemsSource="{Binding Path=WorkTimeModels}"  BorderThickness="0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock  Style="{StaticResource ListBoxTextBlockStyle}" Text="{Binding Mode=OneWay}" />

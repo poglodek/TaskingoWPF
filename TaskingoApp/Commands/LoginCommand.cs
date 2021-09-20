@@ -2,7 +2,6 @@
 using System.Threading.Tasks;
 using TaskingoApp.Builder;
 using TaskingoApp.Exceptions;
-using TaskingoApp.Services;
 using TaskingoApp.Services.IServices;
 using TaskingoApp.Services.Services;
 using TaskingoApp.ViewModel;

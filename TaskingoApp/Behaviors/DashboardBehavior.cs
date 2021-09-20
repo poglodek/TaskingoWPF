@@ -5,8 +5,8 @@ namespace TaskingoApp.Behaviors
 {
     public class DashboardBehavior : Behavior<Window>
     {
-        private bool IsWindowMoving = false;
-        private Point StartingPositionOfCursor;
+        private bool _isWindowMoving = false;
+        private Point _startingPositionOfCursor;
         protected override void OnAttached()
         {
             var window = this.AssociatedObject;
@@ -19,19 +19,19 @@ namespace TaskingoApp.Behaviors
         private void Window_MouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             var window = (Window)sender;
-            if (IsWindowMoving && e.LeftButton == System.Windows.Input.MouseButtonState.Released)
+            if (_isWindowMoving && e.LeftButton == System.Windows.Input.MouseButtonState.Released)
             {
-                IsWindowMoving = false;
+                _isWindowMoving = false;
             }
         }
 
         private void Window_MouseMove(object sender, System.Windows.Input.MouseEventArgs e)
         {
 
-            if (!IsWindowMoving) return;
+            if (!_isWindowMoving) return;
             var window = (Window)sender;
             var actualPositionOfCursor = e.GetPosition(window);
-            var move = actualPositionOfCursor - StartingPositionOfCursor;
+            var move = actualPositionOfCursor - _startingPositionOfCursor;
             window.Left += move.X;
             window.Top += move.Y;
         }
@@ -39,11 +39,11 @@ namespace TaskingoApp.Behaviors
         private void Window_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
 
-            if (!IsWindowMoving && e.LeftButton == System.Windows.Input.MouseButtonState.Pressed)
+            if (!_isWindowMoving && e.LeftButton == System.Windows.Input.MouseButtonState.Pressed)
             {
                 var window = (Window)sender;
-                IsWindowMoving = true;
-                StartingPositionOfCursor = e.GetPosition(window);
+                _isWindowMoving = true;
+                _startingPositionOfCursor = e.GetPosition(window);
             }
         }
     }

@@ -2,7 +2,6 @@
 using System.Threading.Tasks;
 using TaskingoApp.Annotations;
 using TaskingoApp.Model.User;
-using TaskingoApp.Services;
 using TaskingoApp.Services.IServices;
 using TaskingoApp.Services.Services;
 
@@ -24,9 +23,9 @@ namespace TaskingoApp.Model.WorkTask
 
         [CanBeNull]
         public UserModel AssignedUser { get; set; }
-        public override string ToString() => $"Id:{Id}, {Title}, {DeadLine}";
+        public override string ToString() => $"Id:{Id}, {Title}, {DeadLine}, {WorkGroup}";
 
-        private IWorkTaskServices _workTaskServices = new WorkTaskServices();
+        private readonly IWorkTaskServices _workTaskServices = new WorkTaskServices();
         public async Task<WorkTaskModel> GetTaskById()
         {
             var task = await _workTaskServices.GetTaskById(Properties.Settings.Default.TaskId);

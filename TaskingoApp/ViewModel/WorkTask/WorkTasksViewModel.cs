@@ -11,7 +11,7 @@ namespace TaskingoApp.ViewModel.WorkTask
     public class WorkTasksViewModel : ViewModelBase
     {
         private WorkTasksModel _workTaskModels;
-        public AsyncObservableCollection<WorkTaskViewModel> workTaskViewModels { get; set; } = new AsyncObservableCollection<WorkTaskViewModel>();
+        public AsyncObservableCollection<WorkTaskViewModel> WorkTaskViewModels { get; set; } = new AsyncObservableCollection<WorkTaskViewModel>();
         private AsyncObservableCollection<WorkTaskViewModel> TasksFromApi { get; set; } = new AsyncObservableCollection<WorkTaskViewModel>();
 
         public WorkTasksViewModel()
@@ -38,16 +38,16 @@ namespace TaskingoApp.ViewModel.WorkTask
         }
         public void CopyFromModel()
         {
-            workTaskViewModels.Clear();
+            WorkTaskViewModels.Clear();
             TasksFromApi.Clear();
             foreach (var task in _workTaskModels)
                 TasksFromApi.Add(new WorkTaskViewModel(task));
             if (!Properties.Settings.Default.TaskFilter.Equals("All"))
-                workTaskViewModels.AddRange(TasksFromApi
+                WorkTaskViewModels.AddRange(TasksFromApi
                     .Where(x => x.Status.Contains(Properties.Settings.Default.TaskFilter))
                     .ToList());
             else
-                workTaskViewModels.AddRange(TasksFromApi);
+                WorkTaskViewModels.AddRange(TasksFromApi);
 
         }
         #region getters
@@ -85,8 +85,8 @@ namespace TaskingoApp.ViewModel.WorkTask
             if (string.IsNullOrEmpty(_searchingTask))
                 DownloadTasks();
             var searchingUsersFromApi = SelectTasks();
-            workTaskViewModels.Clear();
-            workTaskViewModels.AddRange(searchingUsersFromApi.ToList());
+            WorkTaskViewModels.Clear();
+            WorkTaskViewModels.AddRange(searchingUsersFromApi.ToList());
         }
 
         private IEnumerable<WorkTaskViewModel> SelectTasks()

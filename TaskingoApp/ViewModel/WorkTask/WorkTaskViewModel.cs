@@ -46,7 +46,7 @@ namespace TaskingoApp.ViewModel.WorkTask
         public bool IsAssigned => _workTaskModel.IsAssigned;
         public UserModel AssignedUser => _workTaskModel.AssignedUser;
 
-        public override string ToString() => $"Id:{Id}, {Title}, {DeadLine}";
+        public override string ToString() => $"Id:{Id}, {Title}, {DeadLine}, {WorkGroup}";
         #endregion
     }
 }

@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Documents;
 using System.Windows.Input;
 using TaskingoApp.Commands;
 using TaskingoApp.Components;
@@ -43,7 +40,7 @@ namespace TaskingoApp.ViewModel.Chat
             OnPropertyChanged(nameof(Messages));
         }
 
-        
+
         public string Messages
         {
             get

@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using Newtonsoft.Json;
+using System.Collections.Generic;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
 using TaskingoApp.APICall;
 using TaskingoApp.Builder;
 using TaskingoApp.Model;
@@ -12,8 +12,8 @@ namespace TaskingoApp.Services.Services
     {
         public async Task<List<RoleModel>> GetRoles()
         {
-            var rolesjson = await BaseCall.MakeCall($"role/GetAll", System.Net.Http.HttpMethod.Get, null);
-            var roles = JsonConvert.DeserializeObject<List<RoleModel>>(rolesjson);
+            var rolesJson = await BaseCall.MakeCall($"role/GetAll", System.Net.Http.HttpMethod.Get, null);
+            var roles = JsonConvert.DeserializeObject<List<RoleModel>>(rolesJson);
             return roles;
         }
 

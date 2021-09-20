@@ -2,7 +2,6 @@
 using System.Windows;
 using System.Windows.Input;
 using TaskingoApp.Commands;
-using TaskingoApp.Services;
 using TaskingoApp.Services.IServices;
 using TaskingoApp.Services.Services;
 using TaskingoApp.View;
@@ -28,8 +27,7 @@ namespace TaskingoApp.ViewModel
                 _dashboardServices.ConnectWithApi().Wait();
             });
             var loginScreen = Application.Current.Windows[0];
-            loginScreen.Close();
-            
+            if (loginScreen != null) loginScreen.Close();
         }
 
 

@@ -7,8 +7,8 @@ namespace TaskingoApp.ViewModel.WorkTime
 {
     public class WorkTimesViewModel : ViewModelBase
     {
-        private WorkTimesModel workTimesModel;
-        public AsyncObservableCollection<WorkTimeViewModel> workTimeModels { get; set; } = new AsyncObservableCollection<WorkTimeViewModel>();
+        private readonly WorkTimesModel workTimesModel;
+        public AsyncObservableCollection<WorkTimeViewModel> WorkTimeModels { get; set; } = new AsyncObservableCollection<WorkTimeViewModel>();
 
         public WorkTimesViewModel()
         {
@@ -25,9 +25,9 @@ namespace TaskingoApp.ViewModel.WorkTime
         }
         public void CopyFromModel()
         {
-            workTimeModels.Clear();
+            WorkTimeModels.Clear();
             foreach (var time in workTimesModel)
-                workTimeModels.Add(new WorkTimeViewModel(time));
+                WorkTimeModels.Add(new WorkTimeViewModel(time));
 
         }
     }

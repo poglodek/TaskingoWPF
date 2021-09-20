@@ -114,6 +114,7 @@ namespace TaskingoApp.ViewModel
                     OnPropertyChanged(nameof(AddRole));
                     break;
                 case "ChatList":
+                    ChatList = true;
                     View = new ChatListView();
                     OnPropertyChanged(nameof(ChatList));
                     break;

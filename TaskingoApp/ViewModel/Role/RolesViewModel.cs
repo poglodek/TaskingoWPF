@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using TaskingoApp.Components;
-using TaskingoApp.Services;
 using TaskingoApp.Services.IServices;
 using TaskingoApp.Services.Services;
 using TaskingoApp.ViewModel.Base;
-using TaskingoApp.ViewModel.WorkTime;
 
 namespace TaskingoApp.ViewModel.Role
 {
@@ -32,5 +26,5 @@ namespace TaskingoApp.ViewModel.Role
             });
         }
     }
-    
+
 }

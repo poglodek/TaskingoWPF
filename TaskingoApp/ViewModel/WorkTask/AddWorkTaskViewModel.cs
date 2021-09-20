@@ -4,7 +4,6 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using TaskingoApp.Commands;
 using TaskingoApp.Model.WorkTask;
-using TaskingoApp.Services;
 using TaskingoApp.Services.IServices;
 using TaskingoApp.Services.Services;
 using TaskingoApp.ViewModel.Base;

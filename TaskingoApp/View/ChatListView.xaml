@@ -26,7 +26,7 @@
         <DockPanel >
             <Label Style="{StaticResource LabelWindow}"  Content="Last Chats" />
         </DockPanel>
-        <ListBox SelectedItem="{Binding SelectedUser}" x:Name="ListBoxUsers" Grid.Row="1" Background="Transparent" ItemsSource="{Binding Path=messageModels}"  BorderThickness="0">
+        <ListBox SelectedItem="{Binding SelectedUser}" x:Name="ListBoxUsers" Grid.Row="1" Background="Transparent" ItemsSource="{Binding Path=MessageModels}"  BorderThickness="0">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock  Style="{StaticResource ListBoxTextBlockStyle}" Text="{Binding Mode=OneWay}" />

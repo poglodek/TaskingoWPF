@@ -1,12 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
-using TaskingoApp.Builder;
+﻿using System.Windows.Input;
 using TaskingoApp.Commands;
-using TaskingoApp.Services;
 using TaskingoApp.Services.IServices;
 using TaskingoApp.Services.Services;
 using TaskingoApp.ViewModel.Base;

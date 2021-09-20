@@ -8,6 +8,7 @@ using System.Windows.Input;
 using TaskingoApp.Commands;
 using TaskingoApp.Components;
 using TaskingoApp.Model.Chat;
+using TaskingoApp.Services;
 using TaskingoApp.Services.IServices;
 using TaskingoApp.Services.Services;
 using TaskingoApp.ViewModel.Base;
@@ -17,6 +18,7 @@ namespace TaskingoApp.ViewModel.Chat
     public class ChatViewModel : ViewModelBase
     {
         private readonly IChatServices _chatServices = new ChatServices();
+        private readonly IUsersServices _usersServices = new UsersServices();
 
         public AsyncObservableCollection<MessageModel> MessagesList { get; set; } = new AsyncObservableCollection<MessageModel>();
 
@@ -29,6 +31,8 @@ namespace TaskingoApp.ViewModel.Chat
         {
             Task.Run(() =>
             {
+                var user = _usersServices.GetUserById(Properties.Settings.Default.UserId).Result;
+                UserName = $"{user.FirstName} {user.LastName}";
                 var newMessages = _chatServices.GetMessages(MessagesList.Count).Result;
                 AddMessages(newMessages);
             });
@@ -60,6 +64,17 @@ namespace TaskingoApp.ViewModel.Chat
             {
                 message = value;
                 OnPropertyChanged(nameof(Message));
+            }
+        }
+        private string userName;
+
+        public string UserName
+        {
+            get => userName;
+            set
+            {
+                userName = value;
+                OnPropertyChanged(nameof(userName));
             }
         }
         private ICommand sendMessage;

@@ -32,14 +32,14 @@ namespace TaskingoApp.ViewModel
             
         }
 
-        private string name;
+
         public string Name
         {
-            get => name;
+            get => Properties.Settings.Default.MyName;
             set
             {
-                name = value;
-                OnPropertyChanged(nameof(name));
+                Properties.Settings.Default.MyName = value;
+                OnPropertyChanged(nameof(Name));
             }
         }
 
